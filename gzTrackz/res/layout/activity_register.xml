@@ -19,12 +19,31 @@
         android:text="E-mail" />
 
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/EditText01"
+        android:layout_below="@+id/passwordRegisterEditText"
+        android:layout_marginTop="26dp"
+        android:text="Confirm password" />
+
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/passwordRegisterEditText"
+        android:layout_below="@+id/textView3"
+        android:background="@drawable/rectangle"
+        android:ems="10"
+        android:textSize="13dp" />
+
+    <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/passwordRegisterEditText"
         android:layout_alignLeft="@+id/passwordRegisterEditText"
-        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="18dp"
         android:text="Password" />
 
     <EditText
@@ -44,28 +63,9 @@
         android:id="@+id/emailRegisterEditText"
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:layout_above="@+id/textView1"
+        android:layout_above="@+id/passwordRegisterEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp"
-        android:background="@drawable/rectangle"
-        android:ems="10"
-        android:textSize="13dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/EditText01"
-        android:layout_below="@+id/passwordRegisterEditText"
-        android:layout_marginTop="22dp"
-        android:text="Confirm password" />
-
-    <EditText
-        android:id="@+id/EditText01"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@+id/passwordRegisterEditText"
-        android:layout_below="@+id/textView3"
+        android:layout_marginBottom="46dp"
         android:background="@drawable/rectangle"
         android:ems="10"
         android:textSize="13dp" />
