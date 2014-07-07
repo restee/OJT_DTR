@@ -1,15 +1,22 @@
 package com.example.gztrackz;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	TextView registerTxt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        registerTxt = (TextView)findViewById(R.id.registerTextView);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");
+        registerTxt.setTypeface(tf);
+        
     }
 
 
