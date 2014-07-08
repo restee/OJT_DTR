@@ -1,14 +1,18 @@
 package com.example.gztrackz;
 
+import java.util.StringTokenizer;
+
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -37,7 +41,8 @@ public class MainActivity extends Activity {
         prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         firstName = prefs.getString(FNAME, null);
         if(firstName!=null){
-        	Toast.makeText(getApplicationContext(), firstName,Toast.LENGTH_LONG).show();
+        	Intent i = new Intent(this,TimeManager.class);
+        	startActivity(i);
         }
         context = this;
         logInBTN = (Button) findViewById(R.id.logInButton);
@@ -91,15 +96,22 @@ public class MainActivity extends Activity {
         	if(progressD.isShowing()){
         		progressD.dismiss();
         	}
-        	Toast.makeText(context,firstName, Toast.LENGTH_LONG).show();
+        	if(result){
+	        	Toast.makeText(context,firstName, Toast.LENGTH_LONG).show();
+	        	Toast.makeText(context,lastName, Toast.LENGTH_LONG).show();
+	        	Toast.makeText(context,email, Toast.LENGTH_LONG).show();
+	        	Intent i = new Intent(context,TimeManager.class);
+	        	startActivity(i);
+        	}
+        	else
+        		Toast.makeText(context,"Invalid login credentials!", Toast.LENGTH_LONG).show();
         }   
     	@Override
         protected Boolean doInBackground(String... params) {
-            boolean flag = false;
+            boolean flag = true;
             
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(FNAME, "GlendonGwapo");            
-            editor.commit();
+            
             
             try {
             	String urlTopTracks = "http://gz123.site90.net/login/?email=" + email + "&password=" + password;
@@ -108,8 +120,23 @@ public class MainActivity extends Activity {
 				Log.d("BITCH YOU MUST RETURN", "YOU MUST RETURN!");
 				HttpPost request = new HttpPost(urlTopTracks);
 				Log.d("BITCH YOU MUST RETURN", "YOU MUST RETURN!");
-				String httpResponseTopTracks = client.execute(request, handler);
-				firstName = httpResponseTopTracks;
+				String httpResponseTopTracks = client.execute(request, handler);				
+				
+				StringTokenizer token = new StringTokenizer(httpResponseTopTracks,"<");
+				String retrieveResult = token.nextToken();
+				
+				JSONObject result = new JSONObject(retrieveResult);
+				String emailResult = result.getString("email");
+				if(emailResult.length()==0){					
+					flag = false;
+				}else{
+					firstName = result.getString("first_name");
+					lastName = result.getString("last_name");
+					editor.putString(LNAME,lastName);
+					editor.putString(FNAME, firstName);
+					editor.putString(EMAIL,emailResult);
+		            editor.commit();
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
