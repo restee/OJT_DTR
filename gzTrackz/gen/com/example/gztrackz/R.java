@@ -23,35 +23,24 @@ public final class R {
     public static final class drawable {
         public static final int buttonstyle=0x7f020000;
         public static final int gz=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int powered=0x7f020003;
-        public static final int rectangle=0x7f020004;
+        public static final int ic_lancher=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int powered=0x7f020004;
+        public static final int rectangle=0x7f020005;
     }
     public static final class id {
-<<<<<<< HEAD
-        public static final int EditText01=0x7f08000b;
-=======
         public static final int EditText01=0x7f080009;
->>>>>>> 979d5b06d72d951ec20edfb9f812e7994c846dad
         public static final int action_settings=0x7f08000c;
         public static final int emailRegisterEditText=0x7f080007;
         public static final int imageView1=0x7f080003;
         public static final int imageView2=0x7f080004;
         public static final int logInButton=0x7f080005;
         public static final int passwordEditText=0x7f080001;
-<<<<<<< HEAD
-        public static final int passwordRegisterEditText=0x7f080009;
-        public static final int registerTextView=0x7f080000;
-        public static final int textView1=0x7f080008;
-        public static final int textView2=0x7f080006;
-        public static final int textView3=0x7f08000a;
-=======
         public static final int passwordRegisterEditText=0x7f08000a;
         public static final int registerTextView=0x7f080000;
         public static final int textView1=0x7f08000b;
         public static final int textView2=0x7f080006;
         public static final int textView3=0x7f080008;
->>>>>>> 979d5b06d72d951ec20edfb9f812e7994c846dad
         public static final int usernameEditText=0x7f080002;
     }
     public static final class layout {

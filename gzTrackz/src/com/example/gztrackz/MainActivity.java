@@ -1,5 +1,11 @@
 package com.example.gztrackz;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,6 +13,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -64,6 +71,7 @@ public class MainActivity extends Activity {
     	String email,password;
     	Context context;
     	ProgressDialog progressD;
+    	String firstName,lastName;
     	
     	public Login(Context context,String email,String password){
     		this.context = context;
@@ -77,7 +85,14 @@ public class MainActivity extends Activity {
     		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
     		progressD.show();
         }
-    	
+    	  @Override
+        protected void onPostExecute(Boolean result) {
+        	
+        	if(progressD.isShowing()){
+        		progressD.dismiss();
+        	}
+        	Toast.makeText(context,firstName, Toast.LENGTH_LONG).show();
+        }   
     	@Override
         protected Boolean doInBackground(String... params) {
             boolean flag = false;
@@ -87,8 +102,15 @@ public class MainActivity extends Activity {
             editor.commit();
             
             try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
+            	String urlTopTracks = "http://gz123.site90.net/login/?email=" + email + "&password=" + password;
+				HttpClient client = new DefaultHttpClient();
+				ResponseHandler<String> handler = new BasicResponseHandler();
+				Log.d("BITCH YOU MUST RETURN", "YOU MUST RETURN!");
+				HttpPost request = new HttpPost(urlTopTracks);
+				Log.d("BITCH YOU MUST RETURN", "YOU MUST RETURN!");
+				String httpResponseTopTracks = client.execute(request, handler);
+				firstName = httpResponseTopTracks;
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -96,13 +118,7 @@ public class MainActivity extends Activity {
             return flag;
         }
 
-        @Override
-        protected void onPostExecute(Boolean result) {
-        	
-        	if(progressD.isShowing()){
-        		progressD.dismiss();
-        	}
-        }           
+              
     }
 		
 }
