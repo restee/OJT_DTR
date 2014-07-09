@@ -29,7 +29,9 @@
         android:layout_marginTop="17dp"
         android:background="@drawable/rectangle"
         android:ems="10"
-        android:hint="  email"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="10dp" 
         android:textSize="13dp" />
 
     <EditText
@@ -41,7 +43,9 @@
         android:layout_marginTop="21dp"
         android:background="@drawable/rectangle"
         android:ems="10"
-        android:hint="  password"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"  
         android:textSize="13dp" >
 
         <requestFocus />
