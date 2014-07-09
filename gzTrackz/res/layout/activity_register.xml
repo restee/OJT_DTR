@@ -35,6 +35,7 @@
         android:layout_below="@+id/textView3"
         android:background="@drawable/rectangle"
         android:ems="10"
+        android:paddingLeft="10dp" 
         android:textSize="13dp" />
 
     <TextView
@@ -54,6 +55,7 @@
         android:layout_centerVertical="true"
         android:background="@drawable/rectangle"
         android:ems="10"
+        android:paddingLeft="10dp" 
         android:textSize="13dp" >
 
         <requestFocus />
@@ -68,6 +70,7 @@
         android:layout_marginBottom="46dp"
         android:background="@drawable/rectangle"
         android:ems="10"
+        android:paddingLeft="10dp"
         android:textSize="13dp" />
 
 </RelativeLayout>
