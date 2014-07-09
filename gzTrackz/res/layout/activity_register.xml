@@ -37,6 +37,7 @@
             android:background="@drawable/rectangle"
             android:ems="10"
             android:paddingLeft="10dp"
+            android:inputType="textPassword"
             android:textSize="12dp" />
 
         <TextView
@@ -58,6 +59,7 @@
             android:background="@drawable/rectangle"
             android:ems="10"
             android:paddingLeft="10dp"
+            android:inputType="textPassword"
             android:textSize="12dp" />
 
         <TextView

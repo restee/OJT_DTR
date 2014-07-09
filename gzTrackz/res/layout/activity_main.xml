@@ -17,6 +17,7 @@
         android:layout_below="@+id/passwordEditText"
         android:layout_marginTop="22dp"
         android:textSize="15dp"
+        android:textColor="@color/text_color_pressed"
         android:text="Register?" />
 
     <EditText
