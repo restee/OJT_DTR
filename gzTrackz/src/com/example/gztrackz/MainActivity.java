@@ -47,6 +47,7 @@ public class MainActivity extends Activity {
         	Intent i = new Intent(this,TabsManager.class);
         	startActivityForResult(i,1);
         }
+        
         context = this;
         logInBTN = (Button) findViewById(R.id.logInButton);
         emailTXT = (EditText) findViewById(R.id.usernameEditText);
@@ -127,7 +128,7 @@ public class MainActivity extends Activity {
         		progressD.dismiss();
         	}
         	if(result){	        
-	        	Intent i = new Intent(context,TimeManager.class);
+	        	Intent i = new Intent(context,TabsManager.class);
 	        	startActivityForResult(i,1);
         	}
         	else
