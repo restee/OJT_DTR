@@ -34,8 +34,9 @@ public final class R {
         public static final int roundbuttonstyle=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
+        public static final int action_settings=0x7f090015;
         public static final int confirmpasswordEditText=0x7f090008;
+        public static final int dateTxt=0x7f090014;
         public static final int emailRegisterEditText=0x7f090006;
         public static final int firstnameEditText=0x7f09000d;
         public static final int firstnameTextView=0x7f09000c;
@@ -53,6 +54,7 @@ public final class R {
         public static final int textView1=0x7f09000b;
         public static final int textView2=0x7f090007;
         public static final int textView3=0x7f09000a;
+        public static final int timeTxt=0x7f090013;
         public static final int usernameEditText=0x7f090002;
     }
     public static final class layout {
