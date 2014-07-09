@@ -34,6 +34,11 @@
             android:name="com.example.gztrackz.TimeManager"
             android:label="@string/title_activity_time_manager" >
         </activity>
+         <activity
+            android:name="com.example.gztrackz.TabsManager"
+            android:label="@string/title_activity_tabs_manager" 
+            >
+        </activity>
     </application>
 
 </manifest>
