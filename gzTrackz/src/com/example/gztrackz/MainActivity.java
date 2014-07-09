@@ -15,6 +15,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,13 +29,13 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	TextView registerTxt;
-	Button logInBTN;
-	EditText emailTXT, passTXT;
-	String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
-	String firstName,lastName,email;
-	Context context;
-	SharedPreferences prefs ;
+	private TextView registerTxt;
+	private Button logInBTN;
+	private EditText emailTXT, passTXT;
+	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
+	private String firstName,lastName,email;
+	private Context context;
+	private SharedPreferences prefs ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +58,21 @@ public class MainActivity extends Activity {
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
-				new Login(context,emailTXT.getText().toString(),passTXT.getText().toString()).execute();				
+				if(isNetworkAvailable())
+					new Login(context,emailTXT.getText().toString(),passTXT.getText().toString()).execute();
+				else
+					Toast.makeText(context,"Please make sure internet connection exists!", Toast.LENGTH_LONG).show();
 			}
 		});
-        
+                
+        registerTxt.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(context,RegisterActivity.class);
+				startActivity(i);
+			}
+		});
     }
 
 
@@ -70,6 +83,12 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager 
+              = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
     
     private class Login extends AsyncTask<String, Void,Boolean> {
         
@@ -117,9 +136,9 @@ public class MainActivity extends Activity {
             	String urlTopTracks = "http://gz123.site90.net/login/?email=" + email + "&password=" + password;
 				HttpClient client = new DefaultHttpClient();
 				ResponseHandler<String> handler = new BasicResponseHandler();
-				Log.d("BITCH YOU MUST RETURN", "YOU MUST RETURN!");
+				
 				HttpPost request = new HttpPost(urlTopTracks);
-				Log.d("BITCH YOU MUST RETURN", "YOU MUST RETURN!");
+				
 				String httpResponseTopTracks = client.execute(request, handler);				
 				
 				StringTokenizer token = new StringTokenizer(httpResponseTopTracks,"<");
@@ -138,7 +157,7 @@ public class MainActivity extends Activity {
 		            editor.commit();
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				flag = false;
 				e.printStackTrace();
 			}
             
