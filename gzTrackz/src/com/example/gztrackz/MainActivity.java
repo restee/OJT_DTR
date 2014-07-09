@@ -49,9 +49,12 @@ public class MainActivity extends Activity {
         emailTXT = (EditText) findViewById(R.id.usernameEditText);
         passTXT = (EditText) findViewById(R.id.passwordEditText);
         
+        
         registerTxt = (TextView)findViewById(R.id.registerTextView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");
         registerTxt.setTypeface(tf);
+        
+        
         
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
