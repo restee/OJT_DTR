@@ -31,16 +31,20 @@ public final class R {
         public static final int roundbuttonstyle=0x7f020007;
     }
     public static final class id {
-        public static final int EditText01=0x7f080008;
-        public static final int action_settings=0x7f08000e;
+        public static final int action_settings=0x7f080012;
+        public static final int confirmpasswordEditText=0x7f080008;
         public static final int emailRegisterEditText=0x7f080006;
-        public static final int imageButton1=0x7f08000c;
+        public static final int firstnameEditText=0x7f08000d;
+        public static final int firstnameTextView=0x7f08000c;
         public static final int imageView1=0x7f080003;
         public static final int imageView2=0x7f080004;
+        public static final int lastnameEditText=0x7f08000f;
+        public static final int lastnameTextView=0x7f08000e;
         public static final int logInButton=0x7f080005;
-        public static final int logout=0x7f08000d;
+        public static final int logout=0x7f080011;
         public static final int passwordEditText=0x7f080001;
         public static final int passwordRegisterEditText=0x7f080009;
+        public static final int registerButton=0x7f080010;
         public static final int registerTextView=0x7f080000;
         public static final int textView1=0x7f08000b;
         public static final int textView2=0x7f080007;
