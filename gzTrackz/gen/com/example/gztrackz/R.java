@@ -10,6 +10,9 @@ package com.example.gztrackz;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int text_color_pressed=0x7f070000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -21,33 +24,44 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int add_user=0x7f020000;
-        public static final int buttonstyle=0x7f020001;
-        public static final int gz=0x7f020002;
-        public static final int ic_lancher=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int powered=0x7f020005;
-        public static final int rectangle=0x7f020006;
+        public static final int buttonstyle=0x7f020000;
+        public static final int gz=0x7f020001;
+        public static final int ic_lancher=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int powered=0x7f020004;
+        public static final int rectangle=0x7f020005;
+        public static final int roundbuttonstyle=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f080008;
-        public static final int imageView1=0x7f080003;
-        public static final int imageView2=0x7f080004;
-        public static final int logInButton=0x7f080005;
-        public static final int logout=0x7f080007;
-        public static final int passwordEditText=0x7f080001;
-        public static final int registerTextView=0x7f080000;
-        public static final int textView1=0x7f080006;
-        public static final int usernameEditText=0x7f080002;
+        public static final int action_settings=0x7f090012;
+        public static final int confirmpasswordEditText=0x7f090008;
+        public static final int emailRegisterEditText=0x7f090006;
+        public static final int firstnameEditText=0x7f09000d;
+        public static final int firstnameTextView=0x7f09000c;
+        public static final int imageView1=0x7f090003;
+        public static final int imageView2=0x7f090004;
+        public static final int lastnameEditText=0x7f09000f;
+        public static final int lastnameTextView=0x7f09000e;
+        public static final int logInButton=0x7f090005;
+        public static final int logout=0x7f090011;
+        public static final int passwordEditText=0x7f090001;
+        public static final int passwordRegisterEditText=0x7f090009;
+        public static final int registerButton=0x7f090010;
+        public static final int registerTextView=0x7f090000;
+        public static final int textView1=0x7f09000b;
+        public static final int textView2=0x7f090007;
+        public static final int textView3=0x7f09000a;
+        public static final int usernameEditText=0x7f090002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int activity_time_manager=0x7f030001;
+        public static final int activity_register=0x7f030001;
+        public static final int activity_time_manager=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
-        public static final int register=0x7f070001;
-        public static final int time_manager=0x7f070002;
+        public static final int main=0x7f080000;
+        public static final int register=0x7f080001;
+        public static final int time_manager=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;

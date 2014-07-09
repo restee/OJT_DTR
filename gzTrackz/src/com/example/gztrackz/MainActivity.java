@@ -9,6 +9,7 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -44,16 +45,19 @@ public class MainActivity extends Activity {
         firstName = prefs.getString(FNAME, null);
         if(firstName!=null){
         	Intent i = new Intent(this,TimeManager.class);
-        	startActivity(i);
+        	startActivityForResult(i,1);
         }
         context = this;
         logInBTN = (Button) findViewById(R.id.logInButton);
         emailTXT = (EditText) findViewById(R.id.usernameEditText);
         passTXT = (EditText) findViewById(R.id.passwordEditText);
         
+        
         registerTxt = (TextView)findViewById(R.id.registerTextView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");
         registerTxt.setTypeface(tf);
+        
+        
         
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
@@ -90,6 +94,13 @@ public class MainActivity extends Activity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
     
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {    
+    	super.onActivityResult(requestCode, resultCode, data);    	
+    	if(resultCode == RESULT_CANCELED)
+    		finish();
+    }
+    
     private class Login extends AsyncTask<String, Void,Boolean> {
         
     	String email,password;
@@ -109,18 +120,15 @@ public class MainActivity extends Activity {
     		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
     		progressD.show();
         }
-    	  @Override
-        protected void onPostExecute(Boolean result) {
-        	
+    	
+    	@Override
+        protected void onPostExecute(Boolean result) {        	
         	if(progressD.isShowing()){
         		progressD.dismiss();
         	}
-        	if(result){
-	        	Toast.makeText(context,firstName, Toast.LENGTH_LONG).show();
-	        	Toast.makeText(context,lastName, Toast.LENGTH_LONG).show();
-	        	Toast.makeText(context,email, Toast.LENGTH_LONG).show();
+        	if(result){	        
 	        	Intent i = new Intent(context,TimeManager.class);
-	        	startActivity(i);
+	        	startActivityForResult(i,1);
         	}
         	else
         		Toast.makeText(context,"Invalid login credentials!", Toast.LENGTH_LONG).show();
