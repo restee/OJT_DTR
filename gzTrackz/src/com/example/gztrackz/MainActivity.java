@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
         prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         firstName = prefs.getString(FNAME, null);
         if(firstName!=null){
-        	Intent i = new Intent(this,TimeManager.class);
+        	Intent i = new Intent(this,TabsManager.class);
         	startActivityForResult(i,1);
         }
         context = this;

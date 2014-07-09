@@ -24,16 +24,17 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int buttonstyle=0x7f020000;
-        public static final int gz=0x7f020001;
-        public static final int ic_lancher=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int powered=0x7f020004;
-        public static final int rectangle=0x7f020005;
-        public static final int roundbuttonstyle=0x7f020006;
+        public static final int add_user=0x7f020000;
+        public static final int buttonstyle=0x7f020001;
+        public static final int gz=0x7f020002;
+        public static final int ic_lancher=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int powered=0x7f020005;
+        public static final int rectangle=0x7f020006;
+        public static final int roundbuttonstyle=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f090012;
+        public static final int action_settings=0x7f090013;
         public static final int confirmpasswordEditText=0x7f090008;
         public static final int emailRegisterEditText=0x7f090006;
         public static final int firstnameEditText=0x7f09000d;
@@ -43,7 +44,8 @@ public final class R {
         public static final int lastnameEditText=0x7f09000f;
         public static final int lastnameTextView=0x7f09000e;
         public static final int logInButton=0x7f090005;
-        public static final int logout=0x7f090011;
+        public static final int logout=0x7f090012;
+        public static final int pager=0x7f090011;
         public static final int passwordEditText=0x7f090001;
         public static final int passwordRegisterEditText=0x7f090009;
         public static final int registerButton=0x7f090010;
@@ -56,7 +58,11 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_register=0x7f030001;
-        public static final int activity_time_manager=0x7f030002;
+        public static final int activity_tabs_manager=0x7f030002;
+        public static final int activity_time_manager=0x7f030003;
+        public static final int fragment_home=0x7f030004;
+        public static final int fragment_standups=0x7f030005;
+        public static final int fragment_timestamp=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -68,6 +74,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
         public static final int title_activity_register=0x7f050003;
+        public static final int title_activity_tabs_manager=0x7f050005;
         public static final int title_activity_time_manager=0x7f050004;
     }
     public static final class style {
