@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
         firstName = prefs.getString(FNAME, null);
         if(firstName!=null){
         	Intent i = new Intent(this,TabsManager.class);
+        	i.putExtra("email",prefs.getString(EMAIL,null));
         	startActivityForResult(i,1);
         }
         
@@ -57,9 +58,7 @@ public class MainActivity extends Activity {
         registerTxt = (TextView)findViewById(R.id.registerTextView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");
         registerTxt.setTypeface(tf);
-        
-        
-        
+                        
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
@@ -70,8 +69,7 @@ public class MainActivity extends Activity {
 			}
 		});
                 
-        registerTxt.setOnClickListener(new View.OnClickListener() {
-			
+        registerTxt.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
 				Intent i = new Intent(context,RegisterActivity.class);
@@ -109,10 +107,11 @@ public class MainActivity extends Activity {
     	ProgressDialog progressD;
     	String firstName,lastName;
     	
+    	
     	public Login(Context context,String email,String password){
     		this.context = context;
     		this.email = email;
-    		this.password = password;
+    		this.password = password;    		
     	}
     	@Override
         protected void onPreExecute() {
@@ -129,6 +128,7 @@ public class MainActivity extends Activity {
         	}
         	if(result){	        
 	        	Intent i = new Intent(context,TabsManager.class);
+	        	i.putExtra("email",prefs.getString(EMAIL,null));
 	        	startActivityForResult(i,1);
         	}
         	else
@@ -136,11 +136,9 @@ public class MainActivity extends Activity {
         }   
     	@Override
         protected Boolean doInBackground(String... params) {
-            boolean flag = true;
-            
+            boolean flag = true;            
             SharedPreferences.Editor editor = prefs.edit();
-            
-            
+                        
             try {
             	String urlTopTracks = "http://gz123.site90.net/login/?email=" + email + "&password=" + password;
 				HttpClient client = new DefaultHttpClient();
