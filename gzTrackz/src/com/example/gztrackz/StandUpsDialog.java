@@ -104,10 +104,9 @@ public class StandUpsDialog extends Activity {
 	        protected Boolean doInBackground(String... params) {
 	            boolean flag = true;            
 	            
-	                        
 	            try {
 	            	String urlTopTracks = "http://gz123.site90.net/standups/?email=" + email + "&standup_y=" + standup_y
-	            			+"&standup_todo=" + standup_todo + "&problem=" + problem;
+	            			+"&standup_todo=" + standup_todo + "&problem=" + problem + "&date=CURRENT_TIMESTAMP";
 					HttpClient client = new DefaultHttpClient();
 					ResponseHandler<String> handler = new BasicResponseHandler();
 					

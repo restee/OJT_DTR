@@ -102,7 +102,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	}
 
 	@Override
-	public void buttonClicked(View v,boolean timeIn) {
+	public void buttonClicked(boolean timeIn) {
 		Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();	
 		new TimeLog(context, email,timeIn).execute();
 		

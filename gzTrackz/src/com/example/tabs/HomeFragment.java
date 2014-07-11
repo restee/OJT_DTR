@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
 	private ImageView timeLogBTN;
 	public MyInterface homeInterface;
 	public interface MyInterface {
-	    public void buttonClicked(View v,boolean timeIn);
+	    public void buttonClicked(boolean timeIn);
 	}
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private SharedPreferences prefs ;
@@ -61,8 +61,9 @@ public class HomeFragment extends Fragment {
 		timeLogBTN.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				new AlreadyLoggedCheck(getActivity(),email).execute();				
-				homeInterface.buttonClicked(v,loggedIn);		
+				new AlreadyLoggedCheck(getActivity(),email).execute();	
+				Log.d("CHECK",Boolean.toString(loggedIn));
+						
 			}
 		});
 	    timeTxt.setTypeface(tf);
@@ -79,6 +80,7 @@ public class HomeFragment extends Fragment {
 	}
 	
 
+	
 	private class AlreadyLogged extends AsyncTask<String, Void,Boolean> {	        
 	    	String email,password;
 	    	Context context;
@@ -108,12 +110,13 @@ public class HomeFragment extends Fragment {
 	        	loggedIn = timeIn;
 	        	if(loggedIn){
 					//timeLogBTN.setText("Log Out!");	
-					timeLogBTN.setImageResource(R.drawable.activetimeout);
+					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
 				}
 				else{ 
 				//	timeLogBTN.setText("Log In!");
-					timeLogBTN.setImageResource(R.drawable.activetimein);
+					timeLogBTN.setImageResource(R.drawable.inactivetimein);
 				}
+	        	
 	        }
 	    	
 	    	@Override
@@ -147,6 +150,8 @@ public class HomeFragment extends Fragment {
 	            return flag;
 	        }	             
 	    }
+		
+	
 	
 	private class AlreadyLoggedCheck extends AsyncTask<String, Void,Boolean> {	        
     	String email,password;
@@ -177,13 +182,13 @@ public class HomeFragment extends Fragment {
         	loggedIn = timeIn;
         	if(!loggedIn){
 				//timeLogBTN.setText("Log Out!");	
-				timeLogBTN.setImageResource(R.drawable.activetimeout);
+				timeLogBTN.setImageResource(R.drawable.inactivetimeout);
 			}
 			else{ 
-			//	timeLogBTN.setText("Log In!");
-				timeLogBTN.setImageResource(R.drawable.activetimein);
+
+				timeLogBTN.setImageResource(R.drawable.inactivetimein);
 			}
-     
+        	homeInterface.buttonClicked(loggedIn);
         }
     	
     	@Override
