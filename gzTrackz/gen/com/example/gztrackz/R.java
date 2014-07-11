@@ -24,20 +24,24 @@ public final class R {
         public static int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static int add_user=0x7f020000;
-        public static int buttonstyle=0x7f020001;
-        public static int gz=0x7f020002;
-        public static int ic_lancher=0x7f020003;
-        public static int ic_launcher=0x7f020004;
-        public static int powered=0x7f020005;
-        public static int rectangle=0x7f020006;
-        public static int roundbuttonstyle=0x7f020007;
+        public static int activetimein=0x7f020000;
+        public static int add_user=0x7f020001;
+        public static int background=0x7f020002;
+        public static int buttonstyle=0x7f020003;
+        public static int gz=0x7f020004;
+        public static int ic_lancher=0x7f020005;
+        public static int ic_launcher=0x7f020006;
+        public static int inactivetimein=0x7f020007;
+        public static int powered=0x7f020008;
+        public static int rectangle=0x7f020009;
+        public static int roundbuttonstyle=0x7f02000a;
     }
     public static final class id {
         public static int TextView01=0x7f090011;
         public static int TextView03=0x7f090016;
-        public static int action_settings=0x7f090018;
+        public static int action_settings=0x7f09001a;
         public static int confirmpasswordEditText=0x7f090008;
+        public static int dateTxt=0x7f090019;
         public static int emailRegisterEditText=0x7f090006;
         public static int firstnameEditText=0x7f09000d;
         public static int firstnameTextView=0x7f09000c;
@@ -58,6 +62,7 @@ public final class R {
         public static int textView1=0x7f09000b;
         public static int textView2=0x7f090007;
         public static int textView3=0x7f09000a;
+        public static int timeTxt=0x7f090018;
         public static int usernameEditText=0x7f090002;
     }
     public static final class layout {
