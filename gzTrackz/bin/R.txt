@@ -11,8 +11,9 @@ int drawable rectangle 0x7f020006
 int drawable roundbuttonstyle 0x7f020007
 int id TextView01 0x7f090011
 int id TextView03 0x7f090016
-int id action_settings 0x7f090018
+int id action_settings 0x7f09001b
 int id confirmpasswordEditText 0x7f090008
+int id dateTxt 0x7f090019
 int id emailRegisterEditText 0x7f090006
 int id firstnameEditText 0x7f09000d
 int id firstnameTextView 0x7f09000c
@@ -33,6 +34,8 @@ int id standupsproblem 0x7f090015
 int id textView1 0x7f09000b
 int id textView2 0x7f090007
 int id textView3 0x7f09000a
+int id timeLogBTN 0x7f09001a
+int id timeTxt 0x7f090018
 int id usernameEditText 0x7f090002
 int layout activity_main 0x7f030000
 int layout activity_register 0x7f030001

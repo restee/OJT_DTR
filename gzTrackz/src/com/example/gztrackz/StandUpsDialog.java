@@ -18,4 +18,10 @@ public class StandUpsDialog extends Activity {
 		getMenuInflater().inflate(R.menu.stand_ups_dialog, menu);
 		return true;
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+	}
 }

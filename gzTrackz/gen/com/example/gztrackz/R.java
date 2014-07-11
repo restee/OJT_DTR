@@ -36,8 +36,9 @@ public final class R {
     public static final class id {
         public static int TextView01=0x7f090011;
         public static int TextView03=0x7f090016;
-        public static int action_settings=0x7f090018;
+        public static int action_settings=0x7f09001b;
         public static int confirmpasswordEditText=0x7f090008;
+        public static int dateTxt=0x7f090019;
         public static int emailRegisterEditText=0x7f090006;
         public static int firstnameEditText=0x7f09000d;
         public static int firstnameTextView=0x7f09000c;
@@ -58,6 +59,8 @@ public final class R {
         public static int textView1=0x7f09000b;
         public static int textView2=0x7f090007;
         public static int textView3=0x7f09000a;
+        public static int timeLogBTN=0x7f09001a;
+        public static int timeTxt=0x7f090018;
         public static int usernameEditText=0x7f090002;
     }
     public static final class layout {
