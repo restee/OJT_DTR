@@ -7,5 +7,6 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_time_manager">TimeManager</string>
     <string name="title_activity_tabs_manager">TabsManager</string>
+    <string name="title_activity_stand_ups_dialog">StandUpsDialog</string>
 
 </resources>
