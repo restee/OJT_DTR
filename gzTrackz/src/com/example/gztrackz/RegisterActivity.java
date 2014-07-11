@@ -39,11 +39,8 @@ public class RegisterActivity extends Activity {
 		lastNameTxt = (EditText) findViewById(R.id.lastnameEditText);
 		confirmPasswordTxt = (EditText) findViewById(R.id.confirmpasswordEditText);
 		registerBtn = (Button) findViewById(R.id.registerButton);
-		context = this;
-		
-		
-		
-		
+		context = this;		
+						
 		
 		registerBtn.setOnClickListener(new View.OnClickListener() {			
 			@Override
@@ -54,10 +51,15 @@ public class RegisterActivity extends Activity {
 				password = passwordTxt.getText().toString();
 				confirmPassword = confirmPasswordTxt.getText().toString();
 				
-				if(password.compareTo(confirmPassword)==0){
-					new Register(context,email,firstName,lastName,password,confirmPassword).execute();
-				}else{
-					Toast.makeText(context,"Passwords don't match!", Toast.LENGTH_LONG).show();					
+				if(email.length()>0&&firstName.length()>0&&lastName.length()>0&&password.length()>0&&confirmPassword.length()>0){					
+					if(password.compareTo(confirmPassword)==0){
+						new Register(context,email,firstName,lastName,password,confirmPassword).execute();
+					}else{
+						Toast.makeText(context,"Passwords don't match!", Toast.LENGTH_LONG).show();					
+					}
+				}
+				else{
+					Toast.makeText(context,"Please fill all fields!", Toast.LENGTH_LONG).show();					
 				}
 			}
 		});

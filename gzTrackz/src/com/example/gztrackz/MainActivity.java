@@ -44,8 +44,8 @@ public class MainActivity extends Activity {
         prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         firstName = prefs.getString(FNAME, null);
         if(firstName!=null){
-        	Intent i = new Intent(this,TabsManager.class);
-        	startActivityForResult(i,1);
+        	/*Intent i = new Intent(this,TabsManager.class);
+        	startActivityForResult(i,1);*/
         }
         
         context = this;
@@ -57,8 +57,7 @@ public class MainActivity extends Activity {
         registerTxt = (TextView)findViewById(R.id.registerTextView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");
         registerTxt.setTypeface(tf);
-        
-        
+                
         
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
