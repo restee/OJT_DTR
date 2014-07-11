@@ -105,10 +105,8 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	public void buttonClicked(View v,boolean timeIn) {
 		Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();	
 		new TimeLog(context, email,timeIn).execute();
-	}
-
-	
-	
+		
+	}		
 	
 	private class TimeLog extends AsyncTask<String, Void,Boolean> {	        
 	    	String email,password;
@@ -144,7 +142,11 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	        		progressD.dismiss();
 	        	}
 	        	if(result){	        
-	        		Toast.makeText(context,"Date: " + date + "\nTime: " + time, Toast.LENGTH_LONG).show();	 	        			        		
+	        		Toast.makeText(context,"Date: " + date + "\nTime: " + time, Toast.LENGTH_LONG).show();	 
+	        		if(!timeIn){
+	        			Intent i =new Intent(context,StandUpsDialog.class);
+	        			startActivityForResult(i,1);			        			
+	        		}
 	        	}
 	        	else
 	        		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        	
@@ -217,6 +219,6 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	        }	             
 	    }
 	
-
+	 
 	
 }

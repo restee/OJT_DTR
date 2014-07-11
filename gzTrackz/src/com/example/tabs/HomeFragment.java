@@ -40,11 +40,10 @@ public class HomeFragment extends Fragment {
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private SharedPreferences prefs ;
 	String email;
-	boolean loggedIn;
+	boolean loggedIn,checked=false;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
 		View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 		prefs = getActivity().getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 		TextView timeTxt = (TextView) rootView.findViewById(R.id.timeTxt);
@@ -54,7 +53,10 @@ public class HomeFragment extends Fragment {
 				
 		timeLogBTN = (ImageView) rootView.findViewById(R.id.timeLogBTN);
 		email = prefs.getString(EMAIL, null);
-		new AlreadyLogged(getActivity(),email).execute();
+		if(!checked){
+			new AlreadyLogged(getActivity(),email).execute();
+			checked=true;
+		}
 		
 		timeLogBTN.setOnClickListener(new View.OnClickListener() {		
 			@Override

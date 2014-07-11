@@ -107,10 +107,11 @@ public class MainActivity extends Activity {
     	ProgressDialog progressD;
     	String firstName,lastName;
     	
+    	
     	public Login(Context context,String email,String password){
     		this.context = context;
     		this.email = email;
-    		this.password = password;
+    		this.password = password;    		
     	}
     	@Override
         protected void onPreExecute() {
