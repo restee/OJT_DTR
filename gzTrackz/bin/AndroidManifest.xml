@@ -46,6 +46,7 @@
         <activity
             android:name="com.example.gztrackz.StandUpsDialog"
             android:label="@string/title_activity_stand_ups_dialog"
+            android:theme="@style/dialog"
             android:screenOrientation="portrait" >
         </activity>
     </application>

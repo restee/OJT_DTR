@@ -135,8 +135,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 	    		progressD.show();
 	    		Log.d("PreCheck",Boolean.toString(timeIn));
-	    		
-	    			    		
+	    			    			    
 	        }
 	    	
 	    	@Override
@@ -149,7 +148,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	        	}
 	        	else
 	        		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        	
-	    	
+	        	
 	    	}
 	    	
 	    	@Override

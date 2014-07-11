@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ import com.example.gztrackz.R;
 
 public class HomeFragment extends Fragment {
 
-	private Button timeLogBTN;
+	private ImageView timeLogBTN;
 	public MyInterface homeInterface;
 	public interface MyInterface {
 	    public void buttonClicked(View v,boolean timeIn);
@@ -51,7 +52,7 @@ public class HomeFragment extends Fragment {
 		Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "Walkway_Bold.ttf");
 		Typeface tf2 = Typeface.createFromAsset(getActivity().getAssets(), "CODE Bold.otf");
 				
-		timeLogBTN = (Button) rootView.findViewById(R.id.timeLogBTN);
+		timeLogBTN = (ImageView) rootView.findViewById(R.id.timeLogBTN);
 		email = prefs.getString(EMAIL, null);
 		new AlreadyLogged(getActivity(),email).execute();
 		
@@ -104,10 +105,13 @@ public class HomeFragment extends Fragment {
 	        	}	        		
 	        	loggedIn = timeIn;
 	        	if(loggedIn){
-					timeLogBTN.setText("Log Out!");					
+					//timeLogBTN.setText("Log Out!");	
+					timeLogBTN.setImageResource(R.drawable.activetimeout);
 				}
-				else 
-					timeLogBTN.setText("Log In!");
+				else{ 
+				//	timeLogBTN.setText("Log In!");
+					timeLogBTN.setImageResource(R.drawable.activetimein);
+				}
 	        }
 	    	
 	    	@Override
@@ -170,10 +174,14 @@ public class HomeFragment extends Fragment {
         	}	        		
         	loggedIn = timeIn;
         	if(!loggedIn){
-				timeLogBTN.setText("Log Out!");					
+				//timeLogBTN.setText("Log Out!");	
+				timeLogBTN.setImageResource(R.drawable.activetimeout);
 			}
-			else 
-				timeLogBTN.setText("Log In!");
+			else{ 
+			//	timeLogBTN.setText("Log In!");
+				timeLogBTN.setImageResource(R.drawable.activetimein);
+			}
+     
         }
     	
     	@Override
