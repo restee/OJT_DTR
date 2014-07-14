@@ -44,18 +44,21 @@ import android.widget.Toast;
 
 import com.example.gztrackz.R;
 import com.example.service.TimeService;
+import com.example.service.TimeService.TimeBinder;
 
 
 public class HomeFragment extends Fragment {
 
 	private ImageView timeLogBTN;
+	private TimeService timeService;
+	private boolean timeBound = false;
 	public MyInterface homeInterface;
 	public interface MyInterface {
 	    public void buttonClicked(boolean timeIn);
 	}
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private SharedPreferences prefs ;
-	String email;
+	String email,hourDisplay="--",minutesDisplay="--",dateDisplay="--------, ------ --",amPmDisplay="--";
 	boolean loggedIn,checked=false;
 	private TextView nameTXT,timeTXT,dateTXT,amPmTXT;
 	
@@ -67,10 +70,13 @@ public class HomeFragment extends Fragment {
 		public void onReceive(Context arg0, Intent arg1) {
 			int hours = Integer.parseInt(arg1.getStringExtra("hours"));
 			int minutes = Integer.parseInt(arg1.getStringExtra("minutes"));
-			String hourDisplay=null,minutesDisplay;
+			
 			if(hours>12){
 				hours-=12;				
+				amPmDisplay = "PM";
 				amPmTXT.setText("PM");
+			}else{
+				amPmDisplay = "AM";				
 			}
 			if(hours<10){
 				   hourDisplay ="0" + Integer.toString(hours);
@@ -88,22 +94,7 @@ public class HomeFragment extends Fragment {
 		}		
 	};
 	
-	private ServiceConnection timeConnection = new ServiceConnection(){
-
-		@Override
-		public void onServiceConnected(ComponentName className, IBinder service) {
-
-			
-		}
-
-		@Override
-		public void onServiceDisconnected(ComponentName arg0) {
-			// TODO Auto-generated method stub
-			
-		}
 		
-	};
-	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -128,8 +119,12 @@ public class HomeFragment extends Fragment {
 		amPmTXT = (TextView) rootView.findViewById(R.id.ampmTxt);
 		
 		getActivity().registerReceiver(timeReceiver,new IntentFilter("gztrackz.update.time"));
+		timeTXT.setText(hourDisplay + ":" + minutesDisplay);
+		amPmTXT.setText(amPmDisplay);
+		dateTXT.setText(dateDisplay);
 		
 		
+		//timeServiceIntent = new Intent(getActivity(),TimeService.class);
 		
 		timeThread = new Thread();
 		if(!checked){
@@ -151,6 +146,13 @@ public class HomeFragment extends Fragment {
 	}
 	
 	@Override
+	public void onStart() {	
+		super.onStart();
+		/*getActivity().startService(timeServiceIntent);
+		getActivity().bindService(timeServiceIntent,timeConnection,Context.BIND_ABOVE_CLIENT);
+		Toast.makeText(getActivity(), Boolean.toString(timeBound),Toast.LENGTH_SHORT).show();*/
+	}
+	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		try{
@@ -170,6 +172,7 @@ public class HomeFragment extends Fragment {
 	public void onDestroy() {
 		super.onDestroy();
 		getActivity().unregisterReceiver(timeReceiver);
+		timeThread = null;
 	}
 	
 	private class AlreadyLogged extends AsyncTask<String, Void,Boolean> {	        
@@ -208,21 +211,22 @@ public class HomeFragment extends Fragment {
 					timeLogBTN.setImageResource(R.drawable.inactivetimein);
 				}
 	        	if(date!=null&&time!=null){	        			        		 
-	        		String dateDisplay,dayOfTheWeek=null,stringMonth=null;
+	        		String dayOfTheWeek=null,stringMonth=null;
 	        		SimpleDateFormat  format = new SimpleDateFormat("yyyy-MM-dd");	        		
 	        		try {  
 	        		    Date dateOutput = format.parse(date);  
 	        		    dayOfTheWeek = (String) android.text.format.DateFormat.format("EEEE", dateOutput);
 	        		    stringMonth = (String) android.text.format.DateFormat.format("MMM", dateOutput);
-	        		    Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
+	        		    //Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
 	        		} catch (Exception e) {    
 	        		    e.printStackTrace();  
 	        		}
 	        		
 	        		dateDisplay = dayOfTheWeek + ", " + stringMonth+ " " + date.substring(8,date.length());
+	        		
 	        		dateTXT.setText(dateDisplay);
 
-	        		Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
+	        		//Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
 	        		timeThread = new Thread(){
 	        			 @Override
 	        			    public void run() {
@@ -242,14 +246,12 @@ public class HomeFragment extends Fragment {
 	        			                	minutes=0;
 	        			                }	        			                
 	        			            }
-	        			        } catch (InterruptedException e) {
-	        			            e.printStackTrace();
+	        			        } catch (Exception e) {
+	        			            this.interrupt();
 	        			        }
 	        			    }
 	        		};
-	        		timeThread.start();
-	        		/*dateTXT.setText(date);
-	        		timeTXT.setText(time);*/
+	        		timeThread.start();	        		
 	        	}else{
 	        		dateTXT.setText("--------, ----- -");
 	        		
@@ -352,7 +354,7 @@ public class HomeFragment extends Fragment {
         		    Date dateOutput = format.parse(date);  
         		    dayOfTheWeek = (String) android.text.format.DateFormat.format("EEEE", dateOutput);
         		    stringMonth = (String) android.text.format.DateFormat.format("MMM", dateOutput);
-        		    Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
+        		  //  Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
         		} catch (Exception e) {  
         		    // TODO Auto-generated catch block  
         		    e.printStackTrace();  
@@ -361,7 +363,7 @@ public class HomeFragment extends Fragment {
         		dateDisplay = dayOfTheWeek + ", " + stringMonth+ " " + date.substring(8,date.length());
         		dateTXT.setText(dateDisplay);
         		//timeThread.stop();
-        		Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
+        		//Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
         		timeThread = new Thread(){
         			 @Override
         			    public void run() {
