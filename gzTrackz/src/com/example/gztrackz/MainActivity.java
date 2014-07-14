@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 	private Button logInBTN;
 	private EditText emailTXT, passTXT;
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
-	private String firstName,lastName,email;
+	private String firstName,lastName,email,emailInput,passInput;
 	private Context context;
 	private SharedPreferences prefs ;
     @Override
@@ -62,18 +62,24 @@ public class MainActivity extends Activity {
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
-				if(isNetworkAvailable())
-					new Login(context,emailTXT.getText().toString(),passTXT.getText().toString()).execute();
-				else
-					Toast.makeText(context,"Please make sure internet connection exists!", Toast.LENGTH_LONG).show();
+				emailInput = emailTXT.getText().toString();
+				passInput = passTXT.getText().toString();
+				if(emailInput.length()>0&&passInput.length()>0){				
+					if(isNetworkAvailable())
+						new Login(context,emailInput,passInput).execute();
+					else
+						Toast.makeText(context,"Please make sure internet connection exists!", Toast.LENGTH_LONG).show();
+				}else{
+					Toast.makeText(context,"Please fill all fields!", Toast.LENGTH_LONG).show();
+				}
 			}
 		});
                 
         registerTxt.setOnClickListener(new View.OnClickListener() {			
 			@Override
-			public void onClick(View arg0) {
-				Intent i = new Intent(context,RegisterActivity.class);
-				startActivity(i);
+			public void onClick(View arg0) {				
+					Intent i = new Intent(context,RegisterActivity.class);
+					startActivity(i);				
 			}
 		});
     }
