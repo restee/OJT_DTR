@@ -105,8 +105,11 @@ public class StandUpsDialog extends Activity {
 	            boolean flag = true;            
 	            
 	            try {
+	            	standup_y = standup_y.replace(" ","%20");
+	            	standup_todo = standup_todo.replace(" ","%20");
+	            	problem = problem.replace(" ","%20");
 	            	String urlTopTracks = "http://gz123.site90.net/standups/?email=" + email + "&standup_y=" + standup_y
-	            			+"&standup_todo=" + standup_todo + "&problem=" + problem + "&date=CURRENT_TIMESTAMP";
+	            			+"&standup_todo=" + standup_todo + "&problem=" + problem;
 					HttpClient client = new DefaultHttpClient();
 					ResponseHandler<String> handler = new BasicResponseHandler();
 					
@@ -123,8 +126,7 @@ public class StandUpsDialog extends Activity {
 				}
 	            
 	            return flag;
-	        }
-
-	              
+	        }	             
 	    }
+	 
 }

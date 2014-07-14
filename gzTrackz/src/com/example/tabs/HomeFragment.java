@@ -14,6 +14,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -53,6 +55,8 @@ public class HomeFragment extends Fragment {
 				
 		timeLogBTN = (ImageView) rootView.findViewById(R.id.timeLogBTN);
 		email = prefs.getString(EMAIL, null);
+		
+		
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
 			checked=true;
@@ -68,6 +72,7 @@ public class HomeFragment extends Fragment {
 		});
 	    timeTxt.setTypeface(tf);
 	    dateTxt.setTypeface(tf2);
+	    
 		return rootView;
 	}
 	
@@ -78,8 +83,14 @@ public class HomeFragment extends Fragment {
 			homeInterface = (MyInterface) activity;
 		}catch(Exception e){}
 	}
-	
+		
+	 private boolean isNetworkAvailable() {
+	        ConnectivityManager connectivityManager 
+	              = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+	        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 
+	 }
 	
 	private class AlreadyLogged extends AsyncTask<String, Void,Boolean> {	        
 	    	String email,password;

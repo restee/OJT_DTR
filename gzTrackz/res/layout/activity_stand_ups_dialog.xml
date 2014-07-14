@@ -43,6 +43,8 @@
             android:layout_below="@+id/textView1"
             android:background="@drawable/rectangle"
             android:ems="10"
+            android:paddingBottom="60dp"
+            android:paddingLeft="10dp"
             android:textSize="12dp" />
 
     <Button
@@ -63,6 +65,8 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle"
         android:ems="10"
+        android:paddingBottom="60dp"
+            android:paddingLeft="10dp"
         android:textSize="12dp" />
 
     <EditText
@@ -73,6 +77,8 @@
         android:layout_centerVertical="true"
         android:background="@drawable/rectangle"
         android:ems="10"
+        android:paddingBottom="60dp"
+            android:paddingLeft="10dp"
         android:textSize="10dp" />
 
     <TextView
