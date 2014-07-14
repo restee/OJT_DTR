@@ -16,6 +16,7 @@ import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -38,10 +39,12 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	private ActionBar actionBar;
 	// Tab titles
 	private String[] tabs = { "Home", "History", "StandUps" };
-	
+	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private String email;
 	private DB_USER_TIME_LOG timeLogDB;
 	private Context context;
+	private SharedPreferences prefs ;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +52,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 		timeLogDB = new DB_USER_TIME_LOG(this);
 		timeLogDB.open();
 		// Initialization
+		 prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
@@ -230,6 +234,13 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	    switch (item.getItemId()) {
 	        case R.id.action_logout:
 	        	//add codes here
+	        	SharedPreferences.Editor editor = prefs.edit();
+	        	setResult(RESULT_OK);
+	        	editor.putString(LNAME,null);
+				editor.putString(FNAME, null);
+				editor.putString(EMAIL,null);
+	            editor.commit();
+	        	finish();
 	        	return true;
 	        default:
 	        	return super.onOptionsItemSelected(item);
