@@ -11,20 +11,19 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.app.ProgressDialog;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.tabs.HomeFragment.MyInterface;
@@ -218,6 +217,27 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	            return flag;
 	        }	             
 	    }
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.time_manager, menu);
+	    return true;
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.action_logout:
+	        	//add codes here
+	        	return true;
+	        default:
+	        	return super.onOptionsItemSelected(item);
+	    }
+		
+	}
+	
+	
 	
 	 
 	

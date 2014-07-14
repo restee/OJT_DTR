@@ -41,6 +41,7 @@ public final class R {
     public static final class id {
         public static final int TextView01=0x7f090011;
         public static final int TextView03=0x7f090016;
+        public static final int action_logout=0x7f09001c;
         public static final int action_settings=0x7f09001b;
         public static final int confirmpasswordEditText=0x7f090008;
         public static final int dateTxt=0x7f090019;
