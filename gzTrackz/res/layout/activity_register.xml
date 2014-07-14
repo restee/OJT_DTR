@@ -81,7 +81,7 @@
             android:layout_below="@+id/firstnameTextView"
             android:background="@drawable/rectangle"
             android:ems="10"
-            android:digits="qwertzuiopasdfghjklyxcvbnm,.,"
+            android:digits="qwertzuiopasdfghjklyxcvbnm,. QWERTYUIOPLKJHGFDSAZXCVBNM"
             android:paddingLeft="10dp"
             android:textSize="12dp" />
 
@@ -105,7 +105,7 @@
             android:background="@drawable/rectangle"
             android:ems="10"
             android:paddingLeft="10dp"
-            android:digits="qwertzuiopasdfghjklyxcvbnm,.,"
+            android:digits="qwertzuiopasdfghjklyxcvbnm,. QWERTYUIOPLKJHGFDSAZXCVBNM"
             android:textSize="12dp" />
 
         <TextView

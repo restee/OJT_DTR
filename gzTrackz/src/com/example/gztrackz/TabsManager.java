@@ -146,8 +146,13 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	        	if(progressD.isShowing()){
 	        		progressD.dismiss();
 	        	}
-	        	if(result){	        
-	        		Toast.makeText(context,"Date: " + date + "\nTime: " + time, Toast.LENGTH_LONG).show();	 	
+	        	if(result){	    
+	        		if(!timeIn){
+	        			Toast.makeText(context,"Successfulled timed in at "+ time + ".", Toast.LENGTH_LONG).show();
+	        		}else{
+	        			Toast.makeText(context,"Successfulled timed out at "+ time + ".", Toast.LENGTH_LONG).show();
+	        		}
+	        			 	
 	        		if(!timeIn)
 	        			new StandupCheck(context,email).execute();
 	        	}
