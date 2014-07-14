@@ -73,8 +73,8 @@ public class HomeFragment extends Fragment {
 		
 		timeLogBTN.setOnClickListener(new View.OnClickListener() {		
 			@Override
-			public void onClick(View v) {			
-					new AlreadyLoggedCheck(getActivity(),email).execute();
+			public void onClick(View v) {								
+				new AlreadyLoggedCheck(getActivity(),email).execute();
 				Log.d("CHECK",Boolean.toString(loggedIn));
 						
 			}

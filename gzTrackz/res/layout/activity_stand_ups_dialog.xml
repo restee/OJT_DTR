@@ -79,7 +79,7 @@
         android:ems="10"
         android:paddingBottom="60dp"
             android:paddingLeft="10dp"
-        android:textSize="10dp" />
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/TextView03"

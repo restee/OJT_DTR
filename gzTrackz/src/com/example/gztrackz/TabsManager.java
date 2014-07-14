@@ -60,7 +60,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setTitle("MOTHERFUCKER!");
+		actionBar.setTitle(prefs.getString(FNAME, null) + " " + prefs.getString(LNAME,null));
 		//actionBar.setDisplayShowTitleEnabled(false);	
 		email = getIntent().getStringExtra("email");
 		
