@@ -107,7 +107,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 
 	@Override
 	public void buttonClicked(boolean timeIn) {
-		Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();	
+	//	Toast.makeText(getApplicationContext(), email, Toast.LENGTH_LONG).show();	
 		new TimeLog(context, email,timeIn).execute();
 		
 	}		
@@ -299,7 +299,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
-	        case R.id.action_logout:
+	        case R.id.action_logout:	        	
 	        	SharedPreferences.Editor editor = prefs.edit();
 	        	setResult(RESULT_OK);
 	        	editor.putString(LNAME,null);

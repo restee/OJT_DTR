@@ -45,6 +45,7 @@ public class HomeFragment extends Fragment {
 	private SharedPreferences prefs ;
 	String email;
 	boolean loggedIn,checked=false;
+	private TextView nameTXT;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -52,12 +53,18 @@ public class HomeFragment extends Fragment {
 		prefs = getActivity().getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 		TextView timeTxt = (TextView) rootView.findViewById(R.id.timeTxt);
 		TextView dateTxt = (TextView) rootView.findViewById(R.id.dateTxt);
+		TextView nameTxt = (TextView) rootView.findViewById(R.id.name);
 		Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "Walkway_Bold.ttf");
 		Typeface tf2 = Typeface.createFromAsset(getActivity().getAssets(), "CODE Bold.otf");
-				
+		Typeface tf3 = Typeface.createFromAsset(getActivity().getAssets(), "Nexa Light.otf");
+		timeTxt.setTypeface(tf);
+		dateTxt.setTypeface(tf2);
+		nameTxt.setTypeface(tf3);
 		timeLogBTN = (ImageView) rootView.findViewById(R.id.timeLogBTN);
 		email = prefs.getString(EMAIL, null);
-		
+		nameTXT = (TextView) rootView.findViewById(R.id.name);
+		nameTXT.setText("Hello, " + prefs.getString(FNAME,null) + "!");
+			
 		
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
@@ -72,8 +79,7 @@ public class HomeFragment extends Fragment {
 						
 			}
 		});
-	    timeTxt.setTypeface(tf);
-	    dateTxt.setTypeface(tf2);
+	   
 	    
 		return rootView;
 	}
