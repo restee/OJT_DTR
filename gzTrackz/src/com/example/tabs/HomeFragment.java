@@ -10,8 +10,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
@@ -64,8 +66,8 @@ public class HomeFragment extends Fragment {
 		
 		timeLogBTN.setOnClickListener(new View.OnClickListener() {		
 			@Override
-			public void onClick(View v) {
-				new AlreadyLoggedCheck(getActivity(),email).execute();	
+			public void onClick(View v) {			
+					new AlreadyLoggedCheck(getActivity(),email).execute();
 				Log.d("CHECK",Boolean.toString(loggedIn));
 						
 			}
@@ -192,14 +194,31 @@ public class HomeFragment extends Fragment {
         	}	        		
         	loggedIn = timeIn;
         	if(!loggedIn){
-				//timeLogBTN.setText("Log Out!");	
 				timeLogBTN.setImageResource(R.drawable.inactivetimeout);
+				homeInterface.buttonClicked(loggedIn);
 			}
 			else{ 
-
-				timeLogBTN.setImageResource(R.drawable.inactivetimein);
+								
+				DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+				    @Override
+				    public void onClick(DialogInterface dialog, int which) {
+				        switch (which){
+				        case DialogInterface.BUTTON_POSITIVE:
+				        	homeInterface.buttonClicked(loggedIn);
+				        	timeLogBTN.setImageResource(R.drawable.inactivetimein);
+				            break;
+				        case DialogInterface.BUTTON_NEGATIVE:
+				            break;
+				        }
+				    }
+				};
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+				builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+				    .setNegativeButton("No", dialogClickListener).show();
+				
 			}
-        	homeInterface.buttonClicked(loggedIn);
+        	
+        	
         }
     	
     	@Override
@@ -233,5 +252,10 @@ public class HomeFragment extends Fragment {
             return flag;
         }	             
     }
+	
+
+	
+	
+				
 	
 }

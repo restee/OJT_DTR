@@ -59,8 +59,9 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 		context  = this;
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);		
-		actionBar.setDisplayShowTitleEnabled(false);	
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		actionBar.setTitle("MOTHERFUCKER!");
+		//actionBar.setDisplayShowTitleEnabled(false);	
 		email = getIntent().getStringExtra("email");
 		
 		
@@ -145,11 +146,9 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	        		progressD.dismiss();
 	        	}
 	        	if(result){	        
-	        		Toast.makeText(context,"Date: " + date + "\nTime: " + time, Toast.LENGTH_LONG).show();	 
-	        		if(!timeIn){
-	        			Intent i =new Intent(context,StandUpsDialog.class);
-	        			startActivityForResult(i,1);			        			
-	        		}
+	        		Toast.makeText(context,"Date: " + date + "\nTime: " + time, Toast.LENGTH_LONG).show();	 	
+	        		if(!timeIn)
+	        			new StandupCheck(context,email).execute();
 	        	}
 	        	else
 	        		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        	
@@ -222,6 +221,74 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	        }	             
 	    }
 	
+
+	private class StandupCheck extends AsyncTask<String, Void,Boolean> {	        
+    	String email,password;
+    	Context context;
+    	ProgressDialog progressD;
+    	String date, time;
+    	boolean standupAvailable;
+    	
+    	public StandupCheck(Context context,String email){
+    		this.context = context;
+    		this.email = email;
+    		this.password = password;
+    	}
+    	
+    	@Override
+        protected void onPreExecute() {
+    		progressD = new ProgressDialog(context);
+    		progressD.setMessage("Checking standup status...");
+    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+    		progressD.show();
+        }
+    	
+    	@Override
+        protected void onPostExecute(Boolean result) {        	
+        	if(progressD.isShowing()){
+        		progressD.dismiss();
+        	}	        		
+        	
+        	if(standupAvailable){
+        		Intent i =new Intent(context,StandUpsDialog.class);
+        		startActivityForResult(i,1);			        			
+        	}
+        }
+    	
+    	@Override
+        protected Boolean doInBackground(String... params) {
+            boolean flag = true;	            
+            try {
+            	String urlTopTracks = "http://gz123.site90.net/standups_status/?email=" + email ;
+				HttpClient client = new DefaultHttpClient();
+				ResponseHandler<String> handler = new BasicResponseHandler();
+				
+				HttpPost request = new HttpPost(urlTopTracks);
+				
+				String httpResponseTopTracks = client.execute(request, handler);				
+				
+				StringTokenizer token = new StringTokenizer(httpResponseTopTracks,"<");
+				String retrieveResult = token.nextToken();
+				
+				
+				if(retrieveResult.contains("empty")){
+					standupAvailable= true;
+				}else{
+					standupAvailable = false;
+				}
+				Log.d("Standup Status",retrieveResult);
+				
+			} catch (Exception e) {			
+				flag = false;
+				e.printStackTrace();
+			}
+            
+            return flag;
+        }	             
+    }
+	
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
@@ -233,7 +300,6 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.action_logout:
-	        	//add codes here
 	        	SharedPreferences.Editor editor = prefs.edit();
 	        	setResult(RESULT_OK);
 	        	editor.putString(LNAME,null);

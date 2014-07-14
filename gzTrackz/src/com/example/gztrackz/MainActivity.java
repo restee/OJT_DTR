@@ -105,6 +105,10 @@ public class MainActivity extends Activity {
     	super.onActivityResult(requestCode, resultCode, data);    	
     	if(resultCode == RESULT_CANCELED)
     		finish();
+    	else{
+    		emailTXT.setText(null);
+    		passTXT.setText(null);
+    	}
     }
     
     private class Login extends AsyncTask<String, Void,Boolean> {
