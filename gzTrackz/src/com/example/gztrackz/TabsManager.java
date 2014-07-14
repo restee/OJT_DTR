@@ -12,9 +12,11 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -122,8 +124,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	    	public TimeLog(Context context,String email,boolean timeIn){
 	    		this.context = context;
 	    		this.email = email;
-	    		this.password = password;
-	    		Log.d("Constructor TimeIn", Boolean.toString(timeIn));
+	    		this.password = password;	    		
 	    		this.timeIn = timeIn;
 	    	}
 	    	
@@ -151,8 +152,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	        			new StandupCheck(context,email).execute();
 	        	}
 	        	else
-	        		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        	
-	        	
+	        		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        		        	
 	    	}
 	    	
 	    	@Override
@@ -295,18 +295,33 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	    inflater.inflate(R.menu.time_manager, menu);
 	    return true;
 	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
-	        case R.id.action_logout:	        	
-	        	SharedPreferences.Editor editor = prefs.edit();
-	        	setResult(RESULT_OK);
-	        	editor.putString(LNAME,null);
-				editor.putString(FNAME, null);
-				editor.putString(EMAIL,null);
-	            editor.commit();
-	        	finish();
+	        case R.id.action_logout:					
+				DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+				    @Override
+				    public void onClick(DialogInterface dialog, int which) {
+				        switch (which){
+				        case DialogInterface.BUTTON_POSITIVE:
+				        	SharedPreferences.Editor editor = prefs.edit();
+				        	setResult(RESULT_OK);
+				        	editor.putString(LNAME,null);
+							editor.putString(FNAME, null);
+							editor.putString(EMAIL,null);
+				            editor.commit();
+				        	finish();
+				            break;
+				        case DialogInterface.BUTTON_NEGATIVE:
+				            break;
+				        }
+				    }
+				};
+				AlertDialog.Builder builder = new AlertDialog.Builder(context);
+				builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+				    .setNegativeButton("No", dialogClickListener).show();					        	
 	        	return true;
 	        default:
 	        	return super.onOptionsItemSelected(item);

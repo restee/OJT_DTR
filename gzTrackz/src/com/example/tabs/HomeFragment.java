@@ -1,5 +1,9 @@
 package com.example.tabs;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
 import org.apache.http.client.HttpClient;
@@ -12,14 +16,21 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.ParseException;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +43,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gztrackz.R;
+import com.example.service.TimeService;
 
 
 public class HomeFragment extends Fragment {
@@ -45,7 +57,54 @@ public class HomeFragment extends Fragment {
 	private SharedPreferences prefs ;
 	String email;
 	boolean loggedIn,checked=false;
-	private TextView nameTXT;
+	private TextView nameTXT,timeTXT,dateTXT,amPmTXT;
+	
+	private Intent timeServiceIntent;
+	private Thread timeThread;
+	
+	BroadcastReceiver timeReceiver = new BroadcastReceiver(){
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {
+			int hours = Integer.parseInt(arg1.getStringExtra("hours"));
+			int minutes = Integer.parseInt(arg1.getStringExtra("minutes"));
+			String hourDisplay=null,minutesDisplay;
+			if(hours>12){
+				hours-=12;				
+				amPmTXT.setText("PM");
+			}
+			if(hours<10){
+				   hourDisplay ="0" + Integer.toString(hours);
+			}
+			else{
+				hourDisplay = Integer.toString(hours);
+			}
+			if(minutes<10){
+				minutesDisplay = "0" + Integer.toString(minutes);
+			}
+			else{
+				minutesDisplay = Integer.toString(minutes);
+			}
+			timeTXT.setText(hourDisplay + ":" + minutesDisplay);
+		}		
+	};
+	
+	private ServiceConnection timeConnection = new ServiceConnection(){
+
+		@Override
+		public void onServiceConnected(ComponentName className, IBinder service) {
+
+			
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	};
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -64,8 +123,15 @@ public class HomeFragment extends Fragment {
 		email = prefs.getString(EMAIL, null);
 		nameTXT = (TextView) rootView.findViewById(R.id.name);
 		nameTXT.setText("Hello, " + prefs.getString(FNAME,null) + "!");
-			
+		timeTXT = (TextView) rootView.findViewById(R.id.timeTxt);
+		dateTXT = (TextView) rootView.findViewById(R.id.dateTxt);
+		amPmTXT = (TextView) rootView.findViewById(R.id.ampmTxt);
 		
+		getActivity().registerReceiver(timeReceiver,new IntentFilter("gztrackz.update.time"));
+		
+		
+		
+		timeThread = new Thread();
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
 			checked=true;
@@ -89,6 +155,7 @@ public class HomeFragment extends Fragment {
 		super.onAttach(activity);
 		try{
 			homeInterface = (MyInterface) activity;
+			
 		}catch(Exception e){}
 	}
 		
@@ -99,12 +166,17 @@ public class HomeFragment extends Fragment {
 	        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 
 	 }
+	 @Override
+	public void onDestroy() {
+		super.onDestroy();
+		getActivity().unregisterReceiver(timeReceiver);
+	}
 	
 	private class AlreadyLogged extends AsyncTask<String, Void,Boolean> {	        
 	    	String email,password;
 	    	Context context;
 	    	ProgressDialog progressD;
-	    	String date, time;
+	    	String date=null, time=null;
 	    	boolean timeIn;
 	    	
 	    	public AlreadyLogged(Context context,String email){
@@ -135,7 +207,53 @@ public class HomeFragment extends Fragment {
 				//	timeLogBTN.setText("Log In!");
 					timeLogBTN.setImageResource(R.drawable.inactivetimein);
 				}
-	        	
+	        	if(date!=null&&time!=null){	        			        		 
+	        		String dateDisplay,dayOfTheWeek=null,stringMonth=null;
+	        		SimpleDateFormat  format = new SimpleDateFormat("yyyy-MM-dd");	        		
+	        		try {  
+	        		    Date dateOutput = format.parse(date);  
+	        		    dayOfTheWeek = (String) android.text.format.DateFormat.format("EEEE", dateOutput);
+	        		    stringMonth = (String) android.text.format.DateFormat.format("MMM", dateOutput);
+	        		    Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
+	        		} catch (Exception e) {    
+	        		    e.printStackTrace();  
+	        		}
+	        		
+	        		dateDisplay = dayOfTheWeek + ", " + stringMonth+ " " + date.substring(8,date.length());
+	        		dateTXT.setText(dateDisplay);
+
+	        		Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
+	        		timeThread = new Thread(){
+	        			 @Override
+	        			    public void run() {
+	        			        try {	        			        	
+	        			        	int minutes = Integer.parseInt(time.substring(3,5));
+	        			        	int hours = Integer.parseInt(time.substring(0,2));
+	        			            while(true) {
+	        			            	Intent sendTimeBroadcast = new Intent();
+	        			            	sendTimeBroadcast.setAction("gztrackz.update.time");
+	        			            	sendTimeBroadcast.putExtra("minutes",Integer.toString(minutes));
+	        			            	sendTimeBroadcast.putExtra("hours",Integer.toString(hours));
+	        			            	getActivity().sendBroadcast(sendTimeBroadcast);
+	        			                sleep(60000);
+	        			                minutes++;
+	        			                if(minutes==60){
+	        			                	hours++;
+	        			                	minutes=0;
+	        			                }	        			                
+	        			            }
+	        			        } catch (InterruptedException e) {
+	        			            e.printStackTrace();
+	        			        }
+	        			    }
+	        		};
+	        		timeThread.start();
+	        		/*dateTXT.setText(date);
+	        		timeTXT.setText(time);*/
+	        	}else{
+	        		dateTXT.setText("--------, ----- -");
+	        		
+	        	}
 	        }
 	    	
 	    	@Override
@@ -156,11 +274,14 @@ public class HomeFragment extends Fragment {
 					JSONObject result = new JSONObject(retrieveResult);
 					String emailResult = result.getString("active");
 					if(emailResult.compareToIgnoreCase("true")==0){
-						timeIn = true;
+						timeIn = true;						
 					}else{
 						timeIn = false;
 					}
-					Log.d("RESULT",emailResult);
+					date = result.getString("date");
+					time = result.getString("time");
+					Log.d("RESULT",retrieveResult);
+					
 				} catch (Exception e) {			
 					flag = false;
 					e.printStackTrace();
@@ -176,7 +297,7 @@ public class HomeFragment extends Fragment {
     	String email,password;
     	Context context;
     	ProgressDialog progressD;
-    	String date, time;
+    	String date=null, time=null;
     	boolean timeIn;
     	
     	public AlreadyLoggedCheck(Context context,String email){
@@ -224,7 +345,53 @@ public class HomeFragment extends Fragment {
 				
 			}
         	
-        	
+        	if(date!=null&&time!=null){	        			        		 
+        		String dateDisplay,dayOfTheWeek=null,stringMonth=null;
+        		SimpleDateFormat  format = new SimpleDateFormat("yyyy-MM-dd");	        		
+        		try {  
+        		    Date dateOutput = format.parse(date);  
+        		    dayOfTheWeek = (String) android.text.format.DateFormat.format("EEEE", dateOutput);
+        		    stringMonth = (String) android.text.format.DateFormat.format("MMM", dateOutput);
+        		    Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
+        		} catch (Exception e) {  
+        		    // TODO Auto-generated catch block  
+        		    e.printStackTrace();  
+        		}
+        		
+        		dateDisplay = dayOfTheWeek + ", " + stringMonth+ " " + date.substring(8,date.length());
+        		dateTXT.setText(dateDisplay);
+        		//timeThread.stop();
+        		Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
+        		timeThread = new Thread(){
+        			 @Override
+        			    public void run() {
+        			        try {	        			        	
+        			        	int minutes = Integer.parseInt(time.substring(3,5));
+        			        	int hours = Integer.parseInt(time.substring(0,2));
+        			            while(true) {
+        			            	Intent sendTimeBroadcast = new Intent();
+        			            	sendTimeBroadcast.setAction("gztrackz.update.time");
+        			            	sendTimeBroadcast.putExtra("minutes",Integer.toString(minutes));
+        			            	sendTimeBroadcast.putExtra("hours",Integer.toString(hours));
+        			            	getActivity().sendBroadcast(sendTimeBroadcast);
+        			                sleep(60000);
+        			                minutes++;
+        			                if(minutes==60){
+        			                	hours++;
+        			                	minutes=0;
+        			                }	        			                
+        			            }
+        			        } catch (InterruptedException e) {
+        			            e.printStackTrace();
+        			        }
+        			    }
+        		};
+        		timeThread.start();
+        		/*dateTXT.setText(date);
+        		timeTXT.setText(time);*/
+        	}else{
+        		dateTXT.setText("--------, ----- -");        		
+        	}
         }
     	
     	@Override
@@ -246,9 +413,12 @@ public class HomeFragment extends Fragment {
 				String emailResult = result.getString("active");
 				if(emailResult.compareToIgnoreCase("true")==0){
 					timeIn = true;
+					
 				}else{
 					timeIn = false;
 				}
+				date = result.getString("date");
+				time = result.getString("time");
 				Log.d("RESULT",emailResult);
 			} catch (Exception e) {			
 				flag = false;
@@ -260,7 +430,6 @@ public class HomeFragment extends Fragment {
     }
 	
 
-	
 	
 				
 	

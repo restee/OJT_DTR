@@ -49,6 +49,9 @@
             android:theme="@style/dialog"
             android:screenOrientation="portrait" >
         </activity>
+        <service
+            android:name="com.example.netprom.LocalService"
+            android:enabled="true"></service>
     </application>
 
 </manifest>

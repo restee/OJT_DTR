@@ -59,14 +59,14 @@ public class MainActivity extends Activity {
         registerTxt = (TextView)findViewById(R.id.registerTextView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");
         registerTxt.setTypeface(tf);
-                        
+                       
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
 				emailInput = emailTXT.getText().toString();
 				passInput = passTXT.getText().toString();
 				if(emailInput.length()>0&&passInput.length()>0){				
-					if(isNetworkAvailable())
+					if(isConnectingToInternet())
 						new Login(context,emailInput,passInput).execute();
 					else
 						Toast.makeText(context,"Please make sure internet connection exists!", Toast.LENGTH_LONG).show();
@@ -100,6 +100,22 @@ public class MainActivity extends Activity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
     
+    public boolean isConnectingToInternet(){
+        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+          if (connectivity != null)
+          {
+              NetworkInfo[] info = connectivity.getAllNetworkInfo();
+              if (info != null)
+                  for (int i = 0; i < info.length; i++)
+                      if (info[i].getState() == NetworkInfo.State.CONNECTED)
+                      {
+                          return true;
+                      }
+ 
+          }
+          return false;
+    }
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {    
     	super.onActivityResult(requestCode, resultCode, data);    	
@@ -108,6 +124,7 @@ public class MainActivity extends Activity {
     	else{
     		emailTXT.setText(null);
     		passTXT.setText(null);
+    		emailTXT.requestFocus();
     	}
     }
     
