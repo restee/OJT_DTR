@@ -146,6 +146,8 @@ public class MainActivity extends Activity {
     		progressD = new ProgressDialog(context);
     		progressD.setMessage("Logging in...");
     		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+    		progressD.setCancelable(false);
+    		progressD.setCanceledOnTouchOutside(false);
     		progressD.show();
         }
     	

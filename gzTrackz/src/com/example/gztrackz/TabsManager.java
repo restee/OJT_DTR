@@ -245,6 +245,8 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
     		progressD = new ProgressDialog(context);
     		progressD.setMessage("Checking standup status...");
     		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+    		progressD.setCancelable(false);
+    		progressD.setCanceledOnTouchOutside(false);
     		progressD.show();
         }
     	
@@ -291,8 +293,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
             return flag;
         }	             
     }
-	
-	
+		
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

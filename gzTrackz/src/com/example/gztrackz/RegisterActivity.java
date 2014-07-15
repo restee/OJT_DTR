@@ -92,6 +92,8 @@ public class RegisterActivity extends Activity {
 	    		progressD = new ProgressDialog(context);
 	    		progressD.setMessage("Registering...");
 	    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+	    		progressD.setCancelable(false);
+	    		progressD.setCanceledOnTouchOutside(false);
 	    		progressD.show();
 	        }
 	    	  @Override

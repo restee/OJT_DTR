@@ -43,15 +43,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gztrackz.R;
-import com.example.service.TimeService;
-import com.example.service.TimeService.TimeBinder;
+
 
 
 public class HomeFragment extends Fragment {
 
 	private ImageView timeLogBTN;
-	private TimeService timeService;
-	private boolean timeBound = false;
+	
+	
 	public MyInterface homeInterface;
 	public interface MyInterface {
 	    public void buttonClicked(boolean timeIn);
@@ -59,7 +58,7 @@ public class HomeFragment extends Fragment {
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private SharedPreferences prefs ;
 	String email,hourDisplay="--",minutesDisplay="--",dateDisplay="--------, ------ --",amPmDisplay="--";
-	boolean loggedIn,checked=false;
+	boolean loggedIn,checked=false,buttonPressed=false;
 	private TextView nameTXT,timeTXT,dateTXT,amPmTXT;
 	
 	private Intent timeServiceIntent;
@@ -124,24 +123,42 @@ public class HomeFragment extends Fragment {
 		dateTXT.setText(dateDisplay);
 		
 		
+		
 		//timeServiceIntent = new Intent(getActivity(),TimeService.class);
 		
 		timeThread = new Thread();
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
 			checked=true;
+		}else{
+			if(!buttonPressed){
+				if(loggedIn){
+				//	Toast.makeText(getActivity(),"TIMEOUT",Toast.LENGTH_SHORT).show();
+					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
+				}
+				else{ 
+				//	Toast.makeText(getActivity(),"TIMEIN",Toast.LENGTH_SHORT).show();
+					timeLogBTN.setImageResource(R.drawable.inactivetimein);
+				}
+			}else{
+				if(loggedIn){
+				//	Toast.makeText(getActivity(),"TIMEIN",Toast.LENGTH_SHORT).show();
+					timeLogBTN.setImageResource(R.drawable.inactivetimein);
+				}
+				else{ 					
+				//	Toast.makeText(getActivity(),"TIMEOUT",Toast.LENGTH_SHORT).show();
+					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
+				}				
+			}
 		}
 		
 		timeLogBTN.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {								
 				new AlreadyLoggedCheck(getActivity(),email).execute();
-				Log.d("CHECK",Boolean.toString(loggedIn));
-						
+				Log.d("CHECK",Boolean.toString(loggedIn));						
 			}
-		});
-	   
-	    
+		});	   	    
 		return rootView;
 	}
 	
@@ -152,6 +169,8 @@ public class HomeFragment extends Fragment {
 		getActivity().bindService(timeServiceIntent,timeConnection,Context.BIND_ABOVE_CLIENT);
 		Toast.makeText(getActivity(), Boolean.toString(timeBound),Toast.LENGTH_SHORT).show();*/
 	}
+	
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -161,6 +180,12 @@ public class HomeFragment extends Fragment {
 		}catch(Exception e){}
 	}
 		
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		outState.putBoolean("loggedIn", loggedIn);
+		super.onSaveInstanceState(outState);
+	}
 	 private boolean isNetworkAvailable() {
 	        ConnectivityManager connectivityManager 
 	              = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -193,6 +218,8 @@ public class HomeFragment extends Fragment {
 	    		progressD = new ProgressDialog(context);
 	    		progressD.setMessage("Checking User Timelog Status!");
 	    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+	    		progressD.setCancelable(false);
+	    		progressD.setCanceledOnTouchOutside(false);
 	    		progressD.show();
 	        }
 	    	
@@ -313,6 +340,8 @@ public class HomeFragment extends Fragment {
     		progressD = new ProgressDialog(context);
     		progressD.setMessage("Checking User Timelog Status!");
     		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+    		progressD.setCancelable(false);
+    		progressD.setCanceledOnTouchOutside(false);
     		progressD.show();
         }
     	
@@ -325,6 +354,7 @@ public class HomeFragment extends Fragment {
         	if(!loggedIn){
 				timeLogBTN.setImageResource(R.drawable.inactivetimeout);
 				homeInterface.buttonClicked(loggedIn);
+				buttonPressed = true;
 			}
 			else{ 
 								
@@ -335,6 +365,7 @@ public class HomeFragment extends Fragment {
 				        case DialogInterface.BUTTON_POSITIVE:
 				        	homeInterface.buttonClicked(loggedIn);
 				        	timeLogBTN.setImageResource(R.drawable.inactivetimein);
+				        	buttonPressed = true;
 				            break;
 				        case DialogInterface.BUTTON_NEGATIVE:
 				            break;
@@ -383,7 +414,7 @@ public class HomeFragment extends Fragment {
         			                	minutes=0;
         			                }	        			                
         			            }
-        			        } catch (InterruptedException e) {
+        			        } catch (Exception e) {
         			            e.printStackTrace();
         			        }
         			    }
