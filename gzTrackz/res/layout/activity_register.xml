@@ -23,6 +23,7 @@
             android:background="@drawable/rectangle"
             android:ems="10"
             android:paddingLeft="10dp"
+            android:inputType="textEmailAddress"
             android:textSize="12dp" >
 
 

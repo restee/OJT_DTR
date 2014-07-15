@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="transparent">#00000000</color>
+    
+    <color  name="normallogin">#376EA3</color>
+    <color  name="presslogin">#598FC5</color>
 </resources>

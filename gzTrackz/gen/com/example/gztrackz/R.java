@@ -11,7 +11,9 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int text_color_pressed=0x7f040001;
+        public static final int normallogin=0x7f040001;
+        public static final int presslogin=0x7f040002;
+        public static final int text_color_pressed=0x7f040003;
         public static final int transparent=0x7f040000;
     }
     public static final class dimen {
@@ -37,10 +39,12 @@ public final class R {
         public static final int ic_launcher=0x7f020009;
         public static final int inactivetimein=0x7f02000a;
         public static final int inactivetimeout=0x7f02000b;
-        public static final int logoedit3=0x7f02000c;
-        public static final int powered=0x7f02000d;
-        public static final int rectangle=0x7f02000e;
-        public static final int roundbuttonstyle=0x7f02000f;
+        public static final int loginbuttonstyle=0x7f02000c;
+        public static final int logoedit3=0x7f02000d;
+        public static final int logout=0x7f02000e;
+        public static final int powered=0x7f02000f;
+        public static final int rectangle=0x7f020010;
+        public static final int roundbuttonstyle=0x7f020011;
     }
     public static final class id {
         public static final int TextView01=0x7f090011;
@@ -54,10 +58,10 @@ public final class R {
         public static final int firstnameEditText=0x7f09000d;
         public static final int firstnameTextView=0x7f09000c;
         public static final int imageView1=0x7f090003;
-        public static final int imageView2=0x7f090004;
+        public static final int imageView2=0x7f090005;
         public static final int lastnameEditText=0x7f09000f;
         public static final int lastnameTextView=0x7f09000e;
-        public static final int logInButton=0x7f090005;
+        public static final int logInButton=0x7f090004;
         public static final int name=0x7f090018;
         public static final int pager=0x7f090017;
         public static final int passwordEditText=0x7f090001;

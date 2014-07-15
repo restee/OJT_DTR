@@ -10,18 +10,17 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +58,8 @@ public class MainActivity extends Activity {
         registerTxt = (TextView)findViewById(R.id.registerTextView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");
         registerTxt.setTypeface(tf);
+        
+        
                        
         logInBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
