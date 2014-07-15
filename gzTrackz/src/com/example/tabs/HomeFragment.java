@@ -374,7 +374,7 @@ public class HomeFragment extends Fragment {
 				};
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
-				    .setNegativeButton("No", dialogClickListener).show();
+				    .setNegativeButton("No", dialogClickListener).setCancelable(false).show();
 				
 			}
         	

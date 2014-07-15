@@ -327,7 +327,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 				};
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
 				builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
-				    .setNegativeButton("No", dialogClickListener).show();					        	
+				    .setNegativeButton("No", dialogClickListener).setCancelable(false).show();					        	
 	        	return true;
 	        default:
 	        	return super.onOptionsItemSelected(item);
