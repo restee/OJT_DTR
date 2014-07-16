@@ -41,10 +41,9 @@ public final class R {
         public static final int inactivetimeout=0x7f02000b;
         public static final int loginbuttonstyle=0x7f02000c;
         public static final int logoedit3=0x7f02000d;
-        public static final int logout=0x7f02000e;
-        public static final int powered=0x7f02000f;
-        public static final int rectangle=0x7f020010;
-        public static final int roundbuttonstyle=0x7f020011;
+        public static final int powered=0x7f02000e;
+        public static final int rectangle=0x7f02000f;
+        public static final int roundbuttonstyle=0x7f020010;
     }
     public static final class id {
         public static final int TextView01=0x7f090011;

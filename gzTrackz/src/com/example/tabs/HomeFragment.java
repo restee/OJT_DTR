@@ -58,8 +58,10 @@ public class HomeFragment extends Fragment {
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private SharedPreferences prefs ;
 	String email,hourDisplay="--",minutesDisplay="--",dateDisplay="--------, ------ --",amPmDisplay="--";
-	boolean loggedIn,checked=false,buttonPressed=false;
+	private boolean loggedIn,checked=false,buttonPressed=false;
 	private TextView nameTXT,timeTXT,dateTXT,amPmTXT;
+	private int timeIMG; 
+	
 	
 	private Intent timeServiceIntent;
 	private Thread timeThread;
@@ -131,7 +133,7 @@ public class HomeFragment extends Fragment {
 			new AlreadyLogged(getActivity(),email).execute();
 			checked=true;
 		}else{
-			if(!buttonPressed){
+			/*if(!buttonPressed){
 				if(loggedIn){
 				//	Toast.makeText(getActivity(),"TIMEOUT",Toast.LENGTH_SHORT).show();
 					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
@@ -149,7 +151,8 @@ public class HomeFragment extends Fragment {
 				//	Toast.makeText(getActivity(),"TIMEOUT",Toast.LENGTH_SHORT).show();
 					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
 				}				
-			}
+			}*/
+			timeLogBTN.setImageResource(timeIMG);
 		}
 		
 		timeLogBTN.setOnClickListener(new View.OnClickListener() {		
@@ -232,10 +235,12 @@ public class HomeFragment extends Fragment {
 	        	if(loggedIn){
 					//timeLogBTN.setText("Log Out!");	
 					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
+					timeIMG = R.drawable.inactivetimeout;
 				}
 				else{ 
 				//	timeLogBTN.setText("Log In!");
 					timeLogBTN.setImageResource(R.drawable.inactivetimein);
+					timeIMG = R.drawable.inactivetimein;
 				}
 	        	if(date!=null&&time!=null){	        			        		 
 	        		String dayOfTheWeek=null,stringMonth=null;
@@ -355,6 +360,7 @@ public class HomeFragment extends Fragment {
 				timeLogBTN.setImageResource(R.drawable.inactivetimeout);
 				homeInterface.buttonClicked(loggedIn);
 				buttonPressed = true;
+				timeIMG = R.drawable.inactivetimeout;
 			}
 			else{ 
 								
@@ -366,6 +372,7 @@ public class HomeFragment extends Fragment {
 				        	homeInterface.buttonClicked(loggedIn);
 				        	timeLogBTN.setImageResource(R.drawable.inactivetimein);
 				        	buttonPressed = true;
+				        	timeIMG = R.drawable.inactivetimein;
 				            break;
 				        case DialogInterface.BUTTON_NEGATIVE:
 				            break;
