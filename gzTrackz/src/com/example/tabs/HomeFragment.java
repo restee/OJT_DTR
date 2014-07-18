@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
 			if(hours>12){
 				hours-=12;				
 				amPmDisplay = "PM";
-				amPmTXT.setText("PM");
+				//amPmTXT.setText("PM");
 			}else{
 				amPmDisplay = "AM";				
 			}
@@ -92,6 +92,7 @@ public class HomeFragment extends Fragment {
 				minutesDisplay = Integer.toString(minutes);
 			}
 			timeTXT.setText(hourDisplay + ":" + minutesDisplay);
+			amPmTXT.setText(amPmDisplay);
 		}		
 	};
 	
@@ -257,7 +258,7 @@ public class HomeFragment extends Fragment {
 	        		dateDisplay = dayOfTheWeek + ", " + stringMonth+ " " + date.substring(8,date.length());
 	        		
 	        		dateTXT.setText(dateDisplay);
-
+	        		
 	        		//Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
 	        		timeThread = new Thread(){
 	        			 @Override
