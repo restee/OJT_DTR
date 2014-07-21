@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package com.example.activity;
 
 import java.util.StringTokenizer;
 
@@ -9,20 +9,20 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegisterActivity extends Activity {
+import com.example.gztrackz.R;
+
+public class Activity_Register extends Activity {
 
 	private EditText emailTxt, firstNameTxt, lastNameTxt, passwordTxt, confirmPasswordTxt;
 	private Button registerBtn;
@@ -75,7 +75,8 @@ public class RegisterActivity extends Activity {
 
 	 private class Register extends AsyncTask<String, Void,String> {
 	        
-	    	String email,password,firstName,lastName,confirmPassword;
+	    	String email,password,firstName,lastName;
+	    	//String confirmPassword;
 	    	Context context;
 	    	ProgressDialog progressD;
 	    	
@@ -86,7 +87,7 @@ public class RegisterActivity extends Activity {
 	    		this.password = password;
 	    		this.firstName = firstName;
 	    		this.lastName = lastName;
-	    		this.confirmPassword = confirmPassword;
+	    		//this.confirmPassword = confirmPassword;
 	    	}
 	    	@Override
 	        protected void onPreExecute() {

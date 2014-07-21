@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.gztrackz.R;
 
-public class HomeFragment extends Fragment {
+public class Fragment_Home extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.gztrackz.R;
 
-public class TimestampsFragment extends Fragment {
+public class Fragment_Timestamps extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

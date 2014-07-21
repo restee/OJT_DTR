@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package com.example.activity;
 
 import java.util.StringTokenizer;
 
@@ -8,7 +8,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
-
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,7 +19,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -28,13 +26,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+import com.example.gztrackz.R;
+
+public class Activity_Main extends Activity {
 
 	private TextView registerTxt;
 	private Button logInBTN;
 	private EditText emailTXT, passTXT;
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
-	private String firstName,lastName,email;
+	private String firstName;
+	//private String lastName,email;
 	private Context context;
 	private SharedPreferences prefs ;
     @Override
@@ -73,7 +74,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
-				Intent i = new Intent(context,RegisterActivity.class);
+				Intent i = new Intent(context,Activity_Register.class);
 				startActivity(i);
 			}
 		});
@@ -127,7 +128,7 @@ public class MainActivity extends Activity {
         		progressD.dismiss();
         	}
         	if(result){	        
-	        	Intent i = new Intent(context,TabsManager.class);
+	        	Intent i = new Intent(context,Activity_Fragment_TabsManager.class);
 	        	startActivityForResult(i,1);
         	}
         	else

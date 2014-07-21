@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package com.example.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,83 +7,88 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DB_USER_TIME_LOG {
+public class DB_User_Info {
 
 	// debugging tags
-	public static final String TAG = "DB_User_Time_Log";
+	public static final String TAG = "DB_Accounts_Info";
 
 	public static final String KEY_EMAILADD = "email";
-	public static final String KEY_TIMEIN = "time_in";
-	public static final String KEY_TIMEOUT = "time_out";
+	public static final String KEY_PASSWORD = "password";
+	public static final String KEY_FIRSTNAME = "first_name";
+	public static final String KEY_LASTNAME = "last_name";
 
 	public static final int COL_EMAILADD = 0;
-	public static final int COL_TIMEIN = 1;
-	public static final int COL_TIMEOUT = 2;
+	public static final int COL_PASSWORD = 1;
+	public static final int COL_FIRSTNAME = 2;
+	public static final int COL_LASTNAME = 3;
 
-	public static final String[] ALL_KEYS = { KEY_EMAILADD, KEY_TIMEIN,
-			KEY_TIMEOUT };
+	public static final String[] ALL_KEYS = { KEY_EMAILADD, KEY_PASSWORD,
+			KEY_FIRSTNAME, KEY_LASTNAME };
 
-	public static final String TABLE_NAME = "user_time_logs";
+	public static final String TABLE_NAME = "user_accounts_table";
 	public static final int DB_VERSION = 1;
 
 	private static final String DATABASE_CREATE_SQL = "create table "
 			+ TABLE_NAME + " (" + KEY_EMAILADD + " varchar primary key, "
 
-			+ KEY_TIMEIN + " timestamp not null, " + KEY_TIMEOUT
-			+ " timestamp not null);";
+			+ KEY_PASSWORD + " varchar not null, " + KEY_FIRSTNAME
+			+ " varchar not null, " + KEY_LASTNAME + " varchar not null" + ");";
 
 	private Context appContext;
 
-	private DB_User_Time_Log_Helper user_time_log_helper;
+	private DB_User_Info_Helper user_info_helper;
 	private SQLiteDatabase sql_db;
 
-	public DB_USER_TIME_LOG(Context context) {
+	public DB_User_Info(Context context) {
 
 		appContext = context;
-		user_time_log_helper = new DB_User_Time_Log_Helper(appContext);
+		user_info_helper = new DB_User_Info_Helper(appContext);
 	}
 
 	// Open the database connection.
-	public DB_USER_TIME_LOG open() {
-		sql_db = user_time_log_helper.getWritableDatabase();
+	public DB_User_Info open() {
+		sql_db = user_info_helper.getWritableDatabase();
 		return this;
 	}
 
 	// Close the database connection.
 	public void close() {
-		user_time_log_helper.close();
+		user_info_helper.close();
 	}
 
 	// Add a new set of values to the database.
-	public long insertRow(String emailAdd, String timein, String timeout) {
+	public long insertRow(String emailAdd, String password, String firstName,
+			String lastName) {
 
-		ContentValues contentValues = getContentValues(emailAdd, timein,
-				timeout);
+		ContentValues contentValues = getContentValues(emailAdd, password,
+				firstName, lastName);
 
 		// Insert it into the database.
 		return sql_db.insert(TABLE_NAME, null, contentValues);
 	}
 
 	// Change an existing row to be equal to new data.
-	public boolean updateRow(String emailAdd, String timein, String timeout) {
+	public boolean updateRow(String emailAdd, String password,
+			String firstName, String lastName) {
 
 		String where = KEY_EMAILADD + "=" + emailAdd;
 
-		ContentValues contentValues = getContentValues(emailAdd, timein,
-				timeout);
+		ContentValues contentValues = getContentValues(emailAdd, password,
+				firstName, lastName);
 
 		// Insert it into the database.
 		return sql_db.update(TABLE_NAME, contentValues, where, null) != 0;
 	}
 
-	public ContentValues getContentValues(String emailAdd, String timein,
-			String timeout) {
+	public ContentValues getContentValues(String emailAdd, String password,
+			String firstName, String lastName) {
 
 		ContentValues contentValues = new ContentValues();
 
 		contentValues.put(KEY_EMAILADD, emailAdd);
-		contentValues.put(KEY_TIMEIN, timein);
-		contentValues.put(KEY_TIMEOUT, timeout);
+		contentValues.put(KEY_PASSWORD, password);
+		contentValues.put(KEY_FIRSTNAME, firstName);
+		contentValues.put(KEY_LASTNAME, lastName);
 
 		return contentValues;
 	}
@@ -133,18 +138,18 @@ public class DB_USER_TIME_LOG {
 		return cursor;
 	}
 
-	private static class DB_User_Time_Log_Helper extends SQLiteOpenHelper {
+	private static class DB_User_Info_Helper extends SQLiteOpenHelper {
 
 		public static final String DROP_TABLE = "DROP TABLE IF EXISTS "
 				+ TABLE_NAME;
 
-		DB_User_Time_Log_Helper(Context context) {
+		DB_User_Info_Helper(Context context) {
 			super(context, TABLE_NAME, null, DB_VERSION);
 		}
 
 		@Override
-		public void onCreate(SQLiteDatabase sql_db) {
-			sql_db.execSQL(DATABASE_CREATE_SQL);
+		public void onCreate(SQLiteDatabase _db) {
+			_db.execSQL(DATABASE_CREATE_SQL);
 		}
 
 		@Override

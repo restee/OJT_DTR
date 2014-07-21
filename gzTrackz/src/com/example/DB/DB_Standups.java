@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package com.example.DB;
 
 import android.content.ContentValues;
 import android.content.Context;

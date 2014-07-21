@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package com.example.activity;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -6,15 +6,15 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.view.Window;
 
-import com.example.tabsadapter.TabsPagerAdapter;
+import com.example.gztrackz.R;
+import com.example.tabsadapter.Adapter_TabsPager;
 
 
-public class TabsManager extends FragmentActivity implements ActionBar.TabListener {
+public class Activity_Fragment_TabsManager extends FragmentActivity implements ActionBar.TabListener {
 
 	private ViewPager viewPager;
-	private TabsPagerAdapter mAdapter;
+	private Adapter_TabsPager mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
 	private String[] tabs = { "Home", "History", "StandUps" };
@@ -27,7 +27,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 		// Initialization
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
-		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+		mAdapter = new Adapter_TabsPager(getSupportFragmentManager());
 
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);

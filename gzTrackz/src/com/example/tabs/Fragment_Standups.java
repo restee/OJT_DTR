@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.gztrackz.R;
 
-public class StandupsFragment extends Fragment {
+public class Fragment_Standups extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
