@@ -141,6 +141,7 @@ public class HomeFragment extends Fragment {
 			@Override
 			public void onClick(View v) {	
 				if(isConnectingToInternet()){
+					new TimeUpdate(getActivity(),email).execute();
 					if(timeIMG == R.drawable.inactivetimeout){
 						DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 						    @Override
@@ -183,6 +184,21 @@ public class HomeFragment extends Fragment {
 		
 	}
 	
+	@Override
+	public void onResume() {	
+		super.onResume();
+		if(isNetworkAvailable()){
+			new AlreadyLogged(getActivity(),email).execute();
+		}else{
+			hourDisplay="--";
+			minutesDisplay="--";
+			dateDisplay="--------, ------ --";
+			amPmDisplay="--";
+			timeTXT.setText(hourDisplay+":" + minutesDisplay);
+			dateTXT.setText(dateDisplay);
+			amPmTXT.setText(amPmDisplay);
+		}
+	}
 	
 	@Override
 	public void onAttach(Activity activity) {
@@ -350,6 +366,110 @@ public class HomeFragment extends Fragment {
 	        }	             
 	    }
 	
+	
+	private class TimeUpdate extends AsyncTask<String, Void,Boolean> {	        
+    	String email,password;
+    	Context context;
+    	ProgressDialog progressD;
+    	String date=null, time=null;
+    	boolean timeIn;
+    	
+    	public TimeUpdate(Context context,String email){
+    		this.context = context;
+    		this.email = email;
+    		this.password = password;
+    	}
+    	
+    	@Override
+        protected void onPreExecute() {
+    		
+        }
+    	
+    	@Override
+        protected void onPostExecute(Boolean result) {        	
+        	
+        	
+        	if(date!=null&&time!=null){	        			        		 
+        		String dayOfTheWeek=null,stringMonth=null;
+        		SimpleDateFormat  format = new SimpleDateFormat("yyyy-MM-dd");	        		
+        		try {  
+        		    Date dateOutput = format.parse(date);  
+        		    dayOfTheWeek = (String) android.text.format.DateFormat.format("EEEE", dateOutput);
+        		    stringMonth = (String) android.text.format.DateFormat.format("MMM", dateOutput);
+
+        		} catch (Exception e) {    
+        		    e.printStackTrace();  
+        		}
+        		
+        		dateDisplay = dayOfTheWeek + ", " + stringMonth+ " " + date.substring(8,date.length());
+        		
+        		dateTXT.setText(dateDisplay);
+        		
+
+        		timeThread = new Thread(){
+        			 @Override
+        			    public void run() {
+        			        try {	        			        	
+        			        	int minutes = Integer.parseInt(time.substring(3,5));
+        			        	int hours = Integer.parseInt(time.substring(0,2));
+        			            while(true) {
+        			            	Intent sendTimeBroadcast = new Intent();
+        			            	sendTimeBroadcast.setAction("gztrackz.update.time");
+        			            	sendTimeBroadcast.putExtra("minutes",Integer.toString(minutes));
+        			            	sendTimeBroadcast.putExtra("hours",Integer.toString(hours));
+        			            	getActivity().sendBroadcast(sendTimeBroadcast);
+        			                sleep(60000);
+        			                minutes++;
+        			                if(minutes==60){
+        			                	hours++;
+        			                	minutes=0;
+        			                }	        			                
+        			            }
+        			        } catch (Exception e) {
+        			            this.interrupt();
+        			        }
+        			    }
+        		};
+        		timeThread.start();	        		
+        	}else{
+        		dateTXT.setText("--------, ----- -");        		
+        	}
+        }
+    	
+    	@Override
+        protected Boolean doInBackground(String... params) {
+            boolean flag = true;	            
+            try {
+            	String urlTopTracks = "http://gz123.site90.net/loginstatus/?email=" + email ;
+				HttpClient client = new DefaultHttpClient();
+				ResponseHandler<String> handler = new BasicResponseHandler();
+				
+				HttpPost request = new HttpPost(urlTopTracks);
+				
+				String httpResponseTopTracks = client.execute(request, handler);				
+				
+				StringTokenizer token = new StringTokenizer(httpResponseTopTracks,"<");
+				String retrieveResult = token.nextToken();
+				
+				JSONObject result = new JSONObject(retrieveResult);
+				String emailResult = result.getString("active");
+				if(emailResult.compareToIgnoreCase("true")==0){
+					timeIn = true;						
+				}else{
+					timeIn = false;
+				}
+				date = result.getString("date");
+				time = result.getString("time");
+				Log.d("RESULT",retrieveResult);
+				
+			} catch (Exception e) {			
+				flag = false;
+				e.printStackTrace();
+			}            
+            return flag;
+        }	             
+    }
+
 
 	private class TimeLog extends AsyncTask<String, Void,Boolean> {	        
     	String email,password;
