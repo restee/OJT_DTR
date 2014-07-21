@@ -1,5 +1,7 @@
 package com.example.gztrackz;
 
+
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DB_USER_TIME_LOG {
+public class DB_User_Time_Log {
 
 	// debugging tags
 	public static final String TAG = "DB_User_Time_Log";
@@ -27,24 +29,25 @@ public class DB_USER_TIME_LOG {
 	public static final int DB_VERSION = 1;
 
 	private static final String DATABASE_CREATE_SQL = "create table "
-			+ TABLE_NAME + " (" + KEY_EMAILADD + " varchar primary key, "
+			+ TABLE_NAME + " (" + KEY_EMAILADD + " varchar, "
 
 			+ KEY_TIMEIN + " timestamp not null, " + KEY_TIMEOUT
-			+ " timestamp not null);";
+			+ " timestamp not null" + " PRIMARY KEY ("
+					+ KEY_EMAILADD + "," + KEY_TIMEIN + ");";
 
 	private Context appContext;
 
 	private DB_User_Time_Log_Helper user_time_log_helper;
 	private SQLiteDatabase sql_db;
 
-	public DB_USER_TIME_LOG(Context context) {
+	public DB_User_Time_Log(Context context) {
 
 		appContext = context;
 		user_time_log_helper = new DB_User_Time_Log_Helper(appContext);
 	}
 
 	// Open the database connection.
-	public DB_USER_TIME_LOG open() {
+	public DB_User_Time_Log open() {
 		sql_db = user_time_log_helper.getWritableDatabase();
 		return this;
 	}

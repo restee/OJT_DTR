@@ -43,7 +43,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	private String[] tabs = { "Home", "History", "StandUps" };
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private String email;
-	private DB_USER_TIME_LOG timeLogDB;
+	private DB_User_Time_Log timeLogDB;
 	private Context context;
 	private SharedPreferences prefs ;
 	
@@ -51,7 +51,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_manager);
-		timeLogDB = new DB_USER_TIME_LOG(this);
+		timeLogDB = new DB_User_Time_Log(this);
 		timeLogDB.open();
 		// Initialization
 		 prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
