@@ -2,6 +2,9 @@ package com.example.gztrackz;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -26,20 +29,20 @@ public class DB_User_Time_Log {
 			KEY_TIMEOUT };
 
 	public static final String TABLE_NAME = "user_time_logs";
-	public static final int DB_VERSION = 1;
+	public static final int DB_VERSION = 2;
 
 	private static final String DATABASE_CREATE_SQL = "create table "
 			+ TABLE_NAME + " (" + KEY_EMAILADD + " varchar, "
 
 			+ KEY_TIMEIN + " timestamp not null, " + KEY_TIMEOUT
-			+ " timestamp not null" + " PRIMARY KEY ("
-					+ KEY_EMAILADD + "," + KEY_TIMEIN + ");";
+			+ " timestamp not null," + " PRIMARY KEY ("
+					+ KEY_EMAILADD + "," + KEY_TIMEIN + "));";
 
 	private Context appContext;
 
 	private DB_User_Time_Log_Helper user_time_log_helper;
 	private SQLiteDatabase sql_db;
-
+	private char quote = '"';
 	public DB_User_Time_Log(Context context) {
 
 		appContext = context;
@@ -70,7 +73,7 @@ public class DB_User_Time_Log {
 	// Change an existing row to be equal to new data.
 	public boolean updateRow(String emailAdd, String timein, String timeout) {
 
-		String where = KEY_EMAILADD + "=" + emailAdd;
+		String where = KEY_EMAILADD + "=" + quote + emailAdd + quote + "AND " + KEY_TIMEIN + "= " + quote + timein + quote;
 
 		ContentValues contentValues = getContentValues(emailAdd, timein,
 				timeout);
@@ -121,8 +124,71 @@ public class DB_User_Time_Log {
 		}
 		return cursor;
 	}
+	
+	public List<TimeLog> getAllRow(){
+		List<TimeLog> flag = new ArrayList();
+		String where = null;
+		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
+				null, null, null, null);
+		if (cursor != null) {
+			cursor.moveToFirst();
+			if(countCases()>0){	
+				do{
+					flag.add(new TimeLog(cursor.getString(COL_EMAILADD),cursor.getString(COL_TIMEIN),cursor.getString(COL_TIMEOUT)));
+				}while(cursor.moveToNext());
+			}
+		}
+						
+		return flag;
+	}
+	
+	public List<TimeLog> getAllRowOf(String email){
+		List<TimeLog> flag = new ArrayList();
+		String where = KEY_EMAILADD + " = " + quote + email + quote;
+		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
+				null, null, null, null);
 
-	// Get a specific row (by email)
+		if (cursor != null) {		
+			cursor.moveToFirst();			
+			if(countCases()>0){	
+				do{
+						
+						flag.add(new TimeLog(cursor.getString(COL_EMAILADD),cursor.getString(COL_TIMEIN),cursor.getString(COL_TIMEOUT)));
+				}while(cursor.moveToNext());
+			}
+		}
+						
+		return flag;
+	}
+	
+	public int countCases() {
+
+        String SQLQuery = "SELECT COUNT(*) FROM " + TABLE_NAME + ";";        
+        Cursor cursor = sql_db.rawQuery(SQLQuery, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        return count;
+    }
+	
+	public TimeLog getLatestRowOf(String email){
+		TimeLog flag = new TimeLog();
+		String where = KEY_EMAILADD + " = " + quote + email + quote;
+		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
+				null, null, "2 DESC", null);
+		if (cursor != null) {
+			cursor.moveToFirst();
+			if(countCases()>0){	
+				flag.setEmail(email);
+				flag.setTimeIn(cursor.getString(COL_TIMEIN));
+				flag.setTimeOut(cursor.getString(COL_TIMEOUT));
+			}
+		}
+						
+		return flag;
+	}
+	
+
 	public Cursor getRow(String emailAdd) {
 
 		String where = KEY_EMAILADD + "=" + emailAdd;
@@ -159,7 +225,8 @@ public class DB_User_Time_Log {
 
 			// Destroy old database:
 			sql_db.execSQL(DROP_TABLE);
-
+			
+			
 			// Recreate new database
 			onCreate(sql_db);
 		}

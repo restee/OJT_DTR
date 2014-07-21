@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private SharedPreferences prefs ;
 	String email,hourDisplay="--",minutesDisplay="--",dateDisplay="--------, ------ --",amPmDisplay="--";
-	private boolean loggedIn,checked=false,buttonPressed=false;
+	private boolean loggedIn,checked=false,buttonPressed=false,fromOnCreate;
 	private TextView nameTXT,timeTXT,dateTXT,amPmTXT;
 	private int timeIMG; 
 	
@@ -126,14 +126,13 @@ public class HomeFragment extends Fragment {
 		timeTXT.setText(hourDisplay + ":" + minutesDisplay);
 		amPmTXT.setText(amPmDisplay);
 		dateTXT.setText(dateDisplay);
-		
+		fromOnCreate = true;
 				
 		timeThread = new Thread();
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
 			checked=true;
-		}else{
-			
+		}else{			
 			timeLogBTN.setImageResource(timeIMG);
 		}
 		
@@ -185,10 +184,16 @@ public class HomeFragment extends Fragment {
 	}
 	
 	@Override
+	public void onPause() {	
+		super.onPause();
+		fromOnCreate = false;
+	}
+	@Override
 	public void onResume() {	
 		super.onResume();
 		if(isNetworkAvailable()){
-			new AlreadyLogged(getActivity(),email).execute();
+			if(!fromOnCreate)
+				new AlreadyLogged(getActivity(),email).execute();
 		}else{
 			hourDisplay="--";
 			minutesDisplay="--";
