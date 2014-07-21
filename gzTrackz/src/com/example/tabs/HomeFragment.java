@@ -43,6 +43,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gztrackz.R;
+import com.example.gztrackz.StandUpsDialog;
+
+
 
 
 
@@ -75,7 +78,6 @@ public class HomeFragment extends Fragment {
 			if(hours>12){
 				hours-=12;				
 				amPmDisplay = "PM";
-				//amPmTXT.setText("PM");
 			}else{
 				amPmDisplay = "AM";				
 			}
@@ -125,41 +127,50 @@ public class HomeFragment extends Fragment {
 		amPmTXT.setText(amPmDisplay);
 		dateTXT.setText(dateDisplay);
 		
-		
-		
-		//timeServiceIntent = new Intent(getActivity(),TimeService.class);
-		
+				
 		timeThread = new Thread();
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
 			checked=true;
 		}else{
-			/*if(!buttonPressed){
-				if(loggedIn){
-				//	Toast.makeText(getActivity(),"TIMEOUT",Toast.LENGTH_SHORT).show();
-					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
-				}
-				else{ 
-				//	Toast.makeText(getActivity(),"TIMEIN",Toast.LENGTH_SHORT).show();
-					timeLogBTN.setImageResource(R.drawable.inactivetimein);
-				}
-			}else{
-				if(loggedIn){
-				//	Toast.makeText(getActivity(),"TIMEIN",Toast.LENGTH_SHORT).show();
-					timeLogBTN.setImageResource(R.drawable.inactivetimein);
-				}
-				else{ 					
-				//	Toast.makeText(getActivity(),"TIMEOUT",Toast.LENGTH_SHORT).show();
-					timeLogBTN.setImageResource(R.drawable.inactivetimeout);
-				}				
-			}*/
+			
 			timeLogBTN.setImageResource(timeIMG);
 		}
 		
 		timeLogBTN.setOnClickListener(new View.OnClickListener() {		
 			@Override
-			public void onClick(View v) {								
-				new AlreadyLoggedCheck(getActivity(),email).execute();
+			public void onClick(View v) {	
+				if(isConnectingToInternet()){
+					if(timeIMG == R.drawable.inactivetimeout){
+						DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+						    @Override
+						    public void onClick(DialogInterface dialog, int which) {
+						        switch (which){
+						        case DialogInterface.BUTTON_POSITIVE:
+						        	//new AlreadyLoggedCheck(getActivity(),email).execute();
+						        	//homeInterface.buttonClicked(true);
+						        								        	
+						        	
+						        	new TimeLog(getActivity(), email,true).execute();	
+						            break;
+						        case DialogInterface.BUTTON_NEGATIVE:
+						            break;
+						        }
+						    }
+						};				
+					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+					builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+					    .setNegativeButton("No", dialogClickListener).setCancelable(false).show();
+					}else{
+						//new AlreadyLoggedCheck(getActivity(),email).execute();
+						//homeInterface.buttonClicked(false);
+						new TimeLog(getActivity(), email,false).execute();	
+			        	
+					}				
+				}else{
+					Toast.makeText(getActivity(), "Unable to connect to the server!\nPlease make sure you are connected to the internet.", Toast.LENGTH_LONG).show();					
+				}
+				
 				Log.d("CHECK",Boolean.toString(loggedIn));						
 			}
 		});	   	    
@@ -169,9 +180,7 @@ public class HomeFragment extends Fragment {
 	@Override
 	public void onStart() {	
 		super.onStart();
-		/*getActivity().startService(timeServiceIntent);
-		getActivity().bindService(timeServiceIntent,timeConnection,Context.BIND_ABOVE_CLIENT);
-		Toast.makeText(getActivity(), Boolean.toString(timeBound),Toast.LENGTH_SHORT).show();*/
+		
 	}
 	
 	
@@ -197,6 +206,21 @@ public class HomeFragment extends Fragment {
 	        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 
 	 }
+	  public boolean isConnectingToInternet(){
+	        ConnectivityManager connectivity = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+	          if (connectivity != null)
+	          {
+	              NetworkInfo[] info = connectivity.getAllNetworkInfo();
+	              if (info != null)
+	                  for (int i = 0; i < info.length; i++)
+	                      if (info[i].getState() == NetworkInfo.State.CONNECTED)
+	                      {
+	                          return true;
+	                      }
+	 
+	          }
+	          return false;
+	    }
 	 @Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -250,7 +274,7 @@ public class HomeFragment extends Fragment {
 	        		    Date dateOutput = format.parse(date);  
 	        		    dayOfTheWeek = (String) android.text.format.DateFormat.format("EEEE", dateOutput);
 	        		    stringMonth = (String) android.text.format.DateFormat.format("MMM", dateOutput);
-	        		    //Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
+ 
 	        		} catch (Exception e) {    
 	        		    e.printStackTrace();  
 	        		}
@@ -259,7 +283,7 @@ public class HomeFragment extends Fragment {
 	        		
 	        		dateTXT.setText(dateDisplay);
 	        		
-	        		//Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
+
 	        		timeThread = new Thread(){
 	        			 @Override
 	        			    public void run() {
@@ -325,143 +349,116 @@ public class HomeFragment extends Fragment {
 	            return flag;
 	        }	             
 	    }
-		
 	
-	
-	private class AlreadyLoggedCheck extends AsyncTask<String, Void,Boolean> {	        
+
+	private class TimeLog extends AsyncTask<String, Void,Boolean> {	        
     	String email,password;
     	Context context;
     	ProgressDialog progressD;
-    	String date=null, time=null;
+    	String date, time;
     	boolean timeIn;
     	
-    	public AlreadyLoggedCheck(Context context,String email){
+    	public TimeLog(Context context,String email,boolean timeIn){
     		this.context = context;
     		this.email = email;
-    		this.password = password;
+    		this.password = password;	    		
+    		this.timeIn = timeIn;
     	}
     	
     	@Override
         protected void onPreExecute() {
-    		progressD = new ProgressDialog(context);
-    		progressD.setMessage("Checking User Timelog Status!");
+    		progressD = new ProgressDialog(context);	    		
+    		if(timeIn)
+    			progressD.setMessage("TimeOut in progress...");
+    		else
+    			progressD.setMessage("TimeIn in progress...");
     		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-    		progressD.setCancelable(false);
-    		progressD.setCanceledOnTouchOutside(false);
     		progressD.show();
+    		Log.d("PreCheck",Boolean.toString(timeIn));
+    			    			    
         }
     	
     	@Override
         protected void onPostExecute(Boolean result) {        	
         	if(progressD.isShowing()){
         		progressD.dismiss();
-        	}	        		
-        	loggedIn = timeIn;
-        	if(!loggedIn){
-				timeLogBTN.setImageResource(R.drawable.inactivetimeout);
-				homeInterface.buttonClicked(loggedIn);
-				buttonPressed = true;
-				timeIMG = R.drawable.inactivetimeout;
-			}
-			else{ 
-								
-				DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-				    @Override
-				    public void onClick(DialogInterface dialog, int which) {
-				        switch (which){
-				        case DialogInterface.BUTTON_POSITIVE:
-				        	homeInterface.buttonClicked(loggedIn);
-				        	timeLogBTN.setImageResource(R.drawable.inactivetimein);
-				        	buttonPressed = true;
-				        	timeIMG = R.drawable.inactivetimein;
-				            break;
-				        case DialogInterface.BUTTON_NEGATIVE:
-				            break;
-				        }
-				    }
-				};
-				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
-				    .setNegativeButton("No", dialogClickListener).setCancelable(false).show();
-				
-			}
-        	
-        	if(date!=null&&time!=null){	        			        		 
-        		String dateDisplay,dayOfTheWeek=null,stringMonth=null;
-        		SimpleDateFormat  format = new SimpleDateFormat("yyyy-MM-dd");	        		
-        		try {  
-        		    Date dateOutput = format.parse(date);  
-        		    dayOfTheWeek = (String) android.text.format.DateFormat.format("EEEE", dateOutput);
-        		    stringMonth = (String) android.text.format.DateFormat.format("MMM", dateOutput);
-        		  //  Toast.makeText(context,dayOfTheWeek,Toast.LENGTH_SHORT).show(); 
-        		} catch (Exception e) {  
-        		    // TODO Auto-generated catch block  
-        		    e.printStackTrace();  
-        		}
-        		
-        		dateDisplay = dayOfTheWeek + ", " + stringMonth+ " " + date.substring(8,date.length());
-        		dateTXT.setText(dateDisplay);
-        		//timeThread.stop();
-        		//Toast.makeText(context, time.substring(0, 2) + ":" + time.substring(3,5), Toast.LENGTH_SHORT).show();
-        		timeThread = new Thread(){
-        			 @Override
-        			    public void run() {
-        			        try {	        			        	
-        			        	int minutes = Integer.parseInt(time.substring(3,5));
-        			        	int hours = Integer.parseInt(time.substring(0,2));
-        			            while(true) {
-        			            	Intent sendTimeBroadcast = new Intent();
-        			            	sendTimeBroadcast.setAction("gztrackz.update.time");
-        			            	sendTimeBroadcast.putExtra("minutes",Integer.toString(minutes));
-        			            	sendTimeBroadcast.putExtra("hours",Integer.toString(hours));
-        			            	getActivity().sendBroadcast(sendTimeBroadcast);
-        			                sleep(60000);
-        			                minutes++;
-        			                if(minutes==60){
-        			                	hours++;
-        			                	minutes=0;
-        			                }	        			                
-        			            }
-        			        } catch (Exception e) {
-        			            e.printStackTrace();
-        			        }
-        			    }
-        		};
-        		timeThread.start();
-        		/*dateTXT.setText(date);
-        		timeTXT.setText(time);*/
-        	}else{
-        		dateTXT.setText("--------, ----- -");        		
         	}
-        }
+        	if(result){	    
+        		if(!timeIn){
+        			Toast.makeText(context,"Successfulled timed in at "+ time + ".", Toast.LENGTH_LONG).show();
+        			timeIMG = R.drawable.inactivetimeout;							        	
+		        	timeLogBTN.setImageResource(R.drawable.inactivetimeout);
+        		}else{
+        			Toast.makeText(context,"Successfulled timed out at "+ time + ".", Toast.LENGTH_LONG).show();
+        			timeIMG = R.drawable.inactivetimein;
+        			timeLogBTN.setImageResource(R.drawable.inactivetimein);
+        		}
+        			 	
+        		if(!timeIn)
+        			new StandupCheck(context,email).execute();
+        	}
+        	else
+        		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        		        	
+    	}
     	
     	@Override
-        protected Boolean doInBackground(String... params) {
-            boolean flag = true;	            
-            try {
-            	String urlTopTracks = "http://gz123.site90.net/loginstatus/?email=" + email ;
+        protected Boolean doInBackground(String... params) {	    		
+    		boolean flag = true;	
+            
+            try {	            	
+            	String urlTopTracks ;
 				HttpClient client = new DefaultHttpClient();
 				ResponseHandler<String> handler = new BasicResponseHandler();
 				
-				HttpPost request = new HttpPost(urlTopTracks);
+				HttpPost request ;
 				
-				String httpResponseTopTracks = client.execute(request, handler);				
+				String httpResponseTopTracks;				
 				
-				StringTokenizer token = new StringTokenizer(httpResponseTopTracks,"<");
-				String retrieveResult = token.nextToken();
+				StringTokenizer token;
+				String retrieveResult;
 				
-				JSONObject result = new JSONObject(retrieveResult);
-				String emailResult = result.getString("active");
-				if(emailResult.compareToIgnoreCase("true")==0){
-					timeIn = true;
+				JSONObject result;
+				String emailResult;	            		            
+				Log.d("PreCheck",Boolean.toString(timeIn));
+            	if(timeIn){
+            		urlTopTracks = "http://gz123.site90.net/timeout/?email=" + email ;										
+					request = new HttpPost(urlTopTracks);					
+					httpResponseTopTracks = client.execute(request, handler);				
 					
-				}else{
-					timeIn = false;
+					 token = new StringTokenizer(httpResponseTopTracks,"<");
+					retrieveResult = token.nextToken();
+					
+					result = new JSONObject(retrieveResult);
+					emailResult = result.getString("email");
+					if(emailResult.length()==0){					
+						flag = false;
+					}else{
+						date = result.getString("date");
+						time = result.getString("time");
+						flag = true;
+					}
+					Log.d("Time out",Boolean.toString(timeIn));
+            	}
+            	else{
+	            	urlTopTracks = "http://gz123.site90.net/timein/?email=" + email ;										
+					request = new HttpPost(urlTopTracks);					
+					httpResponseTopTracks = client.execute(request, handler);				
+					
+					 token = new StringTokenizer(httpResponseTopTracks,"<");
+					retrieveResult = token.nextToken();
+					
+					result = new JSONObject(retrieveResult);
+					emailResult = result.getString("email");
+					if(emailResult.length()==0){					
+						flag = false;
+					}else{
+						date = result.getString("date");
+						time = result.getString("time");
+						flag = true;
+					}
+					Log.d("Time In",Boolean.toString(timeIn));
 				}
-				date = result.getString("date");
-				time = result.getString("time");
-				Log.d("RESULT",emailResult);
-			} catch (Exception e) {			
+			} catch (Exception e) {
 				flag = false;
 				e.printStackTrace();
 			}
@@ -469,9 +466,74 @@ public class HomeFragment extends Fragment {
             return flag;
         }	             
     }
-	
 
+
+private class StandupCheck extends AsyncTask<String, Void,Boolean> {	        
+	String email,password;
+	Context context;
+	ProgressDialog progressD;
+	String date, time;
+	boolean standupAvailable;
 	
+	public StandupCheck(Context context,String email){
+		this.context = context;
+		this.email = email;
+		this.password = password;
+	}
+	
+	@Override
+    protected void onPreExecute() {
+		progressD = new ProgressDialog(context);
+		progressD.setMessage("Checking standup status...");
+		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		progressD.setCancelable(false);
+		progressD.setCanceledOnTouchOutside(false);
+		progressD.show();
+    }
+	
+	@Override
+    protected void onPostExecute(Boolean result) {        	
+    	if(progressD.isShowing()){
+    		progressD.dismiss();
+    	}	        		
+    	
+    	if(standupAvailable){
+    		Intent i =new Intent(context,StandUpsDialog.class);
+    		startActivityForResult(i,1);			        			
+    	}
+    }
+	
+	@Override
+    protected Boolean doInBackground(String... params) {
+        boolean flag = true;	            
+        try {
+        	String urlTopTracks = "http://gz123.site90.net/standups_status/?email=" + email ;
+			HttpClient client = new DefaultHttpClient();
+			ResponseHandler<String> handler = new BasicResponseHandler();
+			
+			HttpPost request = new HttpPost(urlTopTracks);
+			
+			String httpResponseTopTracks = client.execute(request, handler);				
+			
+			StringTokenizer token = new StringTokenizer(httpResponseTopTracks,"<");
+			String retrieveResult = token.nextToken();
+			
+			
+			if(retrieveResult.contains("empty")){
+				standupAvailable= true;
+			}else{
+				standupAvailable = false;
+			}
+			Log.d("Standup Status",retrieveResult);
+			
+		} catch (Exception e) {			
+			flag = false;
+			e.printStackTrace();
+		}
+        
+        return flag;
+    }	             
+}
 				
 	
 }
