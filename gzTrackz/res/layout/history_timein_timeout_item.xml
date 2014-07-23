@@ -42,10 +42,11 @@
             <ImageView
                 android:id="@+id/gpsimage"
                 android:layout_height="30dp"
-                android:layout_width="40dp"
+                android:layout_width="29dp"
                 android:src="@drawable/gps_press"
                 android:layout_gravity="center"
                 />
+               
     </TableRow>
     
    </TableLayout>

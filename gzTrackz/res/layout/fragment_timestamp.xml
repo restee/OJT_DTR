@@ -2,86 +2,85 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background" >
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="390dp"
+        android:layout_height="345dp"
         android:layout_marginTop="70dp"
         android:background="#15000000"
-        android:padding="10dp">
+        android:padding="10dp" >
 
         <TableRow
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:background="@drawable/table_border" >
+            android:background="@drawable/table_border_header" >
 
             <TextView
-                android:layout_weight="1"
                 android:layout_width="100dp"
-                android:background="@drawable/table_border" 
+                android:layout_weight="1"
+                android:background="@drawable/table_border_header"
                 android:gravity="center"
                 android:padding="10dip"
                 android:text="Date"
                 android:textColor="#000000" />
 
             <TextView
-                android:layout_weight="1"
                 android:layout_width="56dp"
-                android:background="@drawable/table_border" 
+                android:layout_weight="1"
+                android:background="@drawable/table_border_header"
                 android:gravity="center"
                 android:padding="10dip"
                 android:text="Time-in"
                 android:textColor="#000000" />
 
             <TextView
-                android:layout_weight="1"
                 android:layout_width="56dp"
-                android:background="@drawable/table_border" 
+                android:layout_weight="1"
+                android:background="@drawable/table_border_header"
                 android:gravity="center"
                 android:padding="10dip"
                 android:text="Time-out"
                 android:textColor="#000000" />
 
             <TextView
-                android:background="@drawable/table_border" 
+                android:layout_width="29dp"
+                android:background="@drawable/table_border_header"
                 android:gravity="center"
-                android:padding="10dip"
-                android:layout_width="29dp" >
-                
+                android:padding="10dip" >
             </TextView>
         </TableRow>
-        
+
         <ListView
             android:id="@+id/timeintimeoutlist"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="256dp" />
+
+        
     </TableLayout>
 
     <Button
         android:id="@+id/historyquerybutton"
-        android:layout_width="110dp"
-        android:layout_height="35dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="19dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
         android:background="@drawable/loginbuttonstyle"
         android:text="Select History"
         android:textColor="#ffffff"
-        android:textSize="15dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/historyquerybutton"
-        android:layout_alignBottom="@+id/historyquerybutton"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="17dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
         android:text="Date"
-        android:textSize="18dp" />
+        android:textColor="#ffffff"
+        android:textSize="23dp" />
 
 </RelativeLayout>
