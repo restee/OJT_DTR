@@ -109,6 +109,7 @@ public final class R {
         public static final int register=0x7f080001;
         public static final int stand_ups_dialog=0x7f080002;
         public static final int time_manager=0x7f080003;
+        public static final int time_stamp_query_dialog=0x7f080004;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -118,6 +119,7 @@ public final class R {
         public static final int title_activity_stand_ups_dialog=0x7f060006;
         public static final int title_activity_tabs_manager=0x7f060005;
         public static final int title_activity_time_manager=0x7f060004;
+        public static final int title_activity_time_stamp_query_dialog=0x7f060007;
     }
     public static final class style {
         /** 

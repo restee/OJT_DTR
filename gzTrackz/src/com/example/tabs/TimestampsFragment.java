@@ -22,11 +22,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.gztrackz.DB_User_Time_Log;
 import com.example.gztrackz.R;
 import com.example.gztrackz.StandUpsDialog;
 import com.example.gztrackz.TimeLog;
+import com.example.gztrackz.TimeStampQueryDialog;
 
 public class TimestampsFragment extends Fragment {
 	
@@ -36,7 +38,7 @@ public class TimestampsFragment extends Fragment {
 	private boolean firstCreate=true;
 	private DB_User_Time_Log timeLogDB;
 	private List<TimeLog> timelogs;
-	
+	private Button queryBTN;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -58,6 +60,16 @@ public class TimestampsFragment extends Fragment {
 			}
 			firstCreate = false;
 		}
+		
+		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);
+		
+		queryBTN.setOnClickListener(new View.OnClickListener() {			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(getActivity(),TimeStampQueryDialog.class);
+				startActivity(i);
+			}
+		});
 		
 		return rootView;
 	}
