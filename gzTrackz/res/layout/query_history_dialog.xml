@@ -1,71 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <Spinner
-        android:id="@+id/yearSpinner"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="53dp" />
-
-    <Spinner
-        android:id="@+id/monthSpinner"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/yearSpinner"
-        android:layout_marginTop="26dp"
-        android:layout_toLeftOf="@+id/textView1" />
-
-    <Spinner
-        android:id="@+id/daySpinner"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/monthSpinner"
-        android:layout_marginTop="24dp"
-        android:layout_toLeftOf="@+id/textView1" />
+    android:layout_height="match_parent"
+    android:background="#468fd8" >
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignTop="@+id/daySpinner"
         android:layout_marginTop="16dp"
         android:text="Select a day"
+        android:textColor="#ffffff"
         android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/querybutton"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/yearSpinner"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="17dp"
-        android:layout_toRightOf="@+id/yearSpinner"
-        android:text="Select a year"
-        android:textSize="20dp" />
+        android:layout_below="@+id/daySpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Select" />
+
+    <Spinner
+        android:id="@+id/yearSpinner"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="72dp" />
+
+    <Spinner
+        android:id="@+id/monthSpinner"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/daySpinner"
+        android:layout_alignLeft="@+id/yearSpinner"
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/monthSpinner"
-        android:layout_alignLeft="@+id/textView1"
         android:layout_marginBottom="16dp"
+        android:layout_toRightOf="@+id/monthSpinner"
         android:text="Select a month"
+        android:textColor="#ffffff"
         android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/querybutton"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/daySpinner"
-        android:layout_centerHorizontal="true"
-        android:text="Select" />
+        android:layout_alignBottom="@+id/yearSpinner"
+        android:layout_marginBottom="15dp"
+        android:layout_toRightOf="@+id/yearSpinner"
+        android:text="Select a year"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
-"
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/monthSpinner"
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

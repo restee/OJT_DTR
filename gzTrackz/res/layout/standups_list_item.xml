@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/standupsdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp"
+        android:textColor="#000000"
+        android:text="July 21, 2014" />
+
+    <TextView
+        android:id="@+id/standupstime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/standupsdate"
+        android:layout_alignBottom="@+id/standupsdate"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="38dp"
+        android:text="8:00 am"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/standupspreviewmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/standupsdate"
+        android:layout_below="@+id/standupsdate"
+        android:layout_marginTop="12dp"
+        android:text="Bla bla bla bla bla bla bla bla bla bla bla.."
+        android:textSize="18dp" />
+
+</RelativeLayout>
