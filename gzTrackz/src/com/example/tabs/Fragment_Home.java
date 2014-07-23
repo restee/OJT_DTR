@@ -42,14 +42,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.activity.Activity_StandUpsDialog;
 import com.example.gztrackz.R;
-import com.example.gztrackz.StandUpsDialog;
 
 
 
 
 
-public class HomeFragment extends Fragment {
+public class Fragment_Home extends Fragment {
 
 	private ImageView timeLogBTN;
 	
@@ -618,7 +618,7 @@ private class StandupCheck extends AsyncTask<String, Void,Boolean> {
     	}	        		
     	
     	if(standupAvailable){
-    		Intent i =new Intent(context,StandUpsDialog.class);
+    		Intent i =new Intent(context,Activity_StandUpsDialog.class);
     		startActivityForResult(i,1);			        			
     	}
     }

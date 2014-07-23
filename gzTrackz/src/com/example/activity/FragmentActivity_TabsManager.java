@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package com.example.activity;
 
 import java.util.StringTokenizer;
 
@@ -29,15 +29,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.tabs.HomeFragment.MyInterface;
-import com.example.tabsadapter.TabsPagerAdapter;
+import com.example.DB.DB_User_Time_Log;
+import com.example.gztrackz.R;
+import com.example.tabs.Fragment_Home.MyInterface;
+import com.example.tabsadapter.Adapter_TabsPager;
 
 
 @SuppressLint("NewApi")
-public class TabsManager extends FragmentActivity implements ActionBar.TabListener,MyInterface  {
+public class FragmentActivity_TabsManager extends FragmentActivity implements ActionBar.TabListener,MyInterface  {
 
 	private ViewPager viewPager;
-	private TabsPagerAdapter mAdapter;
+	private Adapter_TabsPager mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
 	private String[] tabs = { "Home", "History", "StandUps" };
@@ -57,7 +59,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 		 prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
-		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+		mAdapter = new Adapter_TabsPager(getSupportFragmentManager());
 		context  = this;
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);

@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.gztrackz.MainActivity"
+            android:name="com.example.activity.Activity_Main"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar"
             android:screenOrientation="portrait" >
@@ -28,23 +28,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.gztrackz.RegisterActivity"
+            android:name="com.example.activity.Activity_Register"
             android:label="@string/app_name"
             android:theme="@style/dialog"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.gztrackz.TimeManager"
+            android:name="com.example.activity.TimeManager"
             android:label="@string/title_activity_time_manager"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.gztrackz.TabsManager"
+            android:name="com.example.activity.FragmentActivity_TabsManager"
             android:label="@string/title_activity_tabs_manager"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.gztrackz.StandUpsDialog"
+            android:name="com.example.activity.Activity_StandUpsDialog"
             android:label="@string/title_activity_stand_ups_dialog"
             android:theme="@style/dialog"
             android:screenOrientation="portrait" >

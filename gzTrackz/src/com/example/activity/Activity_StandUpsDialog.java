@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package com.example.activity;
 
 import java.util.StringTokenizer;
 
@@ -7,6 +7,8 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.example.gztrackz.R;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,7 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class StandUpsDialog extends Activity {
+public class Activity_StandUpsDialog extends Activity {
 
 	
 	private EditText standup_yTXT,standup_todoTXT,problemTXT;

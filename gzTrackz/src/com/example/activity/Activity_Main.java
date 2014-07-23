@@ -1,5 +1,5 @@
 
-package com.example.gztrackz;
+package com.example.activity;
 
 import java.util.StringTokenizer;
 
@@ -15,7 +15,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -28,13 +27,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+import com.example.gztrackz.R;
+
+public class Activity_Main extends Activity {
 
 	private TextView registerTxt;
 	private Button logInBTN;
 	private EditText emailTXT, passTXT;
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
-	private String firstName,lastName,email,emailInput,passInput;
+	private String firstName, emailInput,passInput;
+	//private String lastName,email;
 	private Context context;
 	private SharedPreferences prefs ;
     @Override
@@ -44,7 +46,7 @@ public class MainActivity extends Activity {
         prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         firstName = prefs.getString(FNAME, null);
         if(firstName!=null){
-        	Intent i = new Intent(this,TabsManager.class);
+        	Intent i = new Intent(this,FragmentActivity_TabsManager.class);
         	i.putExtra("email",prefs.getString(EMAIL,null));
         	startActivityForResult(i,1);
         }
@@ -80,7 +82,7 @@ public class MainActivity extends Activity {
         registerTxt.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {				
-					Intent i = new Intent(context,RegisterActivity.class);
+					Intent i = new Intent(context,Activity_Register.class);
 					startActivity(i);				
 			}
 		});
@@ -158,7 +160,7 @@ public class MainActivity extends Activity {
         		progressD.dismiss();
         	}
         	if(result){	        
-	        	Intent i = new Intent(context,TabsManager.class);
+	        	Intent i = new Intent(context,FragmentActivity_TabsManager.class);
 	        	i.putExtra("email",prefs.getString(EMAIL,null));
 	        	startActivityForResult(i,1);
         	}

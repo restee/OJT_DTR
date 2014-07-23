@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.tabs.HomeFragment;
-import com.example.tabs.StandupsFragment;
-import com.example.tabs.TimestampsFragment;
+import com.example.tabs.Fragment_Home;
+import com.example.tabs.Fragment_Standups;
+import com.example.tabs.Fragment_Timestamps;
 
-public class TabsPagerAdapter extends FragmentPagerAdapter {
+public class Adapter_TabsPager extends FragmentPagerAdapter {
 
-	public TabsPagerAdapter(FragmentManager fm) {
+	public Adapter_TabsPager(FragmentManager fm) {
 		super(fm);
 	}
 
@@ -22,13 +22,13 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 		switch (index) {
 		case 0:
 			// Top Rated fragment activity
-			return new HomeFragment();
+			return new Fragment_Home();
 		case 1:
 			// Games fragment activity
-			return new TimestampsFragment();
+			return new Fragment_Timestamps();
 		case 2:
 			// Movies fragment activity
-			return new StandupsFragment();
+			return new Fragment_Standups();
 		}
 
 		return null;
