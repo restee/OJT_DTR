@@ -10,12 +10,14 @@
         android:layout_height="345dp"
         android:layout_marginTop="70dp"
         android:background="#15000000" >
+
     <ListView
         android:id="@+id/standupslist"
         android:layout_width="match_parent"
-        android:layout_height="390dp"
-        android:padding="5dp"
-        android:background="@drawable/standups_listview_shape" >
+        android:layout_height="match_parent"
+        android:background="@drawable/standups_listview_shape"
+        android:padding="5dp" >
+
     </ListView>
     </LinearLayout>
     <Button
