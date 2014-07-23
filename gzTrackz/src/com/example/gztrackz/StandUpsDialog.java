@@ -86,6 +86,7 @@ public class StandUpsDialog extends Activity {
 	    		progressD = new ProgressDialog(context);
 	    		progressD.setMessage("Adding standup...");
 	    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+	    		progressD.setCanceledOnTouchOutside(false);
 	    		progressD.show();
 	        }
 	    	

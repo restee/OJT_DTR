@@ -269,8 +269,7 @@ public class HomeFragment extends Fragment {
 	        protected void onPreExecute() {
 	    		progressD = new ProgressDialog(context);
 	    		progressD.setMessage("Checking User Timelog Status!");
-	    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-	    		progressD.setCancelable(false);
+	    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);	    		
 	    		progressD.setCanceledOnTouchOutside(false);
 	    		progressD.show();
 	        }
@@ -502,6 +501,7 @@ public class HomeFragment extends Fragment {
     			progressD.setMessage("TimeIn in progress...");
     		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
     		progressD.show();
+    		progressD.setCanceledOnTouchOutside(false);
     		Log.d("PreCheck",Boolean.toString(timeIn));
     			    			    
         }
@@ -613,8 +613,7 @@ private class StandupCheck extends AsyncTask<String, Void,Boolean> {
     protected void onPreExecute() {
 		progressD = new ProgressDialog(context);
 		progressD.setMessage("Checking standup status...");
-		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-		progressD.setCancelable(false);
+		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);		
 		progressD.setCanceledOnTouchOutside(false);
 		progressD.show();
     }

@@ -125,7 +125,7 @@ public class TimeStampQueryDialog extends Activity {
 					for(int init=1;init<=days;init++){
 						dayList.add(Integer.toString(init));						
 					}
-					
+								
 					return false;
 				}else if (yearList.size()<=1){
 					Toast.makeText(context,"Please select a year first!",Toast.LENGTH_SHORT).show();
@@ -143,9 +143,20 @@ public class TimeStampQueryDialog extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent data = new Intent();
-				data.putExtra("year",Integer.parseInt(yearSpin.getSelectedItem().toString()));
-				data.putExtra("month",monthSpin.getSelectedItemPosition()+1);
-				data.putExtra("day",daySpin.getSelectedItemPosition()+1);
+				if(yearList.size()>1)
+					data.putExtra("year",Integer.parseInt(yearSpin.getSelectedItem().toString()));
+				else
+					data.putExtra("year",0);
+				if(monthList.size()>1)
+					data.putExtra("month",monthSpin.getSelectedItemPosition()+1);
+				else
+					data.putExtra("month",0);
+				
+				if(dayList.size()>1)
+					data.putExtra("day",daySpin.getSelectedItemPosition()+1);
+				else
+					data.putExtra("day", 0);
+				
 				setResult(RESULT_OK, data);
 				finish();
 			}

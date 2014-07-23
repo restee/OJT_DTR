@@ -78,12 +78,40 @@ public class TimestampsFragment extends Fragment {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode==1){
 			if(resultCode==getActivity().RESULT_OK){
-				Log.d("year",data.getStringExtra("year")+"");
-				Log.d("month",data.getStringExtra("month")+"");
-				Log.d("day",data.getStringExtra("day")+"");
+				Log.d("year",Integer.toString(data.getIntExtra("year",0)));
+				Log.d("month",Integer.toString(data.getIntExtra("month",0)));
+				Log.d("day",Integer.toString(data.getIntExtra("day",0)));
+				int day = data.getIntExtra("day",0);
+				int month = data.getIntExtra("month",0);
+				int year = data.getIntExtra("year",0);
+				
+				/*if(month==1||month==3||month==5||month==7||month==8||
+						month==10||month==12){
+					days = 31;
+				}else if(monthSelected==4||monthSelected==6||monthSelected==9||monthSelected==11){
+					days = 30;						
+				}else if (monthSelected==2){
+					int yearSelected = Integer.parseInt(yearSpin.getSelectedItem().toString());
+					if(yearSelected%4==0){
+						days=29;
+					}else{
+						days=28;
+					}
+				}*/
+				
+				
 			}			
 		}
 		
+	}
+	
+	
+	private String nextDay(int year,int month, int day){
+		String flag=null;
+		day++;
+		
+		
+		return flag;
 	}
 
 	private class RetrieveTimeLogHistory extends AsyncTask<String, Void,Boolean> {	        

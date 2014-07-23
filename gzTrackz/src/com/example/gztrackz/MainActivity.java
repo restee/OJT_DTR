@@ -146,8 +146,7 @@ public class MainActivity extends Activity {
         protected void onPreExecute() {
     		progressD = new ProgressDialog(context);
     		progressD.setMessage("Logging in...");
-    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-    		progressD.setCancelable(false);
+    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);    		
     		progressD.setCanceledOnTouchOutside(false);
     		progressD.show();
         }
