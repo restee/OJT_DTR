@@ -61,20 +61,30 @@ public class TimestampsFragment extends Fragment {
 			firstCreate = false;
 		}
 		
-		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);
-		
+		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);		
 		queryBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
 				Intent i = new Intent(getActivity(),TimeStampQueryDialog.class);
-				startActivity(i);
+				startActivityForResult(i,1);
 			}
 		});
 		
 		return rootView;
 	}
 	
-
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {	
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode==1){
+			if(resultCode==getActivity().RESULT_OK){
+				Log.d("year",data.getStringExtra("year")+"");
+				Log.d("month",data.getStringExtra("month")+"");
+				Log.d("day",data.getStringExtra("day")+"");
+			}			
+		}
+		
+	}
 
 	private class RetrieveTimeLogHistory extends AsyncTask<String, Void,Boolean> {	        
 		String email;

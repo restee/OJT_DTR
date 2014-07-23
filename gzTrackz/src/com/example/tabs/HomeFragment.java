@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment {
 		timeThread = new Thread();
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
-			checked=true;
+			checked=true;			
 		}else{			
 			timeLogBTN.setImageResource(timeIMG);
 		}
@@ -192,8 +192,9 @@ public class HomeFragment extends Fragment {
 	public void onResume() {	
 		super.onResume();
 		if(isNetworkAvailable()){
-			if(!fromOnCreate)
-				new AlreadyLogged(getActivity(),email).execute();
+			if(!fromOnCreate){
+				new AlreadyLogged(getActivity(),email).execute();				
+			}
 		}else{
 			hourDisplay="--";
 			minutesDisplay="--";
@@ -205,6 +206,8 @@ public class HomeFragment extends Fragment {
 		}
 	}
 	
+	
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);

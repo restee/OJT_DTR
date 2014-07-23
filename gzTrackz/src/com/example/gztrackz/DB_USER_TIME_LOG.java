@@ -100,6 +100,26 @@ public class DB_User_Time_Log {
 		return sql_db.delete(TABLE_NAME, where, null) != 0;
 	}
 
+	public List<TimeLog> getAllDay(String email,String date1, String date2){
+		List<TimeLog> flag = new ArrayList();
+		String where = KEY_EMAILADD + " = " + quote + email + quote + " AND "
+				+ KEY_TIMEIN + " >= " + date1 + " AND " + KEY_TIMEIN + "< " + date2;
+		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
+				null, null, null, null);
+
+		if (cursor != null) {		
+			cursor.moveToFirst();			
+			if(countCases()>0){	
+				do{
+						
+						flag.add(new TimeLog(cursor.getString(COL_EMAILADD),cursor.getString(COL_TIMEIN),cursor.getString(COL_TIMEOUT)));
+				}while(cursor.moveToNext());
+			}
+		}
+						
+		return flag;
+		
+	}
 	public void deleteAll() {
 		Cursor cursor = getAllRows();
 
