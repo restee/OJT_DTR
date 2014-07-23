@@ -85,21 +85,22 @@ public class TimestampsFragment extends Fragment {
 				int month = data.getIntExtra("month",0);
 				int year = data.getIntExtra("year",0);
 				
-				/*if(month==1||month==3||month==5||month==7||month==8||
-						month==10||month==12){
-					days = 31;
-				}else if(monthSelected==4||monthSelected==6||monthSelected==9||monthSelected==11){
-					days = 30;						
-				}else if (monthSelected==2){
-					int yearSelected = Integer.parseInt(yearSpin.getSelectedItem().toString());
-					if(yearSelected%4==0){
-						days=29;
-					}else{
-						days=28;
-					}
-				}*/
+				String date = Integer.toString(year) + "-" ;
 				
+				if(month<10){
+					date = date +"0" + Integer.toString(month) + "-";			
+				}else{
+					date = date + Integer.toString(month) + "-";
+				}
 				
+				if(day<10){
+					date = date + "0" + Integer.toString(day) + " 00:00:00";
+				}else{
+					date = date + Integer.toString(day) + " 00:00:00";
+				}
+				
+				Log.d("Today",date);
+				Log.d("Tomorrow", nextDay(year,month,day));				
 			}			
 		}
 		
@@ -109,7 +110,39 @@ public class TimestampsFragment extends Fragment {
 	private String nextDay(int year,int month, int day){
 		String flag=null;
 		day++;
+		if((month==1||month==3||month==5||month==7||month==8||month==10||month==12 )&& day==32){
+			day = 1;
+			month++;
+		}else if((month==4||month==6||month==9||month==11) && day==31){
+			day = 1;
+			month++;
+		}else if (month==2){			
+			if(year%4==0 && day==30){
+				day = 1;
+				month++;
+			}else if (day==29){
+				day=1;
+				month++;
+			}
+		}
 		
+		if(month==13){
+			month=1;
+			year++;
+		}
+		flag = Integer.toString(year) + "-" ;
+		
+		if(month<10){
+			flag = flag +"0" + Integer.toString(month) + "-";			
+		}else{
+			flag = flag + Integer.toString(month) + "-";
+		}
+		
+		if(day<10){
+			flag = flag + "0" + Integer.toString(day) + " 00:00:00";
+		}else{
+			flag = flag + Integer.toString(day) + " 00:00:00";
+		}
 		
 		return flag;
 	}
