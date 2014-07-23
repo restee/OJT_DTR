@@ -44,7 +44,7 @@
                 android:layout_height="30dp"
                 android:layout_width="40dp"
                 android:src="@drawable/gps_press"
-                android:layout_gravity="center""
+                android:layout_gravity="center"
                 />
     </TableRow>
     

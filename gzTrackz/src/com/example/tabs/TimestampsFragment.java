@@ -44,7 +44,7 @@ public class TimestampsFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_timestamp, container, false);
 		prefs = getActivity().getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);		
 		email = prefs.getString(EMAIL, null);
-		Log.d("FUCKING BULLSHIT", "YEAH");
+		
 		
 		if(firstCreate){
 			timeLogDB = new DB_User_Time_Log(getActivity());
@@ -56,7 +56,7 @@ public class TimestampsFragment extends Fragment {
 			for(int init = 0; init<timelogs.size();init++){
 				Log.d(timelogs.get(init).getEmail(),timelogs.get(init).getTimeIn() + "      " + timelogs.get(init).getTimeOut());
 			}
-			
+			firstCreate = false;
 		}
 		
 		return rootView;
@@ -70,8 +70,7 @@ public class TimestampsFragment extends Fragment {
 		
 		public RetrieveTimeLogHistory(Context context,String email){
 			this.context = context;
-			this.email = email;
-			
+			this.email = email;			
 		}
 		
 		@Override

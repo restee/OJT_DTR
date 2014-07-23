@@ -14,7 +14,7 @@ import android.util.Log;
 
 public class DB_User_Time_Log {
 
-	// debugging tags
+	
 	public static final String TAG = "DB_User_Time_Log";
 
 	public static final String KEY_EMAILADD = "email";
