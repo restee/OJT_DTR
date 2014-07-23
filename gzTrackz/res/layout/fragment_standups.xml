@@ -41,5 +41,13 @@
         android:text="Date"
         android:textColor="#ffffff"
         android:textSize="23dp" />
+    <TextView
+        android:id="@+id/norecordfound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="204dp"
+        android:text="No records found"
+        android:textSize="20dp" />
 
 </RelativeLayout>
