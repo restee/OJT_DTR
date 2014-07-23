@@ -6,6 +6,7 @@
     android:orientation="vertical" >
 
     <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
         android:layout_height="345dp"
         android:layout_marginTop="70dp"
@@ -56,8 +57,6 @@
             android:id="@+id/timeintimeoutlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        
     </TableLayout>
 
     <Button
@@ -82,5 +81,15 @@
         android:text="Date"
         android:textColor="#ffffff"
         android:textSize="23dp" />
+
+    <TextView
+        android:id="@+id/norecordfound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tableLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
+        android:text="No records found"
+        android:textSize="20dp" />
 
 </RelativeLayout>
