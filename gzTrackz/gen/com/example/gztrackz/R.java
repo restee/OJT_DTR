@@ -129,6 +129,7 @@ public final class R {
         public static final int time_manager=0x7f080003;
         public static final int time_stamp_query_dialog=0x7f080004;
         public static final int view_stand_up_dialog=0x7f080005;
+        public static final int view_standup=0x7f080006;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;

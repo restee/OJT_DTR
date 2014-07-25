@@ -1,5 +1,8 @@
 package com.example.gztrackz;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -34,10 +37,11 @@ public class DB_Standups {
 			+ TABLE_NAME + " (" + KEY_EMAILADD + " varchar, "
 
 			+ KEY_DATE + " timestamp not null, " + KEY_STANDUPS_YESTERDAY
-			+ " text not null, " + KEY_STANDUPS_TODO + " text not null"
-			+ KEY_STANDUPS_HINDRANCE + " text" + " PRIMARY KEY ("
+			+ " text not null, " + KEY_STANDUPS_TODO + " text not null, "
+			+ KEY_STANDUPS_HINDRANCE + " text" + " ,PRIMARY KEY ("
 			+ KEY_EMAILADD + "," + KEY_DATE + "));";
 
+	private char quote = '"';
 	private Context appContext;
 
 	private DB_Standups_Helper standups_DBHelper;
@@ -79,7 +83,7 @@ public class DB_Standups {
 			String standups_yesterday, String standups_todo,
 			String standups_hindrance) {
 
-		String where = KEY_EMAILADD + "=" + emailAdd;
+		String where = KEY_EMAILADD + "=" +quote+ emailAdd + quote + " AND " + KEY_DATE + "=" + quote + date + quote;
 
 		ContentValues contentValues = getContentValues(emailAdd, date,
 				standups_yesterday, standups_todo, standups_hindrance);
@@ -133,7 +137,48 @@ public class DB_Standups {
 		}
 		return cursor;
 	}
+	public void removeAll()
+	{
+		sql_db.delete(TABLE_NAME, null, null);
+	}
+	public List<Standup> getAllRowOf(String email){
+		List<Standup> flag = new ArrayList();
+		String where = KEY_EMAILADD + " = " + quote + email + quote;
+		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
+				null, null, null, null);
 
+		if (cursor != null) {		
+			cursor.moveToFirst();			
+			if(cursor.getCount()>0){	
+				do{						
+						flag.add(new Standup(cursor.getString(COL_EMAILADD),cursor.getString(COL_DATE),cursor.getString(COL_STANDUPS_YESTERDAY),cursor.getString(COL_STANDUPS_TODO),cursor.getString(COL_STANDUPS_HINDRANCE)));
+				}while(cursor.moveToNext());
+			}
+		}
+						
+		return flag;
+	}
+	
+
+	public Standup getLatestRowOf(String email){
+		Standup flag = new Standup();
+		String where = KEY_EMAILADD + " = " + quote + email + quote;
+		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
+				null, null, "2 DESC", null);
+		if (cursor != null) {
+			cursor.moveToFirst();
+			if(cursor.getCount()>0){	
+				flag.setEmail(email);
+				flag.setDate(cursor.getString(COL_DATE));
+				flag.setStandup_y(cursor.getString(COL_STANDUPS_YESTERDAY));
+				flag.setStandup_todo(cursor.getString(COL_STANDUPS_TODO));
+				flag.setProblem(cursor.getString(COL_STANDUPS_HINDRANCE));
+			}
+		}
+						
+		return flag;
+	}
+	
 	// Get a specific row (by email or date)
 	public Cursor getRow(String search_entry, int search_flag) {
 		

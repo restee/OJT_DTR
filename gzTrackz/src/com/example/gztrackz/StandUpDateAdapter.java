@@ -45,6 +45,15 @@ public class StandUpDateAdapter extends BaseAdapter {
 		TextView standupPreviewMessage = (TextView) convertView.findViewById(R.id.standupspreviewmessage);
 		TextView standupTime = (TextView) convertView.findViewById(R.id.standupstime);
 		
+		standupDate.setText(resultList.get(position).getDate().substring(0,11));
+		standupTime.setText(resultList.get(position).getDate().substring(11));
+		if(resultList.get(position).getStandup_todo().length()<=37){
+			standupPreviewMessage.setText(resultList.get(position).getStandup_todo());
+		}else{
+			standupPreviewMessage.setText(resultList.get(position).getStandup_todo().substring(0,37)+ "...");
+		}
+		
+		
 		return convertView;
 	}
 

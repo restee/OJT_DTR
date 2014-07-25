@@ -54,6 +54,11 @@
             android:label="@string/title_activity_time_stamp_query_dialog" 
             android:theme="@style/dialog">
         </activity>
+         <activity
+            android:name="com.example.gztrackz.ViewStandupActivity"
+             
+            >
+        </activity>
     </application>
 
 </manifest>

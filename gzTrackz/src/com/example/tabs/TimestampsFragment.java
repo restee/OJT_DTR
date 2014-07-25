@@ -72,7 +72,7 @@ public class TimestampsFragment extends Fragment {
 		if(firstCreate){
 			timeLogDB = new DB_User_Time_Log(getActivity());
 			timeLogDB.open();
-			timeLogDB.removeAll();
+			
 			new RetrieveTimeLogHistory(getActivity(),email).execute();		
 			firstCreate = false;
 		}
