@@ -51,8 +51,12 @@
         </activity>
         <activity
             android:name="com.example.gztrackz.TimeStampQueryDialog"
-            android:label="@string/title_activity_time_stamp_query_dialog" 
-            android:theme="@style/dialog">
+            android:label="@string/title_activity_time_stamp_query_dialog"
+            android:theme="@style/dialog" >
+        </activity>
+        <activity
+            android:name="com.example.gztrackz.ViewStandUpDialog"
+            android:label="@string/title_activity_view_stand_up_dialog" >
         </activity>
     </application>
 
