@@ -40,7 +40,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
-	private String[] tabs = { "Home", "History", "StandUps" };
+	private String[] tabs = { "History", "Home", "StandUps" };
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private String email;
 	private DB_User_Time_Log timeLogDB;
@@ -51,8 +51,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_manager);
-		timeLogDB = new DB_User_Time_Log(this);
-		timeLogDB.open();
+		
 		// Initialization
 		 prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 		viewPager = (ViewPager) findViewById(R.id.pager);
@@ -64,13 +63,13 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setTitle(prefs.getString(FNAME, null) + " " + prefs.getString(LNAME,null));	
 		email = getIntent().getStringExtra("email");
-				
+		
 
 		for (String tab_name : tabs) {
 			actionBar.addTab(actionBar.newTab().setText(tab_name)
 					.setTabListener(this));
 		}
-					
+		actionBar.setSelectedNavigationItem(1);					
 		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 			@Override

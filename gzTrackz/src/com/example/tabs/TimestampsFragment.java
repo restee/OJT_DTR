@@ -50,6 +50,8 @@ public class TimestampsFragment extends Fragment {
 	private ResultListAdapter resultListAdapter;
 	private TextView noRecords,dateTXT;	
 	
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -70,8 +72,7 @@ public class TimestampsFragment extends Fragment {
 		if(firstCreate){
 			timeLogDB = new DB_User_Time_Log(getActivity());
 			timeLogDB.open();
-			
-			
+			timeLogDB.removeAll();
 			new RetrieveTimeLogHistory(getActivity(),email).execute();		
 			firstCreate = false;
 		}

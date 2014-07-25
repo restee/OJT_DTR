@@ -48,8 +48,13 @@ public class ResultListAdapter extends BaseAdapter {
 		
 		date.setText(resultList.get(position).getTimeIn().substring(0,11));
 		timein.setText(resultList.get(position).getTimeIn().substring(11,resultList.get(position).getTimeIn().length()));
-		timeout.setText(resultList.get(position).getTimeOut().substring(11,resultList.get(position).getTimeOut().length()));
-				
+		if(resultList.get(position).getTimeOut().length()>4){
+			timeout.setText(resultList.get(position).getTimeOut().substring(11,resultList.get(position).getTimeOut().length()));
+		}else{
+			timeout.setText("--:--:--");
+		}
+		
+		
 		return convertView;
 	}
 

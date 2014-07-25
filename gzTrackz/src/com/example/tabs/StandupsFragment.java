@@ -35,6 +35,8 @@ public class StandupsFragment extends Fragment {
 	private boolean firstCreate=true;
 	private String email;
 	
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -42,8 +44,15 @@ public class StandupsFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_standups, container, false);
 		prefs = getActivity().getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);		
 		email = prefs.getString(EMAIL, null);
+			
 		
-		
+		if(firstCreate){
+			firstCreate = false;
+			standupsDB = new DB_Standups(getActivity());
+			standupsDB.open();
+			
+			//new RetrieveStandupHistory(getActivity(),email).execute();
+		}
 		
 		return rootView;
 	}
@@ -54,12 +63,13 @@ public class StandupsFragment extends Fragment {
 		
 		public RetrieveStandupHistory(Context context,String email){
 			this.context = context;
-			this.email = email;			
+			this.email = email;		
+			
 		}
 		
 		@Override
 	    protected void onPreExecute() {
-			Log.d("STARTED RETRIEVING TIMELOG HISTORY","GOGOGOGOGO");
+			Log.d("STARTED RETRIEVING STANDUP HISTORY","---------------------");
 	    }
 		
 		@Override
@@ -73,6 +83,7 @@ public class StandupsFragment extends Fragment {
 	        try {	        	
 	        	String urlTopTracks=null;
 				
+	        	urlTopTracks = "http://gz123.site90.net/get_standups/?email=" + email;
 				
 				HttpClient client = new DefaultHttpClient();
 				ResponseHandler<String> handler = new BasicResponseHandler();
@@ -85,8 +96,11 @@ public class StandupsFragment extends Fragment {
 				String retrieveResult = token.nextToken();
 				JSONArray timeLogResult = new JSONArray(retrieveResult);
 				JSONObject temp;
-								
-				Log.d("TIMELOG HISTORY     " + Integer.toString(timeLogResult.length()),retrieveResult);				
+				for(int init=0;init<timeLogResult.length();init++){
+					temp = timeLogResult.getJSONObject(init);
+					standupsDB.insertRow(temp.getString("email"), temp.getString("date"),temp.getString("standup_y"),temp.getString("standup_todo"),temp.getString("problem"));					
+				}
+				Log.d("Standup HISTORY     ",retrieveResult);				
 			} catch (Exception e) {			
 				flag = false;
 				e.printStackTrace();

@@ -146,11 +146,7 @@ public class HomeFragment extends Fragment {
 						    @Override
 						    public void onClick(DialogInterface dialog, int which) {
 						        switch (which){
-						        case DialogInterface.BUTTON_POSITIVE:
-						        	//new AlreadyLoggedCheck(getActivity(),email).execute();
-						        	//homeInterface.buttonClicked(true);
-						        								        	
-						        	
+						        case DialogInterface.BUTTON_POSITIVE:						        									        						        	
 						        	new TimeLog(getActivity(), email,true).execute();	
 						            break;
 						        case DialogInterface.BUTTON_NEGATIVE:
@@ -503,14 +499,14 @@ public class HomeFragment extends Fragment {
         			Toast.makeText(context,"Successfulled timed in at "+ time + ".", Toast.LENGTH_LONG).show();
         			timeIMG = R.drawable.inactivetimeout;							        	
 		        	timeLogBTN.setImageResource(R.drawable.inactivetimeout);
+		        	new StandupCheck(context,email).execute();
         		}else{
         			Toast.makeText(context,"Successfulled timed out at "+ time + ".", Toast.LENGTH_LONG).show();
         			timeIMG = R.drawable.inactivetimein;
         			timeLogBTN.setImageResource(R.drawable.inactivetimein);
         		}
-        			 	
-        		if(!timeIn)
-        			new StandupCheck(context,email).execute();
+        			 	        		
+        			
         	}
         	else
         		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        		        	
@@ -613,6 +609,7 @@ private class StandupCheck extends AsyncTask<String, Void,Boolean> {
     	
     	if(standupAvailable){
     		Intent i =new Intent(context,StandUpsDialog.class);
+    		i.putExtra("email", email);
     		startActivityForResult(i,1);			        			
     	}
     }
