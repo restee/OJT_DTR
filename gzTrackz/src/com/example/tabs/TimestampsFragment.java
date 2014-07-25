@@ -1,5 +1,6 @@
 package com.example.tabs;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -22,10 +23,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gztrackz.DB_User_Time_Log;
 import com.example.gztrackz.R;
+import com.example.gztrackz.ResultListAdapter;
 import com.example.gztrackz.StandUpsDialog;
 import com.example.gztrackz.TimeLog;
 import com.example.gztrackz.TimeStampQueryDialog;
@@ -39,6 +45,11 @@ public class TimestampsFragment extends Fragment {
 	private DB_User_Time_Log timeLogDB;
 	private List<TimeLog> timelogs;
 	private Button queryBTN;
+	private ListView resultListView;
+	private List<TimeLog> resultList;
+	private ResultListAdapter resultListAdapter;
+	private TextView noRecords;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -47,19 +58,27 @@ public class TimestampsFragment extends Fragment {
 		prefs = getActivity().getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);		
 		email = prefs.getString(EMAIL, null);
 		
+		noRecords = (TextView) rootView.findViewById(R.id.norecordfound);
+		resultList = new ArrayList();
+		resultListAdapter = new ResultListAdapter(getActivity(),resultList);
+		resultListView = (ListView) rootView.findViewById(R.id.timeintimeoutlist);		
 		
+		
+		noRecords.setVisibility(View.INVISIBLE);
 		if(firstCreate){
 			timeLogDB = new DB_User_Time_Log(getActivity());
 			timeLogDB.open();
 			new RetrieveTimeLogHistory(getActivity(),email).execute();		
-			
+
 			timelogs = timeLogDB.getAllRowOf(email);
-			
+			resultListAdapter = new ResultListAdapter(getActivity(),timelogs);
+			resultListView.setAdapter(resultListAdapter);
 			for(int init = 0; init<timelogs.size();init++){
 				Log.d(timelogs.get(init).getEmail(),timelogs.get(init).getTimeIn() + "      " + timelogs.get(init).getTimeOut());
 			}
 			firstCreate = false;
 		}
+		
 		
 		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);		
 		queryBTN.setOnClickListener(new View.OnClickListener() {			
@@ -84,23 +103,51 @@ public class TimestampsFragment extends Fragment {
 				int day = data.getIntExtra("day",0);
 				int month = data.getIntExtra("month",0);
 				int year = data.getIntExtra("year",0);
-				
-				String date = Integer.toString(year) + "-" ;
-				
-				if(month<10){
-					date = date +"0" + Integer.toString(month) + "-";			
-				}else{
-					date = date + Integer.toString(month) + "-";
+				String date2,date;
+				if(year!=0){
+					date = Integer.toString(year) + "-" ;
+					
+					if(month!=0){
+						if(month<10){
+							date = date +"0" + Integer.toString(month) + "-";			
+						}else{
+							date = date + Integer.toString(month) + "-";
+						}
+						if(day!=0){
+							if(day<10){
+								date = date + "0" + Integer.toString(day) + " 00:00:00";
+							}else{
+								date = date + Integer.toString(day) + " 00:00:00";
+							}
+							date2 = nextDay(year,month,day);
+							Log.d("Today",date);
+							Log.d("Tomorrow", date2);
+						}else{
+							date = date + "01 00:00:00";
+							date2 = nextMonth(year,month);
+							
+							Log.d("Today",date);
+							Log.d("Next Month", date2);
+						}
+					}else{
+						date = date + "01-01 00:00:00";
+						date2 = Integer.toString(year+1) +"-01-01 00:00:00"; 
+						Log.d("Today",date);
+						Log.d("Next Year", date2);
+					}
+					
+					resultList= timeLogDB.getAllDay(email, date, date2);					
+					if(resultList.size()>0){						
+						for(int init=0;init<resultList.size();init++){
+							Log.d("RESULT", resultList.get(init).getTimeIn() + "     " + resultList.get(init).getTimeOut());							
+						}						
+						resultListAdapter.notifyDataSetChanged();
+						
+					}else{
+						noRecords.setVisibility(View.VISIBLE);
+					}
+					Toast.makeText(getActivity(), Integer.toString(resultList.size()),Toast.LENGTH_SHORT).show();
 				}
-				
-				if(day<10){
-					date = date + "0" + Integer.toString(day) + " 00:00:00";
-				}else{
-					date = date + Integer.toString(day) + " 00:00:00";
-				}
-				
-				Log.d("Today",date);
-				Log.d("Tomorrow", nextDay(year,month,day));				
 			}			
 		}
 		
@@ -142,6 +189,24 @@ public class TimestampsFragment extends Fragment {
 			flag = flag + "0" + Integer.toString(day) + " 00:00:00";
 		}else{
 			flag = flag + Integer.toString(day) + " 00:00:00";
+		}
+		
+		return flag;
+	}
+	
+	private String nextMonth(int year,int month){
+		String flag = null;
+		month++;
+		if(month==13){
+			year++;
+			month=1;
+		}
+		flag = Integer.toString(year);
+		
+		if(month<10){
+			flag = flag + "-0" + Integer.toString(month) + "-01 00:00:00";
+		}else{
+			flag = flag + "-" + Integer.toString(month) + "-01 00:00:00";			
 		}
 		
 		return flag;

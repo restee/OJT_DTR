@@ -99,19 +99,18 @@ public class DB_User_Time_Log {
 		String where = KEY_EMAILADD + "=" + emailAdd;
 		return sql_db.delete(TABLE_NAME, where, null) != 0;
 	}
-
+	
 	public List<TimeLog> getAllDay(String email,String date1, String date2){
 		List<TimeLog> flag = new ArrayList();
 		String where = KEY_EMAILADD + " = " + quote + email + quote + " AND "
-				+ KEY_TIMEIN + " >= " + date1 + " AND " + KEY_TIMEIN + "< " + date2;
+				+ KEY_TIMEIN + " >= " + quote + date1 + quote + " AND " + KEY_TIMEIN + "< " + quote + date2 + quote;
 		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
 				null, null, null, null);
 
 		if (cursor != null) {		
 			cursor.moveToFirst();			
-			if(countCases()>0){	
-				do{
-						
+			if(cursor.getCount()>0){	
+				do{						
 						flag.add(new TimeLog(cursor.getString(COL_EMAILADD),cursor.getString(COL_TIMEIN),cursor.getString(COL_TIMEOUT)));
 				}while(cursor.moveToNext());
 			}
@@ -152,7 +151,7 @@ public class DB_User_Time_Log {
 				null, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
-			if(countCases()>0){	
+			if(cursor.getCount()>0){	
 				do{
 					flag.add(new TimeLog(cursor.getString(COL_EMAILADD),cursor.getString(COL_TIMEIN),cursor.getString(COL_TIMEOUT)));
 				}while(cursor.moveToNext());
@@ -170,7 +169,7 @@ public class DB_User_Time_Log {
 
 		if (cursor != null) {		
 			cursor.moveToFirst();			
-			if(countCases()>0){	
+			if(cursor.getCount()>0){	
 				do{
 						
 						flag.add(new TimeLog(cursor.getString(COL_EMAILADD),cursor.getString(COL_TIMEIN),cursor.getString(COL_TIMEOUT)));
@@ -181,15 +180,7 @@ public class DB_User_Time_Log {
 		return flag;
 	}
 	
-	public int countCases() {
-
-        String SQLQuery = "SELECT COUNT(*) FROM " + TABLE_NAME + ";";        
-        Cursor cursor = sql_db.rawQuery(SQLQuery, null);
-        cursor.moveToFirst();
-        int count = cursor.getInt(0);
-        cursor.close();
-        return count;
-    }
+	
 	
 	public TimeLog getLatestRowOf(String email){
 		TimeLog flag = new TimeLog();
@@ -198,7 +189,7 @@ public class DB_User_Time_Log {
 				null, null, "2 DESC", null);
 		if (cursor != null) {
 			cursor.moveToFirst();
-			if(countCases()>0){	
+			if(cursor.getCount()>0){	
 				flag.setEmail(email);
 				flag.setTimeIn(cursor.getString(COL_TIMEIN));
 				flag.setTimeOut(cursor.getString(COL_TIMEOUT));
