@@ -54,7 +54,7 @@ public final class R {
     public static final class id {
         public static final int TextView01=0x7f090011;
         public static final int TextView03=0x7f090015;
-        public static final int View01=0x7f09001e;
+        public static final int View01=0x7f09001d;
         public static final int action_logout=0x7f090037;
         public static final int action_settings=0x7f090036;
         public static final int ampmTxt=0x7f090022;
@@ -95,7 +95,7 @@ public final class R {
         public static final int standupsproblem=0x7f090014;
         public static final int standupsproblemtext=0x7f09001f;
         public static final int standupstime=0x7f090034;
-        public static final int standupstodonowtext=0x7f09001d;
+        public static final int standupstodonowtext=0x7f09001e;
         public static final int standuptime=0x7f09001a;
         public static final int tableLayout1=0x7f090029;
         public static final int textView1=0x7f090009;
