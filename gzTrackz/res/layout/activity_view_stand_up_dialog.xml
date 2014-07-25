@@ -64,24 +64,6 @@
         android:textColor="#000000"
         android:text="What I plan to do now" />
 
-    <TextView
-        android:id="@+id/standupstodonowtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView01"
-        android:layout_marginTop="15dp"
-        android:layout_toLeftOf="@+id/standuptime"
-        android:text="This is what I plan to do now" />
-
-    <TextView
-        android:id="@+id/standupprevioustext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="This is what I did in the previous" />
-
     <View
         android:id="@+id/View01"
         android:layout_width="match_parent"
@@ -107,6 +89,24 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/standupprevioustext"
         android:layout_below="@+id/textView1"
+        android:layout_marginTop="15dp"
+        android:text="This is what I did in the previous" />
+
+    <TextView
+        android:id="@+id/standupstodonowtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="15dp"
+        android:text="This is what I plan to do now" />
+
+    <TextView
+        android:id="@+id/standupprevioustext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
         android:layout_marginTop="15dp"
         android:text="This is what I did in the previous" />
 
