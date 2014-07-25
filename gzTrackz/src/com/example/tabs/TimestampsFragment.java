@@ -48,7 +48,7 @@ public class TimestampsFragment extends Fragment {
 	private ListView resultListView;
 	private List<TimeLog> resultList;
 	private ResultListAdapter resultListAdapter;
-	private TextView noRecords;
+	private TextView noRecords,dateTXT;	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,28 +59,25 @@ public class TimestampsFragment extends Fragment {
 		email = prefs.getString(EMAIL, null);
 		
 		noRecords = (TextView) rootView.findViewById(R.id.norecordfound);
+		dateTXT = (TextView) rootView.findViewById(R.id.dateTextView);
 		resultList = new ArrayList();
+		
 		resultListAdapter = new ResultListAdapter(getActivity(),resultList);
 		resultListView = (ListView) rootView.findViewById(R.id.timeintimeoutlist);		
-		
+		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);		
 		
 		noRecords.setVisibility(View.INVISIBLE);
 		if(firstCreate){
 			timeLogDB = new DB_User_Time_Log(getActivity());
 			timeLogDB.open();
+			
+			
 			new RetrieveTimeLogHistory(getActivity(),email).execute();		
-
-			timelogs = timeLogDB.getAllRowOf(email);
-			resultListAdapter = new ResultListAdapter(getActivity(),timelogs);
-			resultListView.setAdapter(resultListAdapter);
-			for(int init = 0; init<timelogs.size();init++){
-				Log.d(timelogs.get(init).getEmail(),timelogs.get(init).getTimeIn() + "      " + timelogs.get(init).getTimeOut());
-			}
 			firstCreate = false;
 		}
 		
 		
-		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);		
+		
 		queryBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
@@ -119,34 +116,40 @@ public class TimestampsFragment extends Fragment {
 							}else{
 								date = date + Integer.toString(day) + " 00:00:00";
 							}
+							dateTXT.setText(date.substring(0,11));
 							date2 = nextDay(year,month,day);
 							Log.d("Today",date);
 							Log.d("Tomorrow", date2);
 						}else{
+							dateTXT.setText(date.substring(0,date.length()-1));
 							date = date + "01 00:00:00";
-							date2 = nextMonth(year,month);
-							
+							date2 = nextMonth(year,month);							
 							Log.d("Today",date);
-							Log.d("Next Month", date2);
+							Log.d("Next Month", date2);							
 						}
 					}else{
+						dateTXT.setText(date.substring(0,date.length()-1));
 						date = date + "01-01 00:00:00";
 						date2 = Integer.toString(year+1) +"-01-01 00:00:00"; 
 						Log.d("Today",date);
-						Log.d("Next Year", date2);
-					}
-					
+						Log.d("Next Year", date2);						
+					}					
 					resultList= timeLogDB.getAllDay(email, date, date2);					
 					if(resultList.size()>0){						
 						for(int init=0;init<resultList.size();init++){
 							Log.d("RESULT", resultList.get(init).getTimeIn() + "     " + resultList.get(init).getTimeOut());							
-						}						
-						resultListAdapter.notifyDataSetChanged();
-						
-					}else{
+						}												
+						resultListAdapter = new ResultListAdapter(getActivity(),resultList);
+						resultListView.setAdapter(resultListAdapter);
+						noRecords.setVisibility(View.INVISIBLE);
+					}else{											
 						noRecords.setVisibility(View.VISIBLE);
 					}
-					Toast.makeText(getActivity(), Integer.toString(resultList.size()),Toast.LENGTH_SHORT).show();
+					resultListAdapter = new ResultListAdapter(getActivity(),resultList);
+					resultListView.setAdapter(resultListAdapter);
+					//Toast.makeText(getActivity(), Integer.toString(resultList.size()),Toast.LENGTH_SHORT).show();
+				}else{
+					dateTXT.setText("---- -- --");
 				}
 			}			
 		}
@@ -224,11 +227,14 @@ public class TimestampsFragment extends Fragment {
 		@Override
 	    protected void onPreExecute() {
 			Log.d("STARTED RETRIEVING TIMELOG HISTORY","GOGOGOGOGO");
+			queryBTN.setText("Retrieving history....");
+			queryBTN.setEnabled(false);
 	    }
 		
 		@Override
 	    protected void onPostExecute(Boolean result) {        	
-	    	
+			queryBTN.setText("Search");
+			queryBTN.setEnabled(true);
 	    }
 		
 		@Override

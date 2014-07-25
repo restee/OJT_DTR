@@ -133,6 +133,10 @@ public class DB_User_Time_Log {
 		cursor.close();
 	}
 
+	public void removeAll()
+	{
+		sql_db.delete(TABLE_NAME, null, null);
+	}
 	// Return all data in the database.
 	public Cursor getAllRows() {
 		String where = null;

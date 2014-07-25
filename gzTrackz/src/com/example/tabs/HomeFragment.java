@@ -188,25 +188,12 @@ public class HomeFragment extends Fragment {
 		super.onPause();
 		fromOnCreate = false;
 	}
+	
 	@Override
 	public void onResume() {	
-		super.onResume();
-		if(isNetworkAvailable()){
-			if(!fromOnCreate){
-				new AlreadyLogged(getActivity(),email).execute();				
-			}
-		}else{
-			hourDisplay="--";
-			minutesDisplay="--";
-			dateDisplay="--------, ------ --";
-			amPmDisplay="--";
-			timeTXT.setText(hourDisplay+":" + minutesDisplay);
-			dateTXT.setText(dateDisplay);
-			amPmTXT.setText(amPmDisplay);
-		}
+		super.onResume();	
 	}
-	
-	
+		
 
 	@Override
 	public void onAttach(Activity activity) {
