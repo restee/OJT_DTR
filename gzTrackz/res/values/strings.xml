@@ -9,5 +9,6 @@
     <string name="title_activity_tabs_manager">TabsManager</string>
     <string name="title_activity_stand_ups_dialog">StandUpsDialog</string>
     <string name="title_activity_time_stamp_query_dialog">TimeStampQueryDialog</string>
+    <string name="title_activity_view_stand_up_dialog">ViewStandUpDialog</string>
 
 </resources>

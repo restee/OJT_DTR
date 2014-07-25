@@ -2,13 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context=".RegisterActivity" >
+    tools:context=".RegisterActivity"
+    android:background="#357ec7" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -131,11 +131,11 @@
 
         <Button
             android:id="@+id/registerButton"
-            android:layout_width="80dp"
-        	android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_below="@+id/confirmpasswordEditText"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/firstnameTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
             android:text="Register"
             android:textSize="13dp" />
 
