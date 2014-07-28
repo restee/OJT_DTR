@@ -70,6 +70,8 @@ public class StandupsFragment extends Fragment {
 			firstCreate = false;
 			standupsDB = new DB_Standups(getActivity());
 			standupsDB.open();
+			
+			
 			standupList = new ArrayList();			
 			if(isConnectingToInternet()){
 				new RetrieveStandupHistory(getActivity(),email).execute();
@@ -158,7 +160,7 @@ public class StandupsFragment extends Fragment {
 						dateList.setAdapter(standupAdapter);
 						nothing.setVisibility(View.INVISIBLE);
 					}else{
-						//Toast.makeText(getActivity(), Integer.toString(standupList.size()),Toast.LENGTH_SHORT).show();
+						
 						nothing.setVisibility(View.VISIBLE);
 					}
 					

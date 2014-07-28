@@ -42,6 +42,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gztrackz.GZ_Service_Locator;
 import com.example.gztrackz.R;
 import com.example.gztrackz.StandUpsDialog;
 
@@ -64,7 +65,7 @@ public class HomeFragment extends Fragment {
 	private boolean loggedIn,checked=false,buttonPressed=false,fromOnCreate;
 	private TextView nameTXT,timeTXT,dateTXT,amPmTXT;
 	private int timeIMG; 
-	
+	private GZ_Service_Locator gps;
 	
 	private Intent timeServiceIntent;
 	private Thread timeThread;
@@ -131,6 +132,7 @@ public class HomeFragment extends Fragment {
 		timeThread = new Thread();
 		if(!checked){
 			new AlreadyLogged(getActivity(),email).execute();
+			gps = new GZ_Service_Locator(getActivity());
 			checked=true;			
 		}else{			
 			timeLogBTN.setImageResource(timeIMG);
@@ -158,10 +160,23 @@ public class HomeFragment extends Fragment {
 					builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
 					    .setNegativeButton("No", dialogClickListener).setCancelable(false).show();
 					}else{
-						//new AlreadyLoggedCheck(getActivity(),email).execute();
-						//homeInterface.buttonClicked(false);
-						new TimeLog(getActivity(), email,false).execute();	
-			        	
+						if (gps.canGetLocation()){
+							double latitude = gps.getLatitude();
+							double longitude = gps.getLongitude();
+							if(latitude==0&&longitude==0){
+								gps.showSettingsAlert();
+							}else{
+								new TimeLog(getActivity(), email,false,longitude,latitude).execute();
+							}
+							Toast.makeText(
+									getActivity(),
+									"Your Location is - \nLat: " + latitude
+											+ "\nLong: " + longitude,
+									Toast.LENGTH_LONG).show();
+						
+						}else{
+							Toast.makeText(getActivity(), "Please enable GPS!", Toast.LENGTH_SHORT).show();							
+						}
 					}				
 				}else{
 					Toast.makeText(getActivity(), "Unable to connect to the server!\nPlease make sure you are connected to the internet.", Toast.LENGTH_LONG).show();					
@@ -467,12 +482,24 @@ public class HomeFragment extends Fragment {
     	ProgressDialog progressD;
     	String date, time;
     	boolean timeIn;
+    	double longitude, latitude;
+    	
     	
     	public TimeLog(Context context,String email,boolean timeIn){
     		this.context = context;
     		this.email = email;
     		this.password = password;	    		
     		this.timeIn = timeIn;
+    		this.longitude = 0;
+    		this.latitude = 0;
+    	}
+    	public TimeLog(Context context,String email,boolean timeIn,double longitude,double latitude){
+    		this.context = context;
+    		this.email = email;
+    		this.password = password;	    		
+    		this.timeIn = timeIn;
+    		this.longitude = longitude;
+    		this.latitude = latitude;
     	}
     	
     	@Override
@@ -551,7 +578,8 @@ public class HomeFragment extends Fragment {
 					Log.d("Time out",Boolean.toString(timeIn));
             	}
             	else{
-	            	urlTopTracks = "http://gz123.site90.net/timein/?email=" + email ;										
+	            	urlTopTracks = "http://gz123.site90.net/timein/?email=" + email + "&longitude=" + Double.toString(longitude) +
+	            			"&latitude=" + Double.toString(latitude);										
 					request = new HttpPost(urlTopTracks);					
 					httpResponseTopTracks = client.execute(request, handler);				
 					

@@ -43,7 +43,7 @@ public class TabsManager extends FragmentActivity implements ActionBar.TabListen
 	private String[] tabs = { "History", "Home", "StandUps" };
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private String email;
-	private DB_User_Time_Log timeLogDB;
+	
 	private Context context;
 	private SharedPreferences prefs ;
 	

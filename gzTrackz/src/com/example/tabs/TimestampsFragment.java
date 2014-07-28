@@ -23,13 +23,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gztrackz.DB_User_Time_Log;
+
+import com.example.gztrackz.DB_User_Timelog;
+import com.example.gztrackz.GZ_Task_Geocode;
 import com.example.gztrackz.R;
 import com.example.gztrackz.ResultListAdapter;
 import com.example.gztrackz.StandUpsDialog;
@@ -42,7 +45,7 @@ public class TimestampsFragment extends Fragment {
 	private SharedPreferences prefs ;
 	private String email;
 	private boolean firstCreate=true;
-	private DB_User_Time_Log timeLogDB;
+	private DB_User_Timelog timeLogDB;
 	private List<TimeLog> timelogs;
 	private Button queryBTN;
 	private ListView resultListView;
@@ -68,8 +71,10 @@ public class TimestampsFragment extends Fragment {
 		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);
 		
 		if(firstCreate){
-			timeLogDB = new DB_User_Time_Log(getActivity());
+			timeLogDB = new DB_User_Timelog(getActivity());
 			timeLogDB.open();
+			timeLogDB.removeAll();
+			
 			resultList = new ArrayList();			
 			resultListAdapter = new ResultListAdapter(getActivity(),resultList);
 			
@@ -95,6 +100,20 @@ public class TimestampsFragment extends Fragment {
 				startActivityForResult(i,1);
 			}
 		});
+		
+		resultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				//Toast.makeText(getActivity(), resultList.get(position).getGps(),Toast.LENGTH_SHORT).show();	
+				StringTokenizer token = new StringTokenizer(resultList.get(position).getGps(),",");
+				double latitude = Double.parseDouble(token.nextToken());
+				double longitude = Double.parseDouble(token.nextToken());
+				new GZ_Task_Geocode(getActivity(), latitude, longitude).execute();
+			}
+		});
+		
 		
 		return rootView;
 	}
@@ -152,7 +171,7 @@ public class TimestampsFragment extends Fragment {
 					resultList= timeLogDB.getAllDay(email, date, date2);					
 					if(resultList.size()>0){						
 						for(int init=0;init<resultList.size();init++){
-							Log.d("RESULT", resultList.get(init).getTimeIn() + "     " + resultList.get(init).getTimeOut());							
+							Log.d("RESULT", resultList.get(init).getTimeIn() + "     " + resultList.get(init).getTimeOut() + resultList.get(init).getGps());							
 						}												
 						resultListAdapter = new ResultListAdapter(getActivity(),resultList);
 						resultListView.setAdapter(resultListAdapter);
@@ -285,13 +304,19 @@ public class TimestampsFragment extends Fragment {
 				for(int init = 0;init<timeLogResult.length();init++){					
 					temp = timeLogResult.getJSONObject(init);
 					if(latest.getEmail()!=null&&init==0){
-						timeLogDB.updateRow(email,temp.getString("timein") , temp.getString("timeout"));
-					}else
-						timeLogDB.insertRow(email,temp.getString("timein") , temp.getString("timeout"));
+						String longLat = temp.getJSONArray("gps").getJSONObject(0).getString("long");
+						longLat = longLat + "," + temp.getJSONArray("gps").getJSONObject(1).getString("lat");
+						timeLogDB.updateRow(email,temp.getString("timein") , temp.getString("timeout"),longLat);
+					}else{
+						String longLat = temp.getJSONArray("gps").getJSONObject(0).getString("long");
+						longLat = longLat + "," + temp.getJSONArray("gps").getJSONObject(1).getString("lat");
+						timeLogDB.insertRow(email,temp.getString("timein") , temp.getString("timeout"),longLat);
+					}
 				}
 				Log.d("TIMELOG HISTORY     " + Integer.toString(timeLogResult.length()),retrieveResult);				
 			} catch (Exception e) {			
 				flag = false;
+				
 				e.printStackTrace();
 			}
 	        
