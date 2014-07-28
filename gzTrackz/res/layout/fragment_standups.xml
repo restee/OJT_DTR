@@ -5,21 +5,6 @@
     android:orientation="vertical" 
     android:background="@drawable/background" >
 
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="345dp"
-        android:layout_marginTop="70dp"
-        android:background="#15000000" >
-
-    <ListView
-        android:id="@+id/standupslist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/standups_listview_shape"
-        android:padding="5dp" >
-
-    </ListView>
-    </LinearLayout>
     <Button
         android:id="@+id/historyquerybutton"
         android:layout_width="match_parent"
@@ -32,16 +17,6 @@
         android:textColor="#ffffff"
         android:textSize="20dp" />
     <TextView
-        android:id="@+id/dateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="Date"
-        android:textColor="#ffffff"
-        android:textSize="23dp" />
-    <TextView
         android:id="@+id/norecordfound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,5 +24,15 @@
         android:layout_marginTop="204dp"
         android:text="No records found"
         android:textSize="20dp" />
+
+    <ListView
+        android:id="@+id/standupslist"
+        android:layout_width="match_parent"
+        android:layout_height="414dp"
+        android:layout_above="@+id/historyquerybutton"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/standups_listview_shape"
+        android:padding="5dp" >
+    </ListView>
 
 </RelativeLayout>
