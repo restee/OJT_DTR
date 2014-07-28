@@ -8,11 +8,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import com.example.tabs.StandupsFragment;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +49,9 @@ public class StandUpsDialog extends Activity {
 				
 				if(standup_y.length()>0&&standup_todo.length()>0&&problem.length()>0){					
 					new AddStandup(context,email,standup_y,standup_todo,problem).execute();
+					Intent i = new Intent();
+					i.setAction(StandupsFragment.STANDUPRECEIVE);
+					sendBroadcast(i);
 				}
 				
 			}

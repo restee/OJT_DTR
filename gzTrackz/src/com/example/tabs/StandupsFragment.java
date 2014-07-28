@@ -13,8 +13,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -53,6 +55,15 @@ public class StandupsFragment extends Fragment {
 	private List<Standup> standupList;
 	private TextView nothing;
 	private Button historyQuery;
+	public static String STANDUPRECEIVE =  "com.example.gztrackz.newStandup";
+	
+	private BroadcastReceiver standupReceiver = new BroadcastReceiver(){
+
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {		
+			new RetrieveStandupHistory(getActivity(),email).execute();
+		}		
+	};
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,6 +93,8 @@ public class StandupsFragment extends Fragment {
 			}else
 				nothing.setVisibility(View.VISIBLE);
 		}
+		
+		getActivity().registerReceiver(standupReceiver,new IntentFilter(STANDUPRECEIVE));
 		standupAdapter = new StandUpDateAdapter(getActivity(),standupList);
 		dateList.setAdapter(standupAdapter);
 		
@@ -108,6 +121,13 @@ public class StandupsFragment extends Fragment {
 			
 			
 		return rootView;
+	}
+	
+	@Override
+	public void onDestroy() {
+	
+		super.onDestroy();
+		getActivity().unregisterReceiver(standupReceiver);
 	}
 	
 	@Override

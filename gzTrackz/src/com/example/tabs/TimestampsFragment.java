@@ -13,8 +13,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,6 +41,7 @@ import com.example.gztrackz.StandUpsDialog;
 import com.example.gztrackz.TimeLog;
 import com.example.gztrackz.TimeStampQueryDialog;
 
+
 public class TimestampsFragment extends Fragment {
 	
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
@@ -52,8 +55,14 @@ public class TimestampsFragment extends Fragment {
 	private List<TimeLog> resultList;
 	private ResultListAdapter resultListAdapter;
 	private TextView noRecords,dateTXT;	
+	public static String TIMELOGRECEIVE =  "com.example.gztrackz.newStandup";
 	
-	
+	private BroadcastReceiver timelogReceiver = new BroadcastReceiver(){
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {		
+			new RetrieveTimeLogHistory(getActivity(),email).execute();	
+		}		
+	};
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,7 +82,7 @@ public class TimestampsFragment extends Fragment {
 		if(firstCreate){
 			timeLogDB = new DB_User_Timelog(getActivity());
 			timeLogDB.open();
-			timeLogDB.removeAll();
+			
 			
 			resultList = new ArrayList();			
 			resultListAdapter = new ResultListAdapter(getActivity(),resultList);
@@ -92,6 +101,7 @@ public class TimestampsFragment extends Fragment {
 		}
 
 		
+		getActivity().registerReceiver(timelogReceiver,new IntentFilter(TIMELOGRECEIVE));
 		
 		queryBTN.setOnClickListener(new View.OnClickListener() {			
 			@Override
@@ -121,6 +131,12 @@ public class TimestampsFragment extends Fragment {
 	@Override
 	public void onResume() {	
 		super.onResume();	
+	}
+	
+	@Override
+	public void onDestroy() {	
+		super.onDestroy();
+		getActivity().unregisterReceiver(timelogReceiver);
 	}
 	
 	@Override
