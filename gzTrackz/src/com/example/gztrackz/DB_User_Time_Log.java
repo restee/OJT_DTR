@@ -116,8 +116,7 @@ public class DB_User_Time_Log {
 			}
 		}
 						
-		return flag;
-		
+		return flag;		
 	}
 	public void deleteAll() {
 		Cursor cursor = getAllRows();

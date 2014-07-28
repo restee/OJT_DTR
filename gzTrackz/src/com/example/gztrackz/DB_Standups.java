@@ -77,7 +77,25 @@ public class DB_Standups {
 		// Insert it into the database.
 		return sql_db.insert(TABLE_NAME, null, contentValues);
 	}
+	
+	public List<Standup> getAllDay(String email,String date1, String date2){
+		List<Standup> flag = new ArrayList();
+		String where = KEY_EMAILADD + " = " + quote + email + quote + " AND "
+				+ KEY_DATE + " >= " + quote + date1 + quote + " AND " + KEY_DATE + "< " + quote + date2 + quote;
+		Cursor cursor = sql_db.query(true, TABLE_NAME, ALL_KEYS, where, null,
+				null, null, null, null);
 
+		if (cursor != null) {		
+			cursor.moveToFirst();			
+			if(cursor.getCount()>0){	
+				do{						
+					flag.add(new Standup(cursor.getString(COL_EMAILADD),cursor.getString(COL_DATE),cursor.getString(COL_STANDUPS_YESTERDAY),cursor.getString(COL_STANDUPS_TODO),cursor.getString(COL_STANDUPS_HINDRANCE)));
+				}while(cursor.moveToNext());
+			}
+		}
+						
+		return flag;		
+	}
 	// Change an existing row to be equal to new data.
 	public boolean updateRow(String emailAdd, String date,
 			String standups_yesterday, String standups_todo,

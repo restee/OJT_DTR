@@ -26,15 +26,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gztrackz.DB_Standups;
 import com.example.gztrackz.R;
+import com.example.gztrackz.ResultListAdapter;
 import com.example.gztrackz.StandUpDateAdapter;
 import com.example.gztrackz.StandUpsDialog;
 import com.example.gztrackz.Standup;
 import com.example.gztrackz.TimeLog;
+import com.example.gztrackz.TimeStampQueryDialog;
 import com.example.gztrackz.ViewStandupActivity;
 
 public class StandupsFragment extends Fragment {
@@ -48,6 +52,7 @@ public class StandupsFragment extends Fragment {
 	private StandUpDateAdapter standupAdapter;
 	private List<Standup> standupList;
 	private TextView nothing;
+	private Button historyQuery;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,29 +63,26 @@ public class StandupsFragment extends Fragment {
 		email = prefs.getString(EMAIL, null);
 		nothing = (TextView) rootView.findViewById(R.id.norecordfound);
 		dateList = (ListView) rootView.findViewById(R.id.standupslist);
-		standupList = new ArrayList();
-		standupAdapter = new StandUpDateAdapter(getActivity(),standupList);
-		dateList.setAdapter(standupAdapter);
+		historyQuery = (Button) rootView.findViewById(R.id.historyquerybutton);
 		
+		
+		if(firstCreate){
 			firstCreate = false;
 			standupsDB = new DB_Standups(getActivity());
 			standupsDB.open();
-			//standupsDB.removeAll();
-			
-			
-			
-			standupList = standupsDB.getAllRowOf(email);
-			standupAdapter = new StandUpDateAdapter(getActivity(),standupList);
-			dateList.setAdapter(standupAdapter);
-			if(standupList.size()>0){
-				nothing.setVisibility(View.INVISIBLE);
-			}else
-				nothing.setVisibility(View.VISIBLE);
-			
+			standupList = new ArrayList();			
 			if(isConnectingToInternet()){
 				new RetrieveStandupHistory(getActivity(),email).execute();
 			}
-			
+		}else{		
+			if(standupList.size()>0){				
+				nothing.setVisibility(View.INVISIBLE);
+			}else
+				nothing.setVisibility(View.VISIBLE);
+		}
+		standupAdapter = new StandUpDateAdapter(getActivity(),standupList);
+		dateList.setAdapter(standupAdapter);
+		
 			dateList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
@@ -94,8 +96,135 @@ public class StandupsFragment extends Fragment {
 				}
 			});
 		
-		
+		historyQuery.setOnClickListener(new View.OnClickListener() {			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(getActivity(),TimeStampQueryDialog.class);
+				startActivityForResult(i,2);			
+			}
+		});
+			
+			
 		return rootView;
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {	
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode==2){
+			if(resultCode==getActivity().RESULT_OK){
+				Log.d("year",Integer.toString(data.getIntExtra("year",0)));
+				Log.d("month",Integer.toString(data.getIntExtra("month",0)));
+				Log.d("day",Integer.toString(data.getIntExtra("day",0)));
+				int day = data.getIntExtra("day",0);
+				int month = data.getIntExtra("month",0);
+				int year = data.getIntExtra("year",0);
+				String date2,date;
+				if(year!=0){
+					date = Integer.toString(year) + "-" ;
+					
+					if(month!=0){
+						if(month<10){
+							date = date +"0" + Integer.toString(month) + "-";			
+						}else{
+							date = date + Integer.toString(month) + "-";
+						}
+						if(day!=0){
+							if(day<10){
+								date = date + "0" + Integer.toString(day) + " 00:00:00";
+							}else{
+								date = date + Integer.toString(day) + " 00:00:00";
+							}
+							
+							date2 = nextDay(year,month,day);
+							Log.d("Today",date);
+							Log.d("Tomorrow", date2);
+						}else{
+							date = date + "01 00:00:00";
+							date2 = nextMonth(year,month);							
+							Log.d("Today",date);
+							Log.d("Next Month", date2);							
+						}
+					}else{
+
+						date = date + "01-01 00:00:00";
+						date2 = Integer.toString(year+1) +"-01-01 00:00:00"; 
+						Log.d("Today",date);
+						Log.d("Next Year", date2);						
+					}		
+					standupList = standupsDB.getAllDay(email, date, date2);
+					if(standupList.size()>0){						
+						standupAdapter = new StandUpDateAdapter(getActivity(),standupList);
+						dateList.setAdapter(standupAdapter);
+						nothing.setVisibility(View.INVISIBLE);
+					}else{
+						//Toast.makeText(getActivity(), Integer.toString(standupList.size()),Toast.LENGTH_SHORT).show();
+						nothing.setVisibility(View.VISIBLE);
+					}
+					
+				}
+			}			
+		}
+		
+	}
+	
+	
+	private String nextDay(int year,int month, int day){
+		String flag=null;
+		day++;
+		if((month==1||month==3||month==5||month==7||month==8||month==10||month==12 )&& day==32){
+			day = 1;
+			month++;
+		}else if((month==4||month==6||month==9||month==11) && day==31){
+			day = 1;
+			month++;
+		}else if (month==2){			
+			if(year%4==0 && day==30){
+				day = 1;
+				month++;
+			}else if (day==29){
+				day=1;
+				month++;
+			}
+		}
+		
+		if(month==13){
+			month=1;
+			year++;
+		}
+		flag = Integer.toString(year) + "-" ;
+		
+		if(month<10){
+			flag = flag +"0" + Integer.toString(month) + "-";			
+		}else{
+			flag = flag + Integer.toString(month) + "-";
+		}
+		
+		if(day<10){
+			flag = flag + "0" + Integer.toString(day) + " 00:00:00";
+		}else{
+			flag = flag + Integer.toString(day) + " 00:00:00";
+		}
+		
+		return flag;
+	}
+	
+	private String nextMonth(int year,int month){
+		String flag = null;
+		month++;
+		if(month==13){
+			year++;
+			month=1;
+		}
+		flag = Integer.toString(year);
+		
+		if(month<10){
+			flag = flag + "-0" + Integer.toString(month) + "-01 00:00:00";
+		}else{
+			flag = flag + "-" + Integer.toString(month) + "-01 00:00:00";			
+		}
+		
+		return flag;
 	}
 	 public boolean isConnectingToInternet(){
 	        ConnectivityManager connectivity = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);

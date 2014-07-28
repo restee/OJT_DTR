@@ -62,21 +62,30 @@ public class TimestampsFragment extends Fragment {
 		
 		noRecords = (TextView) rootView.findViewById(R.id.norecordfound);
 		dateTXT = (TextView) rootView.findViewById(R.id.dateTextView);
-		resultList = new ArrayList();
+		resultListView = (ListView) rootView.findViewById(R.id.timeintimeoutlist);
+				
+				
+		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);
 		
-		resultListAdapter = new ResultListAdapter(getActivity(),resultList);
-		resultListView = (ListView) rootView.findViewById(R.id.timeintimeoutlist);		
-		queryBTN = (Button) rootView.findViewById(R.id.historyquerybutton);		
-		
-		noRecords.setVisibility(View.INVISIBLE);
 		if(firstCreate){
 			timeLogDB = new DB_User_Time_Log(getActivity());
 			timeLogDB.open();
+			resultList = new ArrayList();			
+			resultListAdapter = new ResultListAdapter(getActivity(),resultList);
 			
 			new RetrieveTimeLogHistory(getActivity(),email).execute();		
 			firstCreate = false;
+			
+		}else{
+			resultListAdapter = new ResultListAdapter(getActivity(),resultList);
+			resultListView.setAdapter(resultListAdapter);
+			if(resultList.size()>0){
+				noRecords.setVisibility(View.INVISIBLE);
+			}else{
+				noRecords.setVisibility(View.VISIBLE);
+			}
 		}
-		
+
 		
 		
 		queryBTN.setOnClickListener(new View.OnClickListener() {			
@@ -88,6 +97,11 @@ public class TimestampsFragment extends Fragment {
 		});
 		
 		return rootView;
+	}
+	
+	@Override
+	public void onResume() {	
+		super.onResume();	
 	}
 	
 	@Override
