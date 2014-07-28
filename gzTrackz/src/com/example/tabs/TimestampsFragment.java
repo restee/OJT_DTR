@@ -18,6 +18,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -86,8 +88,9 @@ public class TimestampsFragment extends Fragment {
 			
 			resultList = new ArrayList();			
 			resultListAdapter = new ResultListAdapter(getActivity(),resultList);
-			
-			new RetrieveTimeLogHistory(getActivity(),email).execute();		
+			if(isConnectingToInternet()){
+				new RetrieveTimeLogHistory(getActivity(),email).execute();
+			}
 			firstCreate = false;
 			
 		}else{
@@ -127,7 +130,21 @@ public class TimestampsFragment extends Fragment {
 		
 		return rootView;
 	}
-	
+	 public boolean isConnectingToInternet(){
+	        ConnectivityManager connectivity = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+	          if (connectivity != null)
+	          {
+	              NetworkInfo[] info = connectivity.getAllNetworkInfo();
+	              if (info != null)
+	                  for (int i = 0; i < info.length; i++)
+	                      if (info[i].getState() == NetworkInfo.State.CONNECTED)
+	                      {
+	                          return true;
+	                      }
+	 
+	          }
+	          return false;
+	    }
 	@Override
 	public void onResume() {	
 		super.onResume();	

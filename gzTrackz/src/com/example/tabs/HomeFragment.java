@@ -167,13 +167,14 @@ public class HomeFragment extends Fragment {
 								gps.showSettingsAlert();
 							}else{
 								new TimeLog(getActivity(), email,false,longitude,latitude).execute();
+								Toast.makeText(
+										getActivity(),
+										"Your Location is - \nLat: " + latitude
+												+ "\nLong: " + longitude,
+										Toast.LENGTH_LONG).show();
+							
 							}
-							Toast.makeText(
-									getActivity(),
-									"Your Location is - \nLat: " + latitude
-											+ "\nLong: " + longitude,
-									Toast.LENGTH_LONG).show();
-						
+							
 						}else{
 							Toast.makeText(getActivity(), "Please enable GPS!", Toast.LENGTH_SHORT).show();							
 						}
@@ -410,7 +411,6 @@ public class HomeFragment extends Fragment {
         		
         		dateTXT.setText(dateDisplay);
         		
-
         		timeThread = new Thread(){
         			 @Override
         			    public void run() {
@@ -523,12 +523,12 @@ public class HomeFragment extends Fragment {
         	}
         	if(result){	    
         		if(!timeIn){
-        			Toast.makeText(context,"Successfulled timed in at "+ time + ".", Toast.LENGTH_LONG).show();
+        			Toast.makeText(context,"Successfully timed in at "+ time + ".", Toast.LENGTH_LONG).show();
         			timeIMG = R.drawable.inactivetimeout;							        	
 		        	timeLogBTN.setImageResource(R.drawable.inactivetimeout);
 		        	new StandupCheck(context,email).execute();
         		}else{
-        			Toast.makeText(context,"Successfulled timed out at "+ time + ".", Toast.LENGTH_LONG).show();
+        			Toast.makeText(context,"Successfully timed out at "+ time + ".", Toast.LENGTH_LONG).show();
         			timeIMG = R.drawable.inactivetimein;
         			timeLogBTN.setImageResource(R.drawable.inactivetimein);
         		}

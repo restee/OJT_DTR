@@ -75,13 +75,12 @@ public class StandupsFragment extends Fragment {
 		nothing = (TextView) rootView.findViewById(R.id.norecordfound);
 		dateList = (ListView) rootView.findViewById(R.id.standupslist);
 		historyQuery = (Button) rootView.findViewById(R.id.historyquerybutton);
-		
-		
+				
 		if(firstCreate){
 			firstCreate = false;
 			standupsDB = new DB_Standups(getActivity());
 			standupsDB.open();
-			
+			standupsDB.removeAll();
 			
 			standupList = new ArrayList();			
 			if(isConnectingToInternet()){
@@ -275,11 +274,14 @@ public class StandupsFragment extends Fragment {
 		@Override
 	    protected void onPreExecute() {
 			Log.d("STARTED RETRIEVING STANDUP HISTORY","---------------------");
+			historyQuery.setText("Retrieving history...");
+			historyQuery.setEnabled(false);
 	    }
 		
 		@Override
 	    protected void onPostExecute(Boolean result) {        	
-	    	
+			historyQuery.setText("Search");
+			historyQuery.setEnabled(true);
 	    }
 		
 		@Override
@@ -311,10 +313,10 @@ public class StandupsFragment extends Fragment {
 				Log.d("Standup HISTORY     " + urlTopTracks,retrieveResult);			
 				for(int init=0;init<timeLogResult.length();init++){
 					temp = timeLogResult.getJSONObject(init);
-					if(latestDay.getDate()!=null&&init==0){
+					/*if(latestDay.getDate()!=null&&init==0){
 						standupsDB.updateRow(temp.getString("email"), temp.getString("date"),temp.getString("standup_y"),temp.getString("standup_todo"),temp.getString("problem"));
-					}else
-						standupsDB.insertRow(temp.getString("email"), temp.getString("date"),temp.getString("standup_y"),temp.getString("standup_todo"),temp.getString("problem"));					
+					}else*/
+						standupsDB.putRow(temp.getString("email"), temp.getString("date"),temp.getString("standup_y"),temp.getString("standup_todo"),temp.getString("problem"));					
 				}
 					
 			} catch (Exception e) {			

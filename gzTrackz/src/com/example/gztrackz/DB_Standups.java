@@ -109,7 +109,18 @@ public class DB_Standups {
 		// Insert it into the database.
 		return sql_db.update(TABLE_NAME, contentValues, where, null) != 0;
 	}
-
+	
+	
+	public boolean putRow(String emailAdd, String date,
+			String standups_yesterday, String standups_todo,
+			String standups_hindrance) {
+		boolean flag = false;
+		if(!updateRow(emailAdd,date,standups_yesterday,standups_todo,standups_hindrance)){
+			insertRow(emailAdd, date, standups_yesterday, standups_todo, standups_hindrance);
+			flag = true;
+		}
+		return flag;
+	}
 	public ContentValues getContentValues(String emailAdd, String date,
 			String standups_yesterday, String standups_todo,
 			String standups_hindrance) {
