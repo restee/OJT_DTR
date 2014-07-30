@@ -179,7 +179,8 @@ public class StandupsFragment extends Fragment {
 						dateList.setAdapter(standupAdapter);
 						nothing.setVisibility(View.INVISIBLE);
 					}else{
-						
+						standupAdapter = new StandUpDateAdapter(getActivity(),standupList);
+						dateList.setAdapter(standupAdapter);
 						nothing.setVisibility(View.VISIBLE);
 					}
 					
@@ -280,7 +281,7 @@ public class StandupsFragment extends Fragment {
 		
 		@Override
 	    protected void onPostExecute(Boolean result) {        	
-			historyQuery.setText("Search");
+			historyQuery.setText("Select History");
 			historyQuery.setEnabled(true);
 	    }
 		
