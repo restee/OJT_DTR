@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package gps_classes;
 
 
 
@@ -151,14 +151,14 @@ public class GZ_Task_Geocode extends AsyncTask<String, Void, Boolean> {
 		super.onPostExecute(geocode_successful);
 
 		if (geocode_successful) {
-			Toast.makeText(context, "Address = " + address, Toast.LENGTH_LONG)
+			Toast.makeText(context, address, Toast.LENGTH_LONG)
 					.show();
 		} else {
 
 			Toast.makeText(
 					context,
-					"Can not retrieve location for:\n latitude: " + latitude
-							+ "\nlongitude:" + longitude, Toast.LENGTH_LONG)
+					"Can not retrieve location for:\nLatitude: " + latitude
+							+ "\nLongitude:" + longitude, Toast.LENGTH_LONG)
 					.show();
 		}
 	}

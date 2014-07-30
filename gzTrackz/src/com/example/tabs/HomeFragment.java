@@ -1,5 +1,7 @@
 package com.example.tabs;
 
+import gps_classes.GZ_Service_Locator;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,7 +44,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gztrackz.GZ_Service_Locator;
 import com.example.gztrackz.R;
 import com.example.gztrackz.StandUpsDialog;
 
@@ -167,11 +168,11 @@ public class HomeFragment extends Fragment {
 								gps.showSettingsAlert();
 							}else{
 								new TimeLog(getActivity(), email,false,longitude,latitude).execute();
-								Toast.makeText(
+								/*Toast.makeText(
 										getActivity(),
 										"Your Location is - \nLat: " + latitude
 												+ "\nLong: " + longitude,
-										Toast.LENGTH_LONG).show();																						
+										Toast.LENGTH_LONG).show();		*/																				
 							}
 							
 						}else{

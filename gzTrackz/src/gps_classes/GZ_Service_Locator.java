@@ -1,4 +1,4 @@
-package com.example.gztrackz;
+package gps_classes;
 
 
 import android.app.AlertDialog;

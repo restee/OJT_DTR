@@ -1,9 +1,12 @@
-package com.example.gztrackz;
+package database_classes;
 
 
 
 import java.util.ArrayList;
 import java.util.List;
+
+import list_objects.TimeLog;
+
 
 import android.content.ContentValues;
 import android.content.Context;

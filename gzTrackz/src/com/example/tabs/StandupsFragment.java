@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import list_adapters.ResultListAdapter;
+import list_adapters.StandUpDateAdapter;
+import list_objects.Standup;
+import list_objects.TimeLog;
+
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpPost;
@@ -33,15 +38,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gztrackz.DB_Standups;
 import com.example.gztrackz.R;
-import com.example.gztrackz.ResultListAdapter;
-import com.example.gztrackz.StandUpDateAdapter;
 import com.example.gztrackz.StandUpsDialog;
-import com.example.gztrackz.Standup;
-import com.example.gztrackz.TimeLog;
 import com.example.gztrackz.TimeStampQueryDialog;
 import com.example.gztrackz.ViewStandupActivity;
+
+import database_classes.DB_Standups;
 
 public class StandupsFragment extends Fragment {
 

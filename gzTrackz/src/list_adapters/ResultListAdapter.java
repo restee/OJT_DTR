@@ -1,7 +1,13 @@
-package com.example.gztrackz;
+package list_adapters;
 
 import java.util.List;
 import java.sql.Timestamp;
+
+import list_objects.TimeLog;
+
+import com.example.gztrackz.R;
+import com.example.gztrackz.R.id;
+import com.example.gztrackz.R.layout;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,8 +1,13 @@
 package com.example.tabs;
 
+import gps_classes.GZ_Task_Geocode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import list_adapters.ResultListAdapter;
+import list_objects.TimeLog;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -35,13 +40,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.gztrackz.DB_User_Timelog;
-import com.example.gztrackz.GZ_Task_Geocode;
 import com.example.gztrackz.R;
-import com.example.gztrackz.ResultListAdapter;
 import com.example.gztrackz.StandUpsDialog;
-import com.example.gztrackz.TimeLog;
 import com.example.gztrackz.TimeStampQueryDialog;
+
+import database_classes.DB_User_Timelog;
 
 
 public class TimestampsFragment extends Fragment {
