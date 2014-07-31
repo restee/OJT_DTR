@@ -111,6 +111,9 @@ public class RegisterActivity extends Activity {
 	            String flag=null;
 	            	            	            	            
 	            try {
+	            	firstName = firstName.replace(" ","%20");
+	            	lastName = lastName.replace(" ", "%20");
+	            	
 	            	String urlTopTracks = "http://gz123.site90.net/register/?email=" + email + "&password=" + password +
 	            			"&first_name=" + firstName + "&last_name=" + lastName;
 					HttpClient client = new DefaultHttpClient();
