@@ -171,8 +171,7 @@ public class HomeFragment extends Fragment {
 										getActivity(),
 										"Your Location is - \nLat: " + latitude
 												+ "\nLong: " + longitude,
-										Toast.LENGTH_LONG).show();
-							
+										Toast.LENGTH_LONG).show();																						
 							}
 							
 						}else{
@@ -535,6 +534,8 @@ public class HomeFragment extends Fragment {
         			 	        		
         			
         	}
+        	
+        	
         	else
         		Toast.makeText(context,"Unable to execute time in. Please check internet connection!", Toast.LENGTH_LONG).show();	        		        	
     	}

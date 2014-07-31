@@ -121,8 +121,8 @@ public class TimestampsFragment extends Fragment {
 					long arg3) {
 				//Toast.makeText(getActivity(), resultList.get(position).getGps(),Toast.LENGTH_SHORT).show();	
 				StringTokenizer token = new StringTokenizer(resultList.get(position).getGps(),",");
-				double latitude = Double.parseDouble(token.nextToken());
 				double longitude = Double.parseDouble(token.nextToken());
+				double latitude = Double.parseDouble(token.nextToken());
 				new GZ_Task_Geocode(getActivity(), latitude, longitude).execute();
 			}
 		});
