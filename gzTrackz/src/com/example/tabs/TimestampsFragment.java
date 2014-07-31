@@ -51,7 +51,7 @@ public class TimestampsFragment extends Fragment {
 	
 	private String PREFERENCE_NAME = "com.example.gztrackz",FNAME = "com.example.gztrackz.firstname",LNAME = "com.example.gztrackz.lastname",EMAIL="com.example.gztrackz.email";
 	private SharedPreferences prefs ;
-	private String email;
+	private String email,dateDisp;
 	private boolean firstCreate=true;
 	private DB_User_Timelog timeLogDB;
 	private List<TimeLog> timelogs;
@@ -87,8 +87,7 @@ public class TimestampsFragment extends Fragment {
 		if(firstCreate){
 			timeLogDB = new DB_User_Timelog(getActivity());
 			timeLogDB.open();
-			
-			
+						
 			resultList = new ArrayList();			
 			resultListAdapter = new ResultListAdapter(getActivity(),resultList);
 			if(isConnectingToInternet()){
@@ -104,6 +103,7 @@ public class TimestampsFragment extends Fragment {
 			}else{
 				noRecords.setVisibility(View.VISIBLE);
 			}
+			dateTXT.setText(dateDisp);
 		}
 
 		
@@ -126,7 +126,11 @@ public class TimestampsFragment extends Fragment {
 				StringTokenizer token = new StringTokenizer(resultList.get(position).getGps(),",");
 				double longitude = Double.parseDouble(token.nextToken());
 				double latitude = Double.parseDouble(token.nextToken());
-				new GZ_Task_Geocode(getActivity(), latitude, longitude).execute();
+				if(isConnectingToInternet()){
+					new GZ_Task_Geocode(getActivity(), latitude, longitude).execute();
+				}else{
+					Toast.makeText(getActivity(), "Please make sure you are connected to the internet to determine the location of: \nLongitude: " + Double.toString(longitude) + "\nLatitude: " + Double.toString(latitude), Toast.LENGTH_LONG).show();
+				}
 			}
 		});
 		
@@ -199,6 +203,7 @@ public class TimestampsFragment extends Fragment {
 						}
 					}else{
 						dateTXT.setText(date.substring(0,date.length()-1));
+						
 						date = date + "01-01 00:00:00";
 						date2 = Integer.toString(year+1) +"-01-01 00:00:00"; 
 						Log.d("Today",date);
@@ -217,7 +222,8 @@ public class TimestampsFragment extends Fragment {
 					}
 					resultListAdapter = new ResultListAdapter(getActivity(),resultList);
 					resultListView.setAdapter(resultListAdapter);
-					//Toast.makeText(getActivity(), Integer.toString(resultList.size()),Toast.LENGTH_SHORT).show();
+					//Toast.makeText(getActivity(), Integer.toString(resultList.size()),Toast.LENGTH_SHORT).show();	
+					dateDisp = dateTXT.getText().toString();
 				}else{
 					dateTXT.setText("---- -- --");
 				}

@@ -63,7 +63,7 @@ public class TimeStampQueryDialog extends Activity {
 				for(int init = yearList.size()-1;init>=0;init--){				
 					yearList.remove(init);
 				}				
-				for(int init=2000;init<=2015;init++){
+				for(int init=2014;init<=2015;init++){
 					yearList.add(Integer.toString(init));
 				}
 				yearSpinnerArrayAdapter.notifyDataSetChanged();	

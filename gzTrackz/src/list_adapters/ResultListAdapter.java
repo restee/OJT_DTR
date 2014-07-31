@@ -10,6 +10,7 @@ import com.example.gztrackz.R.id;
 import com.example.gztrackz.R.layout;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +54,41 @@ public class ResultListAdapter extends BaseAdapter {
 		
 		
 		date.setText(resultList.get(position).getTimeIn().substring(0,11));
-		timein.setText(resultList.get(position).getTimeIn().substring(11,resultList.get(position).getTimeIn().length()));
-		if(resultList.get(position).getTimeOut().length()>4){
-			timeout.setText(resultList.get(position).getTimeOut().substring(11,resultList.get(position).getTimeOut().length()));
+		int hour = Integer.parseInt(resultList.get(position).getTimeIn().substring(11,13));
+		if(hour<12){
+			timein.setText(resultList.get(position).getTimeIn().substring(11,resultList.get(position).getTimeIn().length()) + " AM");
 		}else{
-			timeout.setText("--:--:--");
+			if(hour!=12){
+				hour-=12;
+			}
+			String timeTemp;
+			if(hour<10){
+				timeTemp = "0" + Integer.toString(hour);
+			}else{
+				timeTemp =Integer.toString(hour);
+			}
+			timein.setText(timeTemp+resultList.get(position).getTimeIn().substring(13,resultList.get(position).getTimeIn().length()) + " PM");
+		}
+		
+		
+		if(resultList.get(position).getTimeOut().length()>4){
+			hour = Integer.parseInt(resultList.get(position).getTimeOut().substring(11,13));
+			if(hour<12){
+				timeout.setText(resultList.get(position).getTimeOut().substring(11,resultList.get(position).getTimeOut().length()) + " AM");
+			}else{
+				if(hour!=12){
+					hour-=12;
+				}
+				String timeTemp;
+				if(hour<10){
+					timeTemp = "0" + Integer.toString(hour);
+				}else{
+					timeTemp =Integer.toString(hour);
+				}
+				timeout.setText(timeTemp+resultList.get(position).getTimeOut().substring(13,resultList.get(position).getTimeOut().length()) + " PM");
+			}
+		}else{
+			timeout.setText("--:--:-- --");
 		}
 		
 		

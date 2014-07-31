@@ -25,6 +25,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,23 +40,28 @@ public class MainActivity extends Activity {
 	private String firstName,lastName,email,emailInput,passInput;
 	private Context context;
 	private SharedPreferences prefs ;
+	
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         prefs = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
         firstName = prefs.getString(FNAME, null);
+    
+              
         if(firstName!=null){
         	Intent i = new Intent(this,TabsManager.class);
         	i.putExtra("email",prefs.getString(EMAIL,null));
         	startActivityForResult(i,1);
         }
-        
+       
         context = this;
         logInBTN = (Button) findViewById(R.id.logInButton);
         emailTXT = (EditText) findViewById(R.id.usernameEditText);
         passTXT = (EditText) findViewById(R.id.passwordEditText);
         
+                       
         
         registerTxt = (TextView)findViewById(R.id.registerTextView);
         Typeface tf = Typeface.createFromAsset(getAssets(), "Walkway_SemiBold.ttf");

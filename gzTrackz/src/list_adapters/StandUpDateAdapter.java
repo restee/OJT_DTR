@@ -53,6 +53,21 @@ public class StandUpDateAdapter extends BaseAdapter {
 		
 		standupDate.setText(resultList.get(position).getDate().substring(0,11));
 		standupTime.setText(resultList.get(position).getDate().substring(11));
+		int hour = Integer.parseInt(resultList.get(position).getDate().substring(11,13));
+		if(hour<12){
+			standupTime.setText(resultList.get(position).getDate().substring(11,resultList.get(position).getDate().length()) + " AM");
+		}else{
+			if(hour!=12){
+				hour-=12;
+			}
+			String timeTemp;
+			if(hour<10){
+				timeTemp = "0" + Integer.toString(hour);
+			}else{
+				timeTemp =Integer.toString(hour);
+			}
+			standupTime.setText(timeTemp+resultList.get(position).getDate().substring(13,resultList.get(position).getDate().length()) + " PM");
+		}
 		if(resultList.get(position).getStandup_todo().length()<=37){
 			standupPreviewMessage.setText(resultList.get(position).getStandup_todo());
 		}else{

@@ -82,7 +82,7 @@ public class StandupsFragment extends Fragment {
 			firstCreate = false;
 			standupsDB = new DB_Standups(getActivity());
 			standupsDB.open();
-			standupsDB.removeAll();
+			
 			
 			standupList = new ArrayList();			
 			if(isConnectingToInternet()){
