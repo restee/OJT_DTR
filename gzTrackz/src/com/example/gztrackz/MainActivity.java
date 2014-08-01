@@ -76,7 +76,9 @@ public class MainActivity extends Activity {
 				passInput = passTXT.getText().toString();
 				if(emailInput.length()>0&&passInput.length()>0){				
 					if(isConnectingToInternet())
-						new Login(context,emailInput,passInput).execute();
+						
+						
+						new Task_Login(context,emailInput,passInput).execute();
 					else
 						Toast.makeText(context,"Please make sure internet connection exists!", Toast.LENGTH_LONG).show();
 				}else{
@@ -135,83 +137,5 @@ public class MainActivity extends Activity {
     		passTXT.setText(null);
     		emailTXT.requestFocus();
     	}
-    }
-    
-    private class Login extends AsyncTask<String, Void,Boolean> {
-        
-    	String email,password;
-    	Context context;
-    	ProgressDialog progressD;
-    	String firstName,lastName;
-    	
-    	
-    	public Login(Context context,String email,String password){
-    		this.context = context;
-    		this.email = email;
-    		this.password = password;    		
-    	}
-    	@Override
-        protected void onPreExecute() {
-    		progressD = new ProgressDialog(context);
-    		progressD.setMessage("Logging in...");
-    		progressD.setProgressStyle(ProgressDialog.STYLE_SPINNER);    		
-    		progressD.setCanceledOnTouchOutside(false);
-    		progressD.show();
-        }
-    	
-    	@Override
-        protected void onPostExecute(Boolean result) {        	
-        	if(progressD.isShowing()){
-        		progressD.dismiss();
-        	}
-        	if(result){	        
-	        	Intent i = new Intent(context,TabsManager.class);
-	        	i.putExtra("email",prefs.getString(EMAIL,null));
-	        	startActivityForResult(i,1);
-        	}
-        	else
-        		Toast.makeText(context,"Invalid login credentials!", Toast.LENGTH_LONG).show();
-        }   
-    	@Override
-        protected Boolean doInBackground(String... params) {
-            boolean flag = true;            
-            SharedPreferences.Editor editor = prefs.edit();
-                        
-            try {
-            	String urlTopTracks = "http://gz123.site90.net/login/?email=" + email + "&password=" + password;
-				HttpClient client = new DefaultHttpClient();
-				ResponseHandler<String> handler = new BasicResponseHandler();
-				
-				HttpPost request = new HttpPost(urlTopTracks);
-				
-				String httpResponseTopTracks = client.execute(request, handler);				
-				
-				StringTokenizer token = new StringTokenizer(httpResponseTopTracks,"<");
-				String retrieveResult = token.nextToken();
-				
-				JSONObject result = new JSONObject(retrieveResult);
-				String emailResult = result.getString("email");
-				if(emailResult.length()==0){					
-					flag = false;
-				}else{
-					firstName = result.getString("first_name");
-					lastName = result.getString("last_name");
-					editor.putString(LNAME,lastName);
-					editor.putString(FNAME, firstName);
-					editor.putString(EMAIL,emailResult);
-		            editor.commit();
-				}
-			} catch (Exception e) {
-				flag = false;
-				e.printStackTrace();
-			}
-            
-            return flag;
-        }
-
-              
-    }
-    
-    
-		
+    }		
 }
