@@ -5,59 +5,82 @@
     android:background="@drawable/background"
     android:orientation="vertical" >
 
-    <TableLayout
-        android:id="@+id/tableLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="345dp"
-        android:layout_marginTop="70dp"
-        android:background="#15000000"
-        android:padding="10dp" >
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
 
-        <TableRow
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:background="@drawable/table_border_header" >
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Date"
+            android:textColor="#ffffff"
+            android:textSize="23dp" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_weight="1"
-                android:background="@drawable/table_border_header"
-                android:gravity="center"
-                android:padding="10dip"
-                android:text="Date"
-                android:textColor="#000000" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
-            <TextView
-                android:layout_width="56dp"
-                android:layout_weight="1"
-                android:background="@drawable/table_border_header"
-                android:gravity="center"
-                android:padding="10dip"
-                android:text="Time-in"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="56dp"
-                android:layout_weight="1"
-                android:background="@drawable/table_border_header"
-                android:gravity="center"
-                android:padding="10dip"
-                android:text="Time-out"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="29dp"
-                android:background="@drawable/table_border_header"
-                android:gravity="center"
-                android:padding="10dip" >
-            </TextView>
-        </TableRow>
-
-        <ListView
-            android:id="@+id/timeintimeoutlist"
+        <TableLayout
+            android:id="@+id/tableLayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
+            android:layout_height="345dp"
+            android:layout_marginTop="70dp"
+            android:background="#15000000"
+            android:padding="10dp" >
+
+            <TableRow
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:background="@drawable/table_border_header" >
+
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_weight=".25"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:padding="10dip"
+                    android:text="Date"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_weight=".25"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:padding="10dip"
+                    android:text="Time-in"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_weight=".25"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:padding="10dip"
+                    android:text="Time-out"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="29dp"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:layout_weight=".25"
+                    android:padding="10dip" >
+                </TextView>
+            </TableRow>
+
+            <ListView
+                android:id="@+id/timeintimeoutlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/historyquerybutton"
@@ -72,23 +95,11 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/dateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="Date"
-        android:textColor="#ffffff"
-        android:textSize="23dp" />
-
-    <TextView
         android:id="@+id/norecordfound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tableLayout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="208dp"
         android:text="No records found"
         android:textSize="20dp" />
 
