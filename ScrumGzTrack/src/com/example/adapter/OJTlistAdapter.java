@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 
 
@@ -44,8 +45,8 @@ public class OJTlistAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.ojtlist_item, parent,false);
 		}
 		
-		//-----------------------//
-		
+		TextView nameTXT = (TextView) convertView.findViewById(R.id.txtOjtName);
+		nameTXT.setText(resultList.get(position).getFirstName() + " " + resultList.get(position).getLastName());
 		
 		return convertView;
 	}
