@@ -1,90 +1,111 @@
-
-
-<RelativeLayout 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainActivityRL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activity_Login"
-    android:id="@+id/mainActivityRL"
-     >
+    tools:context=".MainActivity" >
 
-    
-    <TextView
-        android:id="@+id/registerTextView"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/gz" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/passwordEditText"
-        android:layout_below="@+id/passwordEditText"
-        android:layout_marginTop="22dp"
-        android:textSize="17dp"
-        android:textColor="@color/text_color_pressed"
-        android:text="Register?" />
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal" >
 
-    <EditText
-        android:id="@+id/usernameEditText"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/rectangle"
-        android:ems="10"
-        android:hint="email"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="10dp" 
-        android:textSize="13dp" />
+        <TextView
+            android:id="@+id/registerTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="Register?"
+            android:textColor="@color/text_color_pressed"
+            android:textSize="17dp" />
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:layout_alignLeft="@+id/usernameEditText"
-        android:layout_below="@+id/usernameEditText"
-        android:layout_marginTop="21dp"
-        android:background="@drawable/rectangle"
-        android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword"
-        android:paddingLeft="10dp"  
-        android:textSize="13dp" >
-       
-    </EditText>
+        <Button
+            android:id="@+id/logInButton"
+            android:layout_width="0dp"
+            android:layout_weight=".5"
+            android:layout_height="25dp"
+            android:layout_marginLeft="55dp"
+            android:background="@drawable/loginbuttonstyle"
+            android:text="LOG IN"
+            android:textColor="#ffffff"
+            android:textSize="12dp" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp" >
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="60dp"
+            android:layout_weight="1"
+            android:alpha=".70"
+            android:src="@drawable/powered" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/gz" />
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/logInButton"
-        android:layout_width="70dp"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/registerTextView"
-        android:layout_alignBottom="@+id/registerTextView"
-        android:layout_alignRight="@+id/passwordEditText"
-        android:background="@drawable/loginbuttonstyle"
-        android:text="LOG IN"
-        android:textColor="#ffffff"
-        android:textSize="12dp" />
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/rectangle"
+            android:ems="10"
+            android:hint="email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="10dp"
+            android:textSize="13dp" >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_alignRight="@+id/logInButton"
-        android:layout_below="@+id/logInButton"
-        android:layout_marginTop="84dp"
-        android:alpha=".70"
-        android:src="@drawable/powered" />
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/rectangle"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textSize="13dp" />
+    </LinearLayout>
 
 </RelativeLayout>
