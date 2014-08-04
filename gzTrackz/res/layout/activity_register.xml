@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context=".RegisterActivity"
-    android:background="#357ec7" >
+    android:background="#15357ec7" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:layout_below="@+id/emailRegisterEditText"
             android:layout_marginTop="14dp"
             android:text="Password"
-            android:textColor="#000000" />
+            android:textColor="#ffffff" />
 
         <EditText
             android:id="@+id/passwordRegisterEditText"
@@ -59,7 +59,7 @@
             android:layout_marginTop="18dp"
             android:text="First Name"
              
-            android:textColor="#000000" />
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/lastnameTextView"
@@ -69,8 +69,7 @@
             android:layout_below="@+id/firstnameEditText"
             android:layout_marginTop="14dp"
             android:text="Last Name"
-            
-            android:textColor="#000000" />
+            android:textColor="#ffffff" />
 
         <EditText
             android:id="@+id/lastnameEditText"
@@ -93,7 +92,7 @@
             android:layout_below="@+id/lastnameEditText"
             android:layout_marginTop="15dp"
             android:text="E-mail"
-            android:textColor="#000000" />
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/textView3"
@@ -103,16 +102,18 @@
             android:layout_below="@+id/passwordRegisterEditText"
             android:layout_marginTop="17dp"
             android:text="Confirm password"
-            android:textColor="#000000" />
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/confirmpasswordEditText"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:text="Register"
+            android:text="REGISTER"
+            android:textColor="#ffffff"
+            android:background="@drawable/loginbuttonstyle"
             android:textSize="13dp" />
 
         <EditText
@@ -144,7 +145,6 @@
             android:paddingLeft="10dp"
             android:textSize="12dp" />
 
-"
 
     </RelativeLayout>
 
