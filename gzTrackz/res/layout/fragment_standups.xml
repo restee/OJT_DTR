@@ -7,17 +7,20 @@
 
     <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" >
+        android:layout_width="wrap_content"
+        android:baselineAligned="false" >
 
         <ListView
             android:id="@+id/standupslist"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="417dp"
+            android:layout_weight="1"
             android:background="@drawable/standups_listview_shape"
             android:padding="5dp" >
 
     </ListView>
     </LinearLayout>
+    
     <LinearLayout 
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -28,12 +31,11 @@
         android:id="@+id/historyquerybutton"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        
         android:layout_weight="1"
         android:background="@drawable/loginbuttonstyle"
         android:text="Select History"
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout 
         android:layout_height="wrap_content"
@@ -47,7 +49,7 @@
             android:layout_marginLeft="80dp"
             android:layout_marginTop="204dp"
             android:text="No records found"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
     

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="509dp"
     android:layout_width="match_parent"
-    android:background="#468fd8" >
+    android:background="#15357ec7" >
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -14,31 +14,75 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".StandUpsDialog" >
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="700dp">
-        <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:text="What did you do in the previous?" android:textColor="#ffffff"/>
-        <TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_below="@+id/standupsprevious" android:layout_marginTop="24dp" android:text="What are you planning to do now?" android:textColor="#ffffff"/>
-        <EditText android:id="@+id/standupsprevious" android:layout_width="280dp" android:layout_height="100dp" android:layout_alignParentLeft="true" android:layout_below="@+id/textView1" android:paddingTop="10dp" android:background="@drawable/rectangle" android:ems="10" android:paddingLeft="10dp" android:textSize="12dp">
-            <requestFocus />
-        </EditText>
-        <EditText android:id="@+id/standupsnow" android:layout_width="280dp" android:layout_height="100dp" android:layout_below="@+id/TextView01" android:layout_centerHorizontal="true" android:background="@drawable/rectangle" android:ems="10" android:paddingBottom="60dp" android:paddingLeft="10dp" android:textSize="12dp"/>
-        <EditText android:id="@+id/standupsproblem" android:layout_width="280dp" android:layout_height="100dp" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:background="@drawable/rectangle" android:ems="10" android:paddingBottom="60dp" android:paddingLeft="10dp" android:textSize="12dp"/>
-        <TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@+id/standupsproblem" android:layout_alignLeft="@+id/standupsnow" android:text="What were the problems encountered?" android:textColor="#ffffff"/>
 
-        <Button
-            android:id="@+id/standupdone"
-            android:layout_width="400dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/standupsproblem"
-            android:layout_marginTop="21dp"
-            android:text="Done"
-            android:fontFamily="Arial"
-            android:textSize="13dp" />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.14"
+        android:text="What did you do in the previous?"
+        android:textColor="#ffffff" />
 
-    </RelativeLayout>
+    <EditText
+        android:id="@+id/standupsprevious"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:background="@drawable/rectangle"
+        android:layout_weight="0.14"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textSize="12dp" >
+    </EditText>
 
-    
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_weight="0.14"
+        android:text="What are you planning to do now?"
+        android:textColor="#ffffff" />
 
+    <EditText
+        android:id="@+id/standupsnow"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:layout_weight="0.14"
+        android:background="@drawable/rectangle"
+        android:paddingBottom="60dp"
+        android:paddingLeft="10dp"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.14"
+        android:layout_marginTop="24dp"
+        android:text="What were the problems encountered?"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:id="@+id/standupsproblem"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:layout_weight="0.14"
+        android:background="@drawable/rectangle"
+        android:paddingBottom="60dp"
+        android:paddingLeft="10dp"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/standupdone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="21dp"
+        android:layout_weight="0.14"
+        android:background="@drawable/loginbuttonstyle"
+        android:fontFamily="Arial"
+        android:text="Done"
+        android:textColor="#ffffff"
+        android:textSize="13dp" />
 </LinearLayout>
-
 
 </ScrollView>
