@@ -5,12 +5,14 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.scrumgztrack.Person;
 import com.example.scrumgztrack.R;
@@ -58,7 +60,6 @@ public class OJTlistAdapter extends BaseAdapter {
 					R.layout.ojtlist_item, parent, false);
 
 			holder = new ViewHolder(convertView);
-
 			convertView.setTag(holder);
 		}
 
@@ -99,11 +100,16 @@ public class OJTlistAdapter extends BaseAdapter {
 
 			PopupMenu popup = new PopupMenu(context, selectedView);
 			MenuInflater inflater = popup.getMenuInflater();
-			inflater.inflate(R.menu.add_remove_tofrom_team, popup.getMenu());
+			inflater.inflate(R.menu.add_to_team, popup.getMenu());
+			//inflater.inflate(R.menu.remove_from_team, popup.getMenu());
 			popup.show();
-
+			popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {			
+				public boolean onMenuItemClick(MenuItem item) {
+					Toast.makeText(context, item.toString(),Toast.LENGTH_SHORT).show();
+					return false;
+				}
+			});
 		}
-
 	}
 
 }

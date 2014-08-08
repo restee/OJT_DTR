@@ -8,4 +8,5 @@
     <string name="title_activity_team_list_dialog">TeamListDialog</string>
     <string name="menu_add_to_team">Add to team</string>
 	<string name="menu_remove_from_team">Remove from team</string>
+	<string name="create_team">Create team</string>
 </resources>

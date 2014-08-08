@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     
-	
-    <item android:id="@+id/menu_add_to_team"
-          android:title="@string/menu_add_to_team" />
-    
-    <item android:id="@+id/menu_remove_from_team"
+    <item android:id="@+id/menu_create_team" android:title="@string/create_team"></item><item android:id="@+id/menu_remove_from_team"
           android:title="@string/menu_remove_from_team" />
+    
     
 </menu>
