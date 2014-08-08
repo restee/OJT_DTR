@@ -3,6 +3,7 @@ package com.example.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,18 +15,22 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.scrumgztrack.CreateTeamDialog;
 import com.example.scrumgztrack.Person;
 import com.example.scrumgztrack.R;
+import com.example.tabs.OJTlistFragment;
 
 public class OJTlistAdapter extends BaseAdapter {
 	private List<Person> resultList;
 	private Context context;
+	private String email;
 
-	public OJTlistAdapter(Context context, List<Person> resultList) {
+	public OJTlistAdapter(Context context, List<Person> resultList,String email) {
 		this.resultList = resultList;
 		this.context = context;
+		this.email=email;
 	}
-
+	
 	@Override
 	public int getCount() {
 
@@ -106,6 +111,12 @@ public class OJTlistAdapter extends BaseAdapter {
 			popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {			
 				public boolean onMenuItemClick(MenuItem item) {
 					Toast.makeText(context, item.toString(),Toast.LENGTH_SHORT).show();
+					if(item.toString().compareToIgnoreCase("Create Team")==0){
+						Intent i = new Intent();
+						i.putExtra("email",email);
+						i.setAction(OJTlistFragment.CREATE_TEAM_BROADCAST);
+						context.sendBroadcast(i);
+					}
 					return false;
 				}
 			});

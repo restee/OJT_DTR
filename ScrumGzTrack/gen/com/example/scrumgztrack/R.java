@@ -24,37 +24,41 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_navigation_next_item=0x7f020001;
-        public static final int ic_plus=0x7f020002;
-        public static final int ic_social_add_group=0x7f020003;
+        public static final int button=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int ic_navigation_next_item=0x7f020002;
+        public static final int ic_plus=0x7f020003;
+        public static final int ic_social_add_group=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
-        public static final int iv_rowSelected=0x7f090005;
-        public static final int menu_add_to_team=0x7f090007;
-        public static final int menu_create_team=0x7f090006;
-        public static final int menu_remove_from_team=0x7f090009;
-        public static final int ojtlist_listview=0x7f090002;
-        public static final int pager=0x7f090000;
-        public static final int teamlist_listview=0x7f090003;
-        public static final int tv_ojtName=0x7f090004;
-        public static final int txtAddTeam=0x7f090001;
+        public static final int action_settings=0x7f090009;
+        public static final int btnCreateTeam=0x7f090001;
+        public static final int iv_rowSelected=0x7f090006;
+        public static final int menu_add_to_team=0x7f090008;
+        public static final int menu_create_team=0x7f090007;
+        public static final int menu_remove_from_team=0x7f09000a;
+        public static final int ojtlist_listview=0x7f090003;
+        public static final int pager=0x7f090002;
+        public static final int teamlist_listview=0x7f090004;
+        public static final int tv_ojtName=0x7f090005;
+        public static final int txtAddTeam=0x7f090000;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_ojtoption_dialog=0x7f030001;
-        public static final int activity_team_list_dialog=0x7f030002;
-        public static final int fragment_ojtlist=0x7f030003;
-        public static final int fragment_teamlist=0x7f030004;
-        public static final int ojtlist_item=0x7f030005;
+        public static final int activity_create_team_dialog=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_ojtoption_dialog=0x7f030002;
+        public static final int activity_team_list_dialog=0x7f030003;
+        public static final int fragment_ojtlist=0x7f030004;
+        public static final int fragment_teamlist=0x7f030005;
+        public static final int ojtlist_item=0x7f030006;
     }
     public static final class menu {
         public static final int add_to_team=0x7f080000;
-        public static final int main=0x7f080001;
-        public static final int ojtoption_dialog=0x7f080002;
-        public static final int remove_from_team=0x7f080003;
-        public static final int team_list_dialog=0x7f080004;
+        public static final int create_team_dialog=0x7f080001;
+        public static final int main=0x7f080002;
+        public static final int ojtoption_dialog=0x7f080003;
+        public static final int remove_from_team=0x7f080004;
+        public static final int team_list_dialog=0x7f080005;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -63,6 +67,7 @@ public final class R {
         public static final int hello_world=0x7f050002;
         public static final int menu_add_to_team=0x7f050005;
         public static final int menu_remove_from_team=0x7f050006;
+        public static final int title_activity_create_team_dialog=0x7f050008;
         public static final int title_activity_ojtoption_dialog=0x7f050003;
         public static final int title_activity_team_list_dialog=0x7f050004;
     }
