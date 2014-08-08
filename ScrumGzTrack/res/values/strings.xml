@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_ojtoption_dialog">OJTOptionDialog</string>
     <string name="title_activity_team_list_dialog">TeamListDialog</string>
-
+    <string name="menu_add_to_team">Add to team</string>
+	<string name="menu_remove_from_team">Remove from team</string>
 </resources>
