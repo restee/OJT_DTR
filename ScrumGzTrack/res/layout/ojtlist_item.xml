@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:layout_height="50dp"
+    android:orientation="horizontal" 
+ >
 
     <TextView
         android:id="@+id/txtOjtName"
         android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:padding="10dip"
+        android:layout_height="30dp"
+        android:layout_margin="10dip"
         android:text="Name"
-        android:textSize="20dp" />
+        android:layout_gravity="center_vertical|left"
+        android:textSize="20dp" 
+        android:textColor="#000000"
+        />
+    
 
     <ImageView
         android:layout_width="20dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_navigation_next_item" />
+        android:layout_height="30dp"
+        android:src="@drawable/ic_navigation_next_item"
+        android:layout_gravity="center_vertical|right"/>
 
 </LinearLayout>

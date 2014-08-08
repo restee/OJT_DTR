@@ -28,7 +28,7 @@
         <activity
             android:name="com.example.scrumgztrack.OJTOptionDialog"
             android:label="@string/title_activity_ojtoption_dialog"
-            android:theme="@style/dialog" >
+            android:theme="@style/myDialog" >
         </activity>
         <activity
             android:name="com.example.scrumgztrack.TeamListDialog"
