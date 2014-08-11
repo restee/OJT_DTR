@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp" >
+        android:padding="15dp" >
 
         <TextView
             android:id="@+id/standupsdate"
@@ -17,17 +17,17 @@
             android:text="July 21, 2014"
             android:layout_weight=".5"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:id="@+id/standupstime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
-            android:layout_marginLeft="91dp"
+            android:layout_marginLeft="137dp"
             android:text="08:00:34 AM"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="27sp" />
 
     </LinearLayout>
 
@@ -36,17 +36,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="19dp"
-        android:padding="10dp" >
+        android:layout_marginTop="29dp"
+        android:padding="15dp" >
 
         <TextView
             android:id="@+id/standupspreviewmessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="18dp"
             android:layout_weight="1"
             android:text="Bla bla bla bla bla bla bla bla bla .."
-            android:textSize="18sp" />
+            android:textSize="27sp" />
     </LinearLayout>
 
 </RelativeLayout>

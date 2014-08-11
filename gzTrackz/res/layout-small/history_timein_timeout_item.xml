@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+   android:layout_height="276dp"
+   android:layout_marginTop="10dp">
+
+    <TableRow
+        android:layout_width="32dp"
+        android:layout_height="23dp"
+        android:background="@drawable/table_border" >
+        
+        <TextView
+            android:id="@+id/historydateitem"
+                    android:background="@drawable/table_border_header"
+                    android:layout_width="52dp"
+                    android:layout_weight=".25"
+                    android:gravity="center"
+                    android:padding="9dip"
+                    android:textSize="12sp"
+                    android:text="Date"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/historytimeinitem"
+                    android:layout_width="38dp"
+                    android:layout_weight=".25"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:padding="9dip"
+                    android:text="Time-in"
+                    android:textSize="12sp"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/historytimeoutitem"
+                    android:layout_width="60dp"
+                    android:layout_weight=".25"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:padding="9dip"
+                    android:textSize="12sp"
+                    android:text="Time-out"
+                    android:textColor="#000000" />
+                <ImageView
+                android:id="@+id/gpsimage"
+                android:layout_height="23dp"
+                android:layout_width="29dp"
+                android:layout_weight=".25"
+                android:src="@drawable/gps_press"
+                android:layout_gravity="center"
+                />
+            
+               
+    </TableRow>
+    
+   </TableLayout>

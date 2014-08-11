@@ -16,10 +16,10 @@
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="39dp"
             android:text="Date"
             android:textColor="#ffffff"
-            android:textSize="23sp" />
+            android:textSize="34.5sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -30,48 +30,52 @@
             android:id="@+id/tableLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="105dp"
             android:background="#15000000"
-            android:padding="10dp" >
+            android:padding="15dp" >
 
             <TableRow
-                android:layout_width="40dp"
-                android:layout_height="30dp"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
                 android:background="@drawable/table_border_header" >
 
                 <TextView
-                    android:layout_width="65dp"
+                    android:layout_width="98dp"
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="10dip"
+                    android:padding="15dip"
+                    android:textSize="23sp"
                     android:text="Date"
                     android:textColor="#000000" />
 
                 <TextView
-                    android:layout_width="75dp"
+                    android:layout_width="113dp"
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="10dip"
+                    android:padding="15dip"
+                    android:textSize="23sp"
                     android:text="Time-in"
                     android:textColor="#000000" />
 
                 <TextView
-                    android:layout_width="75dp"
+                    android:layout_width="113dp"
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="10dip"
+                    android:padding="15dip"
+                    android:textSize="23sp"
                     android:text="Time-out"
                     android:textColor="#000000" />
 
                 <TextView
-                    android:layout_width="29dp"
+                    android:layout_width="44dp"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
+                    android:textSize="23sp"
                     android:layout_weight=".25"
-                    android:padding="10dip" >
+                    android:padding="15dip" >
                 </TextView>
             </TableRow>
 
@@ -85,23 +89,23 @@
     <Button
         android:id="@+id/historyquerybutton"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="68dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_weight="1"
         android:background="@drawable/loginbuttonstyle"
         android:text="Select History"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/norecordfound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="306dp"
         android:layout_marginLeft="80dp"
         android:text="No records found"
-        android:textSize="20sp" />
+        android:textSize="30sp" />
 
 </RelativeLayout>

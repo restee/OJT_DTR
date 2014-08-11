@@ -13,10 +13,10 @@
         <ListView
             android:id="@+id/standupslist"
             android:layout_width="0dp"
-            android:layout_height="417dp"
+            android:layout_height="663dp"
             android:layout_weight="1"
             android:background="@drawable/standups_listview_shape"
-            android:padding="5dp" >
+            android:padding="7.5dp" >
 
     </ListView>
     </LinearLayout>
@@ -30,24 +30,23 @@
     <Button
         android:id="@+id/historyquerybutton"
         android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_height="68dp"
         android:layout_weight="1"
         android:background="@drawable/loginbuttonstyle"
         android:text="Select History"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textSize="30sp" />
     </LinearLayout>
-
-        <TextView
+    
+    <TextView
             android:id="@+id/norecordfound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="80dp"
-            android:layout_marginTop="204dp"
+            android:layout_marginTop="306dp"
             android:text="No records found"
-            android:textSize="20sp" />
-
+            android:textSize="30sp" />
     
 
     

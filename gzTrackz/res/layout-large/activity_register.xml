@@ -7,29 +7,30 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@drawable/background"
-    tools:context=".RegisterActivity" >
+    tools:context=".RegisterActivity"
+    android:background="@drawable/background" >
 
     
         <TextView
             android:id="@+id/firstnameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="27dp"
             android:layout_weight="0.09"
+            android:textSize="23sp"
             android:text="First Name"
             android:textColor="#000000" />
         
         <EditText
             android:id="@+id/firstnameEditText"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
            android:layout_weight="0.09"
             android:background="@drawable/rectangle"
             android:digits="qwertzuiopasdfghjklyxcvbnm,. QWERTYUIOPLKJHGFDSAZXCVBNM"
             android:ems="10"
-            android:paddingLeft="10dp"
-            android:textSize="12sp" >
+            android:paddingLeft="15dp"
+            android:textSize="18sp" >
 
         </EditText>
         
@@ -37,7 +38,8 @@
             android:id="@+id/lastnameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="27dp"
+            android:textSize="23sp"
             android:text="Last Name"
             android:layout_weight="0.09"
             android:textColor="#000000" />
@@ -45,19 +47,20 @@
         <EditText
             android:id="@+id/lastnameEditText"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:layout_weight="0.09"
             android:background="@drawable/rectangle"
             android:digits="qwertzuiopasdfghjklyxcvbnm,. QWERTYUIOPLKJHGFDSAZXCVBNM"
             android:ems="10"
-            android:paddingLeft="10dp"
-            android:textSize="12sp" />
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="27dp"
+            android:textSize="23sp"
             android:text="E-mail"
             android:layout_weight="0.09"
             android:textColor="#000000" />
@@ -65,19 +68,20 @@
         <EditText
             android:id="@+id/emailRegisterEditText"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:layout_weight="0.09"
             android:background="@drawable/rectangle"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:textSize="12sp" />
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="27dp"
+            android:textSize="23sp"
             android:text="Password"
             android:layout_weight="0.09"
             android:textColor="#000000" />
@@ -85,19 +89,20 @@
         <EditText
             android:id="@+id/passwordRegisterEditText"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:layout_weight="0.09"
             android:background="@drawable/rectangle"
             android:ems="10"
             android:inputType="textPassword"
-            android:paddingLeft="10dp"
-            android:textSize="12sp" />
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="27dp"
+            android:textSize="23sp"
             android:text="Confirm password"
             android:layout_weight="0.09"
             android:textColor="#000000" />
@@ -105,23 +110,23 @@
         <EditText
             android:id="@+id/confirmpasswordEditText"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:layout_weight="0.09"
             android:background="@drawable/rectangle"
             android:ems="10"
             android:inputType="textPassword"
-            android:paddingLeft="10dp"
-            android:textSize="12sp" />
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="18dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="27dp"
             android:text="REGISTER"
             android:textColor="#ffffff"
             android:layout_weight="0.09"
             android:background="@drawable/loginbuttonstyle"
-            android:textSize="16sp" />
+            android:textSize="25sp" />
 
 </LinearLayout>
