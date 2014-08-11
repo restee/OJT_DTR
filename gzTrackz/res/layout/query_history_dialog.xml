@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="330dp"
     android:orientation="vertical"
-    android:background="#15357ec7" >
+    android:background="@drawable/background" >
 
 	<LinearLayout 
 	    android:layout_width="wrap_content"
@@ -16,8 +16,7 @@
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="0.5" />
+        android:layout_marginLeft="15dp"/>
 	    <TextView
         android:id="@+id/textView1"
         android:layout_width="0dp"
@@ -25,7 +24,8 @@
         android:layout_marginTop="10dp"
         android:layout_weight="0.5"
         android:text="Select a year"
-        android:textColor="#ffffff"
+        android:layout_marginLeft="3dp"
+        android:textColor="#000000"
         android:textSize="20dp" />
 	</LinearLayout>
 	
@@ -37,18 +37,18 @@
 	    
 	    <Spinner
         android:id="@+id/monthSpinner"
-        android:layout_width="0dp"
+        android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="0.5" />
+        android:layout_marginLeft="15dp" />
 	    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select a month"
         android:layout_marginTop="10dp"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
+        android:layout_marginLeft="3dp"
         android:textSize="20dp" />
 	</LinearLayout>
 	
@@ -62,8 +62,7 @@
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="0.50" />
+        android:layout_marginLeft="15dp"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -71,26 +70,24 @@
         android:layout_height="wrap_content"
         android:text="Select a day"
         android:layout_marginTop="10dp"
-        android:layout_weight="0.5"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
+        android:layout_marginLeft="3dp"
         android:textSize="20dp" />
 	</LinearLayout>
 
 	<LinearLayout
-	    android:layout_width="250dp"
-	    android:layout_height="wrap_content"
-	    android:layout_marginLeft="22.5dp" >
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
 
 	    <Button
 	        android:id="@+id/querybutton"
-	        android:layout_width="0dp"
+	        android:layout_width="match_parent"
 	        android:layout_height="40dp"
 	        android:layout_marginBottom="18dp"
-	        android:layout_weight="1"
 	        android:background="@drawable/loginbuttonstyle"
 	        android:text="Select"
 	        android:textColor="#ffffff"
-	        android:textSize="18dp" />
+	        android:textSize="20sp" />
 	</LinearLayout>
 
 </LinearLayout>

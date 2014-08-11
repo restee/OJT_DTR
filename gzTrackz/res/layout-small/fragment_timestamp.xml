@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.8dp"
+            android:text="Date"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TableLayout
+            android:id="@+id/tableLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="56dp"
+            android:background="#15000000"
+            android:padding="8dp" >
+
+            <TableRow
+                android:layout_width="32dp"
+                android:layout_height="23dp"
+                android:background="@drawable/table_border_header" >
+
+                <TextView
+                    android:background="@drawable/table_border_header"
+                    android:layout_width="52dp"
+                    android:layout_weight=".25"
+                    android:gravity="center"
+                    android:padding="9dip"
+                    android:textSize="12sp"
+                    android:text="Date"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="38dp"
+                    android:layout_weight=".25"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:padding="9dip"
+                    android:text="Time-in"
+                    android:textSize="12sp"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_weight=".25"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:padding="9dip"
+                    android:textSize="12sp"
+                    android:text="Time-out"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="24dp"
+                    android:background="@drawable/table_border_header"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:layout_weight=".25"
+                    android:padding="9dip" >
+                </TextView>
+            </TableRow>
+
+            <ListView
+                android:id="@+id/timeintimeoutlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/historyquerybutton"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
+        android:layout_height="36dp"
+        android:background="@drawable/loginbuttonstyle"
+        android:text="Select History"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/norecordfound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="164dp"
+        android:text="No records found"
+        android:textSize="20sp" />
+
+</RelativeLayout>

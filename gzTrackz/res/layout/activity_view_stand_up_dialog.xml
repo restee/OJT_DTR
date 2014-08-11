@@ -1,8 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="700dp"
     android:orientation="vertical"
+    android:background="@drawable/background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -10,6 +11,7 @@
     tools:context=".ViewStandupActivity" >
     
     <LinearLayout 
+        android:id="@+id/l1"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:orientation="horizontal"
@@ -18,7 +20,7 @@
         android:id="@+id/standupdate"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:textSize="20dp"
+        android:textSize="18sp"
         android:textColor="#000000"
         android:text="June 30, 2014"
         />
@@ -27,13 +29,15 @@
         android:id="@+id/standuptime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="121.2dp"
+        android:layout_marginLeft="88dp"
         android:text="12:00:32 AM"
         android:textStyle="italic"
-        android:textSize="20dp" />
+        android:textSize="16sp" />
 
     </LinearLayout>
     <LinearLayout 
+        android:layout_below="@+id/l1"
+        android:id="@+id/l2"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content">
         <View 
@@ -43,19 +47,82 @@
         />
     </LinearLayout>
     
+    
     <LinearLayout 
+        android:id="@+id/l3"
+        android:layout_below="@+id/l2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <TextView 
+            android:id="@+id/previoustext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What I did in the Previous"
+            android:textColor="@color/text_color_pressed"
+            android:textSize="20dp"/>
+
+
+        <TextView 
+            android:id="@+id/previousstandup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SDFJKLSDFJKLSDFKSDKJLFSDJKLFSDJKLFJKLSDFJKLSDFJKLSDJKLFSDJKL"
+            android:layout_marginLeft="20dp"
+            android:textSize="17dp"
+            android:textStyle="italic"/>
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/l4"
+        android:layout_below="@+id/l3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:baselineAligned="false">
+        android:orientation="vertical">
+        <TextView 
+            android:id="@+id/todotext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What I plan to do now"
+            android:textColor="@color/text_color_pressed"
+            android:textSize="20dp"/>
 
-    <ExpandableListView
-        android:id="@+id/standuplist"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" >
-    </ExpandableListView>
-    
+
+        <TextView 
+            android:id="@+id/todonowstandup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SDFJKLSDFJKLSDFKSDKJLFSDJKLFSDJKLFJKLSDFJKLSDFJKLSDJKLFSDJKL"
+            android:layout_marginLeft="20dp"
+            android:textSize="17dp"
+            android:textStyle="italic"/>
     </LinearLayout>
     
-   </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/l5"
+        android:layout_below="@+id/l4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <TextView 
+            android:id="@+id/problemstext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What were the problems encountered"
+            android:textColor="@color/text_color_pressed"
+            android:textSize="20dp"/>
+
+
+        <TextView 
+            android:id="@+id/problemsstandup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SDFJKLSDFJKLSDFKSDKJLFSDJKLFSDJKLFJKLSDFJKLSDFJKLSDJKLFSDJKL"
+            android:layout_marginLeft="20dp"
+            android:textSize="17dp"
+            android:textStyle="italic"/>
+    </LinearLayout>
+    
+   </RelativeLayout>
