@@ -19,17 +19,17 @@
                     android:gravity="center"
                     android:padding="9dip"
                     android:textSize="12sp"
-                    android:text="Date"
+                    android:text="2014-07-15"
                     android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/historytimeinitem"
-                    android:layout_width="38dp"
+                    android:layout_width="60dp"
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
                     android:padding="9dip"
-                    android:text="Time-in"
+                    android:text="07:40:33 AM"
                     android:textSize="12sp"
                     android:textColor="#000000" />
 
@@ -41,7 +41,7 @@
                     android:gravity="center"
                     android:padding="9dip"
                     android:textSize="12sp"
-                    android:text="Time-out"
+                    android:text="07:41:33 AM"
                     android:textColor="#000000" />
                 <ImageView
                 android:id="@+id/gpsimage"

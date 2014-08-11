@@ -44,8 +44,8 @@
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="15dip"
-                    android:textSize="23sp"
+                    android:padding="14dip"
+                    android:textSize="18sp"
                     android:text="Date"
                     android:textColor="#000000" />
 
@@ -54,8 +54,8 @@
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="15dip"
-                    android:textSize="23sp"
+                    android:padding="14dip"
+                    android:textSize="18sp"
                     android:text="Time-in"
                     android:textColor="#000000" />
 
@@ -64,8 +64,8 @@
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="15dip"
-                    android:textSize="23sp"
+                    android:padding="14dip"
+                    android:textSize="18sp"
                     android:text="Time-out"
                     android:textColor="#000000" />
 
@@ -73,9 +73,9 @@
                     android:layout_width="44dp"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:textSize="23sp"
+                    android:textSize="18sp"
                     android:layout_weight=".25"
-                    android:padding="15dip" >
+                    android:padding="14dip" >
                 </TextView>
             </TableRow>
 
