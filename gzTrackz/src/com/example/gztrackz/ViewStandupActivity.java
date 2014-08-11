@@ -1,52 +1,111 @@
 package com.example.gztrackz;
 
-import java.util.ArrayList;
-
-import list_adapters.ExpandableListAdapter;
-import list_objects.Group;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.MenuItem;
-import android.widget.ExpandableListView;
+import android.view.View;
 import android.widget.TextView;
+
+import com.example.login.ClickListeners;
 
 public class ViewStandupActivity extends Activity {
 
-	private TextView date,time;
-	SparseArray<Group> groups = new SparseArray<Group>();
+	private TextView date,time,past,current,problems;
+	private TextView clickPrevious,clickNow,clickProblems;
+	private ClickListeners clickListener;
+	private boolean isPreviousClicked,isNowClicked,isProblemsClicked;
+	private Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_stand_up_dialog);
-		date = (TextView) findViewById(R.id.standupdate);
-		time = (TextView) findViewById(R.id.standuptime);
+		
+		init();
+		
 		date.setText(getIntent().getStringExtra("date").substring(0,11));
 		time.setText(getIntent().getStringExtra("date").substring(11));
-		createData();
-		ExpandableListView listView = (ExpandableListView) findViewById(R.id.standuplist);
-		ExpandableListAdapter adapter = new ExpandableListAdapter(this,groups);
-		listView.setAdapter(adapter);
+		past.setText(getIntent().getStringExtra("standup_y"));
+		current.setVisibility(View.GONE);
+		problems.setVisibility(View.GONE);
 		
+		clickPrevious.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(isPreviousClicked)
+				{
+					isPreviousClicked = false;
+					past.setText(getIntent().getStringExtra("standup_y"));
+					past.setVisibility(View.GONE);
+				}
+				else
+				{
+					isPreviousClicked = true;
+					past.setVisibility(View.VISIBLE);
+				}
+				
+			}
+		});
+		clickNow.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(isNowClicked)
+				{
+					isNowClicked = false;
+					current.setText(getIntent().getStringExtra("standup_todo"));
+					current.setVisibility(View.VISIBLE);
+				}
+				else
+				{
+					isNowClicked = true;
+					current.setVisibility(View.GONE);
+				}
+				
+			}
+		});
+		clickProblems.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(isProblemsClicked)
+				{
+					isProblemsClicked = false;
+					problems.setText(getIntent().getStringExtra("problem"));
+					problems.setVisibility(View.VISIBLE);
+				}
+				else
+				{
+					isProblemsClicked = true;
+					problems.setVisibility(View.GONE);
+				}
+				
+			}
+		});
 	}
-	public void createData() {
-		int count=0;
-		String [] headDetails = {"What I did in the previous", "What I plan to do now", "What were the problems encountered"};
-		ArrayList<String> standUpDetails = new ArrayList<String>();
-		standUpDetails.add(getIntent().getStringExtra("standup_y"));
-		standUpDetails.add(getIntent().getStringExtra("standup_todo"));
-		standUpDetails.add(getIntent().getStringExtra("problem"));
-	    for (int j = 0; j < 3; j++) {
-	      Group group = new Group(headDetails[count]);
-	      for (int i = 0; i < 1; i++) {
-	        group.children.add(standUpDetails.get(count));
-	      }
-	      count++;
-	      groups.append(j, group);
-	    }
-	  }
 	
+	private void init()
+	{
+		isPreviousClicked = true;
+		isNowClicked = true;
+		isProblemsClicked = true;
+		
+		date = (TextView) findViewById(R.id.standupdate);
+		time = (TextView) findViewById(R.id.standuptime);
+		past = (TextView) findViewById(R.id.previousstandup);
+		current = (TextView) findViewById(R.id.todonowstandup);
+		problems = (TextView) findViewById(R.id.problemsstandup);
+		clickPrevious =  (TextView) findViewById(R.id.previoustext);
+		clickNow = (TextView) findViewById(R.id.todotext);
+		clickProblems = (TextView) findViewById(R.id.problemstext);
+		
+		clickListener = new ClickListeners(context);
+	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
@@ -60,7 +119,4 @@ public class ViewStandupActivity extends Activity {
 	            return super.onOptionsItemSelected(item);
 	    }
 	}
-
-	
-
 }

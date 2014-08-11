@@ -29,10 +29,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.adapter.TeamListAdapter;
+import com.example.scrumgztrack.Gz_ScrumMaster;
 import com.example.scrumgztrack.R;
 import com.example.scrumgztrack.TeamListAddDialog;
+
 
 public class TeamListFragment extends Fragment {
 
@@ -40,18 +43,40 @@ public class TeamListFragment extends Fragment {
 	private ListView teamListview;
 	private List<String> teamList;
 	private TeamListAdapter teamAdapter;
+	private Gz_ScrumMaster scrumMaster;
 	public static final String ADD_TO_TEAM_BROADCAST = "com.example.gzscrumtrack.addToTeamBroadcast";
+	private String ojtEmail;
+	
 	private BroadcastReceiver addToTeamBroadcast = new BroadcastReceiver(){
 		@Override
 		public void onReceive(Context arg0, Intent arg1) {
-			Intent i = new Intent(getActivity(),TeamListAddDialog.class);			
-			String[] teamNames = new String[teamList.size()];
-			for(int init=0;init<teamList.size();init++){
-				teamNames[init] = teamList.get(init);
+			if(arg1.getStringExtra("action").compareToIgnoreCase("remove")==0){
+				scrumMaster = new Gz_ScrumMaster("",getActivity());
+				scrumMaster.removeFromTeam(arg1.getStringExtra("ojtEmail"),arg1.getIntExtra("position",0));
+			}else{
+				Intent i = new Intent(getActivity(),TeamListAddDialog.class);			
+				String[] teamNames = new String[teamList.size()];
+				for(int init=0;init<teamList.size();init++){
+					teamNames[init] = teamList.get(init);
+				}
+				i.putExtra("teamList",teamNames);				
+				i.putExtra("position",arg1.getIntExtra("position",0));
+				
+				i.putExtra("ojtEmail",arg1.getStringExtra("ojtEmail"));
+				startActivityForResult(i,2);
 			}
-			i.putExtra("teamList",teamNames);
-			startActivityForResult(i,2);
 		}		
+	};
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {		
+		if(requestCode==2){
+			if(resultCode==getActivity().RESULT_OK){
+				//Toast.makeText(getActivity(),data.getStringExtra("ojtEmail"),Toast.LENGTH_SHORT).show();
+				scrumMaster = new Gz_ScrumMaster(data.getStringExtra("teamName"),getActivity());	
+				
+				scrumMaster.addToTeam(data.getStringExtra("ojtEmail"),data.getIntExtra("position",0));
+			}
+		}
 	};
 	
 	@Override
@@ -61,6 +86,7 @@ public class TeamListFragment extends Fragment {
 		teamListview = (ListView) rootView.findViewById(R.id.teamlist_listview);
 		email = "dracula@gz.com";
 		teamList = new ArrayList();
+		
 		teamAdapter = new TeamListAdapter(getActivity(),teamList);
 		teamListview.setAdapter(teamAdapter);
 		new GetAllTeams(getActivity(),email).execute();
@@ -75,8 +101,8 @@ public class TeamListFragment extends Fragment {
 		super.onDestroy();
 		getActivity().unregisterReceiver(addToTeamBroadcast);
 	}
+	
 	private class GetAllTeams extends AsyncTask<String, Void, Boolean> {
-
 		Context context;
 		String email;
 		ProgressDialog progressD;

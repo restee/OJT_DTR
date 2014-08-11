@@ -7,8 +7,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context=".RegisterActivity"
-    android:background="#15357ec7" >
+    android:background="@drawable/background"
+    tools:context=".RegisterActivity" >
 
     
         <TextView
@@ -18,7 +18,7 @@
             android:layout_marginTop="18dp"
             android:layout_weight="0.09"
             android:text="First Name"
-            android:textColor="#ffffff" />
+            android:textColor="#000000" />
         
         <EditText
             android:id="@+id/firstnameEditText"
@@ -29,7 +29,7 @@
             android:digits="qwertzuiopasdfghjklyxcvbnm,. QWERTYUIOPLKJHGFDSAZXCVBNM"
             android:ems="10"
             android:paddingLeft="10dp"
-            android:textSize="12dp" >
+            android:textSize="12sp" >
 
         </EditText>
         
@@ -37,10 +37,10 @@
             android:id="@+id/lastnameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="18dp"
             android:text="Last Name"
             android:layout_weight="0.09"
-            android:textColor="#ffffff" />
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/lastnameEditText"
@@ -51,16 +51,16 @@
             android:digits="qwertzuiopasdfghjklyxcvbnm,. QWERTYUIOPLKJHGFDSAZXCVBNM"
             android:ems="10"
             android:paddingLeft="10dp"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="18dp"
             android:text="E-mail"
             android:layout_weight="0.09"
-            android:textColor="#ffffff" />
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/emailRegisterEditText"
@@ -71,16 +71,16 @@
             android:ems="10"
             android:inputType="textEmailAddress"
             android:paddingLeft="10dp"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="18dp"
             android:text="Password"
             android:layout_weight="0.09"
-            android:textColor="#ffffff" />
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/passwordRegisterEditText"
@@ -91,16 +91,16 @@
             android:ems="10"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="18dp"
             android:text="Confirm password"
             android:layout_weight="0.09"
-            android:textColor="#ffffff" />
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/confirmpasswordEditText"
@@ -111,17 +111,17 @@
             android:ems="10"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="18dp"
             android:text="REGISTER"
             android:textColor="#ffffff"
             android:layout_weight="0.09"
             android:background="@drawable/loginbuttonstyle"
-            android:textSize="13dp" />
+            android:textSize="16sp" />
 
 </LinearLayout>

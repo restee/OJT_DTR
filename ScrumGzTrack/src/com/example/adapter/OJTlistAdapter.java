@@ -34,10 +34,9 @@ public class OJTlistAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-
 		return resultList.size();
-
 	}
+
 
 	@Override
 	public Object getItem(int arg0) {
@@ -48,9 +47,7 @@ public class OJTlistAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int arg0) {
-
 		return 0;
-
 	}
 
 	@Override
@@ -79,7 +76,7 @@ public class OJTlistAdapter extends BaseAdapter {
 				+ " "
 				+ resultList.get(personAtCurrentPosition).getLastName());
 
-		holder.iv_rowSelected.setOnClickListener(new rowClickListener());
+		holder.iv_rowSelected.setOnClickListener(new rowClickListener(resultList.get(personAtCurrentPosition).getEmail(),resultList.get(personAtCurrentPosition).getTeamName(),personAtCurrentPosition));
 
 		return convertView;
 
@@ -100,20 +97,26 @@ public class OJTlistAdapter extends BaseAdapter {
 	}
 
 	private class rowClickListener implements View.OnClickListener {
-
+		String ojtEmail,team;
+		int position;
+		public rowClickListener(String ojtEmail,String team,int position) {
+			this.ojtEmail = ojtEmail;
+			this.team=team;
+			this.position = position;
+		}
+		
 		@Override
 		public void onClick(View selectedView) {
-
 			PopupMenu popup = new PopupMenu(context, selectedView);
 			MenuInflater inflater = popup.getMenuInflater();
-			inflater.inflate(R.menu.add_to_team, popup.getMenu());
+			if(team.compareToIgnoreCase("null")!=0){				
+				inflater.inflate(R.menu.remove_from_team, popup.getMenu());
+			}else			
+				inflater.inflate(R.menu.add_to_team, popup.getMenu());
 			
-			
-			//inflater.inflate(R.menu.remove_from_team, popup.getMenu());
 			popup.show();
 			popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {			
-				public boolean onMenuItemClick(MenuItem item) {
-					Toast.makeText(context, item.toString(),Toast.LENGTH_SHORT).show();
+				public boolean onMenuItemClick(MenuItem item) {					
 					if(item.toString().compareToIgnoreCase("Create Team")==0){
 						Intent i = new Intent();
 						i.putExtra("email",email);
@@ -121,7 +124,16 @@ public class OJTlistAdapter extends BaseAdapter {
 						context.sendBroadcast(i);
 					}else if(item.toString().compareToIgnoreCase("Add to team")==0){
 						Intent i = new Intent();
-						i.putExtra("email",email);
+						i.putExtra("action","add");
+						i.putExtra("position",position);
+						i.putExtra("ojtEmail",ojtEmail);
+						i.setAction(TeamListFragment.ADD_TO_TEAM_BROADCAST);
+						context.sendBroadcast(i);
+					}else if(item.toString().compareToIgnoreCase("Remove from team")==0){
+						Intent i = new Intent();
+						i.putExtra("action","remove");
+						i.putExtra("position",position);
+						i.putExtra("ojtEmail",ojtEmail);
 						i.setAction(TeamListFragment.ADD_TO_TEAM_BROADCAST);
 						context.sendBroadcast(i);
 					}

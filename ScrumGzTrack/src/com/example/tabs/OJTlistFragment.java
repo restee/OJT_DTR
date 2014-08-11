@@ -48,7 +48,7 @@ public class OJTlistFragment extends Fragment {
 	private List<Person> ojtList;
 	private OJTlistAdapter ojtAdapter;
 	public static final String CREATE_TEAM_BROADCAST = "com.example.gzscrumtrack.createTeamBroadcast";
-	
+	public static final String UPDATE_LIST_BROADCAST = "com.example.gzscrumtrack.updateListBroadcast";
 	private String email;
 	
 	
@@ -60,23 +60,25 @@ public class OJTlistFragment extends Fragment {
 			i.putExtra("email",arg1.getStringExtra("email"));
 			startActivityForResult(i,1);
 		}		
-	};
-
-	
+	};	
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode==1){
 			if(resultCode==getActivity().RESULT_OK){
 				new AddTeam(getActivity(),email,data.getStringExtra("teamName")).execute();
 			}
-		}else if(requestCode==2){
-			if(resultCode==getActivity().RESULT_OK){
-				//new AddTeam(getActivity(),email,data.getStringExtra("teamName")).execute();
-			}
 		}
 	};
 	
-
+	private BroadcastReceiver editListBroadcast = new BroadcastReceiver(){
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {
+			ojtList.get(arg1.getIntExtra("position",0)).setTeamName(arg1.getStringExtra("teamName"));	
+			ojtAdapter = new OJTlistAdapter(getActivity(), ojtList,email);
+			ojtListview.setAdapter(ojtAdapter);
+		}		
+	};	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -104,7 +106,7 @@ public class OJTlistFragment extends Fragment {
 		ojtListview.setOnItemClickListener(null);
 		
 		getActivity().registerReceiver(createTeamBroadcast, new IntentFilter(CREATE_TEAM_BROADCAST));
-		
+		getActivity().registerReceiver(editListBroadcast, new IntentFilter(UPDATE_LIST_BROADCAST));
 		return rootView;				
 	}
 
@@ -112,7 +114,7 @@ public class OJTlistFragment extends Fragment {
 	public void onDestroy() {
 		super.onDestroy();
 		getActivity().unregisterReceiver(createTeamBroadcast);
-	
+		getActivity().unregisterReceiver(editListBroadcast);
 	}
 	public boolean isConnectingToInternet() {
 		ConnectivityManager connectivity = (ConnectivityManager) getActivity()
@@ -130,7 +132,6 @@ public class OJTlistFragment extends Fragment {
 	}
 
 	private class RetrieveAllOJT extends AsyncTask<String, Void, Boolean> {
-
 		Context context;
 		ProgressDialog progressD;
 
@@ -155,7 +156,7 @@ public class OJTlistFragment extends Fragment {
 			
 			try {
 				
-				String urlTopTracks = "http://gz123.site90.net/get_trainee/";
+				String urlTopTracks = "http://gz123.site90.net/list_trainees/";
 				HttpClient client = new DefaultHttpClient();
 				ResponseHandler<String> handler = new BasicResponseHandler();
 
@@ -173,7 +174,7 @@ public class OJTlistFragment extends Fragment {
 					tempObj = resultJSON.getJSONObject(init);
 					ojtList.add(new Person(tempObj.getString("first_name"),
 							tempObj.getString("last_name"), tempObj
-									.getString("email")));
+									.getString("email"), tempObj.getString("team")));
 				}
 
 				Log.d("LIST OF OJTS", retrieveResult);
@@ -191,7 +192,6 @@ public class OJTlistFragment extends Fragment {
 			if (progressD.isShowing()) {
 				progressD.dismiss();
 			}
-
 			ojtAdapter = new OJTlistAdapter(getActivity(), ojtList,email);
 			ojtListview.setAdapter(ojtAdapter);
 		}

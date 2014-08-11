@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="495dp"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:layout_marginTop="60dp">
+	    
+	    <Spinner
+        android:id="@+id/yearSpinner"
+        android:layout_width="210dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginLeft="23dp"/>
+	    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:text="Select a year"
+        android:textColor="#000000"
+        android:textSize="30dp" />
+	</LinearLayout>
+	
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:layout_marginTop="15dp">
+	    
+	    <Spinner
+        android:id="@+id/monthSpinner"
+        android:layout_width="210dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginLeft="23dp" />
+	    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a month"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="30dp" />
+	</LinearLayout>
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:layout_marginTop="15dp">
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="210dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginLeft="23dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a day"
+        android:layout_marginTop="15dp"
+        android:textColor="#000000"
+        android:layout_marginLeft="5dp"
+        android:textSize="30dp" />
+	</LinearLayout>
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+
+	    <Button
+	        android:id="@+id/querybutton"
+	        android:layout_width="match_parent"
+	        android:layout_height="60dp"
+	        android:layout_marginBottom="18dp"
+	        android:background="@drawable/loginbuttonstyle"
+	        android:text="Select"
+	        android:textColor="#ffffff"
+	        android:textSize="30sp" />
+	</LinearLayout>
+
+</LinearLayout>

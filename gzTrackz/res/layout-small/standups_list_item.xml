@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="9dp" >
+
+        <TextView
+            android:id="@+id/standupsdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="July 21, 2014"
+            android:layout_weight=".5"
+            android:textColor="#000000"
+            android:textSize="16.2sp" />
+
+        <TextView
+            android:id="@+id/standupstime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_marginLeft="111dp"
+            android:text="08:00:34 AM"
+            android:textColor="#000000"
+            android:textSize="16.2sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="17.1dp"
+        android:padding="9dp" >
+
+        <TextView
+            android:id="@+id/standupspreviewmessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.8dp"
+            android:layout_weight="1"
+            android:text="Bla bla bla bla bla bla bla bla bla .."
+            android:textSize="16.2sp" />
+    </LinearLayout>
+
+</RelativeLayout>
