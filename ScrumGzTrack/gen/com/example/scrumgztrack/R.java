@@ -24,31 +24,37 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_navigation_next_item=0x7f020001;
-        public static final int ic_plus=0x7f020002;
-        public static final int ic_social_add_group=0x7f020003;
+        public static final int button=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int ic_navigation_next_item=0x7f020002;
+        public static final int ic_plus=0x7f020003;
+        public static final int ic_social_add_group=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090005;
-        public static final int ojtlist_listview=0x7f090002;
-        public static final int pager=0x7f090000;
-        public static final int teamlist_listview=0x7f090003;
-        public static final int txtAddTeam=0x7f090001;
-        public static final int txtOjtName=0x7f090004;
+        public static final int action_settings=0x7f090006;
+        public static final int atnCreateTeam=0x7f090007;
+        public static final int btnCreateTeam=0x7f090001;
+        public static final int ojtlist_listview=0x7f090003;
+        public static final int pager=0x7f090002;
+        public static final int teamlist_listview=0x7f090004;
+        public static final int txtAddTeam=0x7f090000;
+        public static final int txtOjtName=0x7f090005;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_ojtoption_dialog=0x7f030001;
-        public static final int activity_team_list_dialog=0x7f030002;
-        public static final int fragment_ojtlist=0x7f030003;
-        public static final int fragment_teamlist=0x7f030004;
-        public static final int ojtlist_item=0x7f030005;
+        public static final int activity_createteam_dialog=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_ojtoption_dialog=0x7f030002;
+        public static final int activity_team_list_dialog=0x7f030003;
+        public static final int fragment_ojtlist=0x7f030004;
+        public static final int fragment_teamlist=0x7f030005;
+        public static final int ojtlist_item=0x7f030006;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int ojtoption_dialog=0x7f080001;
-        public static final int team_list_dialog=0x7f080002;
+        public static final int createteam_dialog=0x7f080000;
+        public static final int fragment_teamlist=0x7f080001;
+        public static final int main=0x7f080002;
+        public static final int ojtoption_dialog=0x7f080003;
+        public static final int team_list_dialog=0x7f080004;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -61,11 +67,13 @@ public final class R {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -84,6 +92,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        public static final int button_text=0x7f060004;
         public static final int dialog=0x7f060002;
         public static final int myDialog=0x7f060003;
     }

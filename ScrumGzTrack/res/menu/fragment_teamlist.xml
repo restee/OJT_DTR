@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/atnCreateTeam"
+        android:title="Create Team"
+        android:icon="@drawable/ic_social_add_group"
+        android:orderInCategory="100"
+        android:showAsAction="always|withText"
+        />
+
+</menu>

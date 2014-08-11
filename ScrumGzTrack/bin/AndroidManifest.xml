@@ -34,6 +34,7 @@
             android:name="com.example.scrumgztrack.TeamListDialog"
             android:label="@string/title_activity_team_list_dialog" >
         </activity>
+        
     </application>
 
 </manifest>
