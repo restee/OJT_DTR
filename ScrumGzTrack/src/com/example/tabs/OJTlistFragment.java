@@ -39,6 +39,7 @@ import com.example.scrumgztrack.CreateTeamDialog;
 import com.example.scrumgztrack.OJTOptionDialog;
 import com.example.scrumgztrack.Person;
 import com.example.scrumgztrack.R;
+import com.example.scrumgztrack.TeamListAddDialog;
 import com.example.scrumgztrack.TeamListDialog;
 
 public class OJTlistFragment extends Fragment {
@@ -47,6 +48,7 @@ public class OJTlistFragment extends Fragment {
 	private List<Person> ojtList;
 	private OJTlistAdapter ojtAdapter;
 	public static final String CREATE_TEAM_BROADCAST = "com.example.gzscrumtrack.createTeamBroadcast";
+	
 	private String email;
 	
 	
@@ -60,10 +62,16 @@ public class OJTlistFragment extends Fragment {
 		}		
 	};
 
+	
+	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode==1){
 			if(resultCode==getActivity().RESULT_OK){
 				new AddTeam(getActivity(),email,data.getStringExtra("teamName")).execute();
+			}
+		}else if(requestCode==2){
+			if(resultCode==getActivity().RESULT_OK){
+				//new AddTeam(getActivity(),email,data.getStringExtra("teamName")).execute();
 			}
 		}
 	};
@@ -96,6 +104,7 @@ public class OJTlistFragment extends Fragment {
 		ojtListview.setOnItemClickListener(null);
 		
 		getActivity().registerReceiver(createTeamBroadcast, new IntentFilter(CREATE_TEAM_BROADCAST));
+		
 		return rootView;				
 	}
 
@@ -103,6 +112,7 @@ public class OJTlistFragment extends Fragment {
 	public void onDestroy() {
 		super.onDestroy();
 		getActivity().unregisterReceiver(createTeamBroadcast);
+	
 	}
 	public boolean isConnectingToInternet() {
 		ConnectivityManager connectivity = (ConnectivityManager) getActivity()
@@ -221,19 +231,19 @@ public class OJTlistFragment extends Fragment {
 		protected Boolean doInBackground(String... params) {
 			boolean flag = true;
 			
-			try {
-				
-				String urlTopTracks = "http://gz123.site90.net/add_team";
+			try {								
+				String urlTopTracks = "http://gz123.site90.net/add_team/default.php";
 				HttpClient client = new DefaultHttpClient();
 				ResponseHandler<String> handler = new BasicResponseHandler();
+				Log.d("email", email);
+				Log.d("teamName", teamName);
 				
 				HttpPost request = new HttpPost(urlTopTracks);
 				 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 				    nameValuePairs.add(new BasicNameValuePair("email",email));
 				    nameValuePairs.add(new BasicNameValuePair("team",teamName));
 				    request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-				    
-				    
+				    				    
 				String httpResponseTopTracks = client.execute(request, handler);
 				Log.d("RESULT", httpResponseTopTracks);
 				StringTokenizer token = new StringTokenizer(

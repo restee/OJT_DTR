@@ -19,6 +19,7 @@ import com.example.scrumgztrack.CreateTeamDialog;
 import com.example.scrumgztrack.Person;
 import com.example.scrumgztrack.R;
 import com.example.tabs.OJTlistFragment;
+import com.example.tabs.TeamListFragment;
 
 public class OJTlistAdapter extends BaseAdapter {
 	private List<Person> resultList;
@@ -106,6 +107,8 @@ public class OJTlistAdapter extends BaseAdapter {
 			PopupMenu popup = new PopupMenu(context, selectedView);
 			MenuInflater inflater = popup.getMenuInflater();
 			inflater.inflate(R.menu.add_to_team, popup.getMenu());
+			
+			
 			//inflater.inflate(R.menu.remove_from_team, popup.getMenu());
 			popup.show();
 			popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {			
@@ -115,6 +118,11 @@ public class OJTlistAdapter extends BaseAdapter {
 						Intent i = new Intent();
 						i.putExtra("email",email);
 						i.setAction(OJTlistFragment.CREATE_TEAM_BROADCAST);
+						context.sendBroadcast(i);
+					}else if(item.toString().compareToIgnoreCase("Add to team")==0){
+						Intent i = new Intent();
+						i.putExtra("email",email);
+						i.setAction(TeamListFragment.ADD_TO_TEAM_BROADCAST);
 						context.sendBroadcast(i);
 					}
 					return false;
