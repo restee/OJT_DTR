@@ -37,7 +37,12 @@
         <activity
             android:name="com.example.scrumgztrack.CreateTeamDialog"
             android:label="@string/title_activity_create_team_dialog"
-             android:theme="@style/myDialog" >
+            android:theme="@style/myDialog" >
+        </activity>
+        <activity
+            android:name="com.example.scrumgztrack.TeamListAddDialog"
+            android:label="@string/title_activity_team_list_add_dialog"
+            android:theme="@style/myDialog" >
         </activity>
     </application>
 
