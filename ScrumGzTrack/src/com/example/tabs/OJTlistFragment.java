@@ -224,6 +224,10 @@ public class OJTlistFragment extends Fragment {
 			if (progressD.isShowing()) {
 				progressD.dismiss();
 			}		
+			
+			Intent i = new Intent();			
+			i.setAction(TeamListFragment.TEAM_ADDED_BROADCAST);
+			context.sendBroadcast(i);			
 		}
 		
 		

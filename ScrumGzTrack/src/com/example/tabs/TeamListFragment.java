@@ -45,6 +45,7 @@ public class TeamListFragment extends Fragment {
 	private TeamListAdapter teamAdapter;
 	private Gz_ScrumMaster scrumMaster;
 	public static final String ADD_TO_TEAM_BROADCAST = "com.example.gzscrumtrack.addToTeamBroadcast";
+	public static final String TEAM_ADDED_BROADCAST = "com.example.gzscrumtrack.teamAddedBroadcast";
 	private String ojtEmail;
 	
 	private BroadcastReceiver addToTeamBroadcast = new BroadcastReceiver(){
@@ -60,13 +61,21 @@ public class TeamListFragment extends Fragment {
 					teamNames[init] = teamList.get(init);
 				}
 				i.putExtra("teamList",teamNames);				
-				i.putExtra("position",arg1.getIntExtra("position",0));
-				
+				i.putExtra("position",arg1.getIntExtra("position",0));				
 				i.putExtra("ojtEmail",arg1.getStringExtra("ojtEmail"));
 				startActivityForResult(i,2);
 			}
 		}		
 	};
+	
+	private BroadcastReceiver teamAddedBroadcast = new BroadcastReceiver(){
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {
+			teamList = new ArrayList();
+			new GetAllTeams(getActivity(),email).execute();			
+		}		
+	};
+	
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {		
 		if(requestCode==2){
@@ -92,6 +101,7 @@ public class TeamListFragment extends Fragment {
 		new GetAllTeams(getActivity(),email).execute();
 		
 		getActivity().registerReceiver(addToTeamBroadcast, new IntentFilter(ADD_TO_TEAM_BROADCAST));
+		getActivity().registerReceiver(teamAddedBroadcast, new IntentFilter(TEAM_ADDED_BROADCAST));
 		return rootView;
 	}
 	
@@ -100,6 +110,7 @@ public class TeamListFragment extends Fragment {
 	
 		super.onDestroy();
 		getActivity().unregisterReceiver(addToTeamBroadcast);
+		getActivity().unregisterReceiver(teamAddedBroadcast);
 	}
 	
 	private class GetAllTeams extends AsyncTask<String, Void, Boolean> {
