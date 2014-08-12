@@ -21,6 +21,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -52,8 +54,15 @@ public class TeamListFragment extends Fragment {
 		@Override
 		public void onReceive(Context arg0, Intent arg1) {
 			if(arg1.getStringExtra("action").compareToIgnoreCase("remove")==0){
-				scrumMaster = new Gz_ScrumMaster("",getActivity());
-				scrumMaster.removeFromTeam(arg1.getStringExtra("ojtEmail"),arg1.getIntExtra("position",0));
+				if(isConnectingToInternet()){
+					scrumMaster = new Gz_ScrumMaster("",getActivity());
+					scrumMaster.removeFromTeam(arg1.getStringExtra("ojtEmail"),arg1.getIntExtra("position",0));
+				}
+				else{
+					Toast.makeText(getActivity(),
+							"Please make sure you are connected to the internet.",
+							Toast.LENGTH_SHORT).show();
+				}
 			}else{
 				Intent i = new Intent(getActivity(),TeamListAddDialog.class);			
 				String[] teamNames = new String[teamList.size()];
@@ -72,7 +81,14 @@ public class TeamListFragment extends Fragment {
 		@Override
 		public void onReceive(Context arg0, Intent arg1) {
 			teamList = new ArrayList();
-			new GetAllTeams(getActivity(),email).execute();			
+			if(isConnectingToInternet()){
+				new GetAllTeams(getActivity(),email).execute();
+			}
+			else{
+				Toast.makeText(getActivity(),
+						"Please make sure you are connected to the internet.",
+						Toast.LENGTH_SHORT).show();
+			}
 		}		
 	};
 	
@@ -81,9 +97,15 @@ public class TeamListFragment extends Fragment {
 		if(requestCode==2){
 			if(resultCode==getActivity().RESULT_OK){
 				//Toast.makeText(getActivity(),data.getStringExtra("ojtEmail"),Toast.LENGTH_SHORT).show();
-				scrumMaster = new Gz_ScrumMaster(data.getStringExtra("teamName"),getActivity());	
-				
-				scrumMaster.addToTeam(data.getStringExtra("ojtEmail"),data.getIntExtra("position",0));
+				if(isConnectingToInternet()){
+					scrumMaster = new Gz_ScrumMaster(data.getStringExtra("teamName"),getActivity());					
+					scrumMaster.addToTeam(data.getStringExtra("ojtEmail"),data.getIntExtra("position",0));
+				}
+				else{
+					Toast.makeText(getActivity(),
+							"Please make sure you are connected to the internet.",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		}
 	};
@@ -98,7 +120,10 @@ public class TeamListFragment extends Fragment {
 		
 		teamAdapter = new TeamListAdapter(getActivity(),teamList);
 		teamListview.setAdapter(teamAdapter);
-		new GetAllTeams(getActivity(),email).execute();
+		
+		if(isConnectingToInternet()){
+			new GetAllTeams(getActivity(),email).execute();
+		}
 		
 		getActivity().registerReceiver(addToTeamBroadcast, new IntentFilter(ADD_TO_TEAM_BROADCAST));
 		getActivity().registerReceiver(teamAddedBroadcast, new IntentFilter(TEAM_ADDED_BROADCAST));
@@ -112,7 +137,21 @@ public class TeamListFragment extends Fragment {
 		getActivity().unregisterReceiver(addToTeamBroadcast);
 		getActivity().unregisterReceiver(teamAddedBroadcast);
 	}
-	
+
+	public boolean isConnectingToInternet() {
+		ConnectivityManager connectivity = (ConnectivityManager) getActivity()
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (connectivity != null) {
+			NetworkInfo[] info = connectivity.getAllNetworkInfo();
+			if (info != null)
+				for (int i = 0; i < info.length; i++)
+					if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+						return true;
+					}
+
+		}
+		return false;
+	}
 	private class GetAllTeams extends AsyncTask<String, Void, Boolean> {
 		Context context;
 		String email;

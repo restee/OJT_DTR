@@ -64,9 +64,18 @@ public class OJTlistFragment extends Fragment {
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode==1){
+			
 			if(resultCode==getActivity().RESULT_OK){
-				new AddTeam(getActivity(),email,data.getStringExtra("teamName")).execute();
+				if(isConnectingToInternet()){
+					new AddTeam(getActivity(),email,data.getStringExtra("teamName")).execute();
+				}
+				else{
+					Toast.makeText(getActivity(),
+							"Please make sure you are connected to the internet.",
+							Toast.LENGTH_SHORT).show();
+				}
 			}
+			
 		}
 	};
 	
@@ -88,8 +97,7 @@ public class OJTlistFragment extends Fragment {
 		ojtListview = (ListView) rootView.findViewById(R.id.ojtlist_listview);
 		email = "dracula@gz.com";
 		
-		if (isConnectingToInternet()) {
-			
+		if (isConnectingToInternet()) {			
 			new RetrieveAllOJT(getActivity()).execute();
 			
 		} else {
@@ -116,6 +124,7 @@ public class OJTlistFragment extends Fragment {
 		getActivity().unregisterReceiver(createTeamBroadcast);
 		getActivity().unregisterReceiver(editListBroadcast);
 	}
+	
 	public boolean isConnectingToInternet() {
 		ConnectivityManager connectivity = (ConnectivityManager) getActivity()
 				.getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -46,11 +46,13 @@ public class CreateTeamDialog extends Activity {
 		context = this;
 		create.setOnClickListener(new View.OnClickListener() {			
 			@Override
-			public void onClick(View arg0) {									
-				Intent i =new  Intent();
-				i.putExtra("teamName", teamTXT.getText().toString());
-				setResult(RESULT_OK,i);
-				finish();
+			public void onClick(View arg0) {		
+				if(teamTXT.getText().toString().length()>0){
+					Intent i =new  Intent();
+					i.putExtra("teamName", teamTXT.getText().toString());
+					setResult(RESULT_OK,i);
+					finish();
+				}
 			}
 		});		
 	}
