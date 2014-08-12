@@ -50,7 +50,7 @@
                     android:textColor="#000000" />
 
                 <TextView
-                    android:layout_width="38dp"
+                    android:layout_width="60dp"
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
