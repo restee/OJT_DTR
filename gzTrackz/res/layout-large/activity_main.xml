@@ -14,13 +14,13 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" >
 
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="400dp"
             android:layout_height="225dp"
-            android:layout_marginTop="30dp"
             android:src="@drawable/gz" />
 
     </LinearLayout>
@@ -59,7 +59,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="560dp"
         android:layout_centerHorizontal="true" >
 
         <ImageView

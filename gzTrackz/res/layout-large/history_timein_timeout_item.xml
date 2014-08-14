@@ -17,7 +17,7 @@
                 android:layout_width="98dp"
                 android:background="@drawable/table_border" 
                 android:gravity="center"
-                android:padding="14dip"
+                android:padding="7.5dip"
                 android:text="2014-07-15"
                 android:textSize="20sp"
                 android:textColor="#000000" />
@@ -28,7 +28,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/table_border" 
                 android:gravity="center"
-                android:padding="13dip"
+                android:padding="7.5dip"
                 android:text="07:40:33 AM"
                 android:textColor="#000000" />
 
@@ -39,7 +39,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/table_border" 
                 android:gravity="center"
-                android:padding="14dip"
+                android:padding="7.5dip"
                 android:text="07:41:39 AM"
                 android:textColor="#000000" />
             <ImageView

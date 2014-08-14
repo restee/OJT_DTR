@@ -17,7 +17,7 @@
                 android:layout_width="65dp"
                 android:background="@drawable/table_border" 
                 android:gravity="center"
-                android:padding="10dip"
+                android:padding="5dip"
                 android:text="2014-07-15"
                 android:textColor="#000000" />
         <TextView
@@ -26,7 +26,7 @@
                 android:layout_width="75dp"
                 android:background="@drawable/table_border" 
                 android:gravity="center"
-                android:padding="10dip"
+                android:padding="5dip"
                 android:text="07:40:33 AM"
                 android:textColor="#000000" />
 
@@ -36,7 +36,7 @@
                 android:layout_width="75dp"
                 android:background="@drawable/table_border" 
                 android:gravity="center"
-                android:padding="10dip"
+                android:padding="5dip"
                 android:text="07:41:39:AM"
                 android:textColor="#000000" />
             <ImageView

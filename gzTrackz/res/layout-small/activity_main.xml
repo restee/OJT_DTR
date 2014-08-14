@@ -14,13 +14,13 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:layout_centerHorizontal="true" >
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="280dp"
-            android:layout_height="123dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="240dp"
+            android:layout_height="120dp"
             android:src="@drawable/gz" />
 
     </LinearLayout>
@@ -42,31 +42,31 @@
             android:layout_weight=".5"
             android:text="Register?"
             android:textColor="@color/text_color_pressed"
-            android:textSize="16sp" />
+            android:textSize="14.4sp" />
 
         <Button
             android:id="@+id/logInButton"
             android:layout_width="0dp"
             android:layout_weight=".5"
-            android:layout_height="29dp"
+            android:layout_height="28dp"
             android:layout_marginLeft="55dp"
             android:background="@drawable/loginbuttonstyle"
             android:text="LOG IN"
             android:textColor="#ffffff"
-            android:textSize="13.5dp" />
+            android:textSize="10.4sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="280dp"
         android:layout_centerHorizontal="true" >
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="0dp"
-            android:layout_height="43dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:alpha=".70"
             android:src="@drawable/powered" />
@@ -84,27 +84,27 @@
         <EditText
             android:id="@+id/usernameEditText"
             android:layout_width="200dp"
-            android:layout_height="33dp"
+            android:layout_height="32dp"
             android:layout_marginTop="13.6dp"
             android:background="@drawable/rectangle"
             android:ems="10"
             android:hint="email"
             android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            android:textSize="14.5dp" >
+            android:paddingLeft="8dp"
+            android:textSize="12.8sp" >
         </EditText>
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="200dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="16.8dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="13.6dp"
             android:background="@drawable/rectangle"
             android:ems="10"
             android:hint="password"
             android:inputType="textPassword"
-            android:paddingLeft="10dp"
-            android:textSize="14.5dp" />
+            android:paddingLeft="8dp"
+            android:textSize="12.8sp" />
     </LinearLayout>
 
 </RelativeLayout>

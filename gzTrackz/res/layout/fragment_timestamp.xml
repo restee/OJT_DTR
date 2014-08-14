@@ -44,7 +44,7 @@
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="10dip"
+                    android:padding="5dip"
                     android:text="Date"
                     android:textColor="#000000" />
 
@@ -53,7 +53,7 @@
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="10dip"
+                    android:padding="5dip"
                     android:text="Time-in"
                     android:textColor="#000000" />
 
@@ -62,7 +62,7 @@
                     android:layout_weight=".25"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
-                    android:padding="10dip"
+                    android:padding="5dip"
                     android:text="Time-out"
                     android:textColor="#000000" />
 
@@ -71,14 +71,14 @@
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
                     android:layout_weight=".25"
-                    android:padding="10dip" >
+                    android:padding="5dip" >
                 </TextView>
             </TableRow>
 
             <ListView
                 android:id="@+id/timeintimeoutlist"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="300dp" />
         </TableLayout>
     </LinearLayout>
 

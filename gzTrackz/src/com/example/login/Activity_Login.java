@@ -68,8 +68,6 @@ public class Activity_Login extends Activity {
 		//setting tags for click listeners
 		btn_login.setTag(getResources().getString(R.string.loginactivity_login));
 		tv_register.setTag(getResources().getString(R.string.loginactivity_register));
-		
-		tv_register.setTypeface(utils.getTtfFont("Walkway_SemiBold.ttf"));
 	}
 	
 	public void userClickedLoginBtn() {
