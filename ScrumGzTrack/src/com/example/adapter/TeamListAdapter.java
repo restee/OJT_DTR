@@ -2,6 +2,7 @@ package com.example.adapter;
 
 import java.util.List;
 
+import com.example.scrumgztrack.ManageTeam;
 import com.example.scrumgztrack.R;
 import com.example.tabs.OJTlistFragment;
 import com.example.tabs.TeamListFragment;
@@ -108,6 +109,9 @@ public class TeamListAdapter extends BaseAdapter{
 						Toast.makeText(context, "Remove Team " + teamList.get(position),Toast.LENGTH_SHORT).show();
 					}else if(item.toString().compareToIgnoreCase("Go to Team")==0){
 						Toast.makeText(context, "Go to Team" + teamList.get(position),Toast.LENGTH_SHORT).show();
+						Intent i = new Intent(context,ManageTeam.class);
+						i.putExtra("teamName",teamList.get(position));
+						context.startActivity(i);
 					}
 					return false;
 				}

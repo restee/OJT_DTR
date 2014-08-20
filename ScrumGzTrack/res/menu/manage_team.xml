@@ -1,9 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+    <item android:id="@+id/remove_team" android:title="@string/remove_team"></item>
+    <item android:id="@+id/go_to_team" android:title="@string/go_to_team"></item>
 
 </menu>

@@ -18,11 +18,12 @@
         android:layout_margin="10dp" />
 
     <ListView
+        android:id="@+id/teamMemberListview"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/txtTeamName"
         android:divider="#50FFFFFF"
-        android:dividerHeight="1px" 
+        android:dividerHeight="1px"         
         android:background="@drawable/listviewborder">
      
     </ListView>
