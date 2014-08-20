@@ -11,5 +11,7 @@
     <string name="create_team">Create team</string>
     <string name="title_activity_create_team_dialog">CreateTeamDialog</string>
     <string name="title_activity_team_list_add_dialog">TeamListAddDialog</string>
+    <string name="remove_team">Remove Team</string>
+    <string name="go_to_team">Go to Team</string>
 
 </resources>

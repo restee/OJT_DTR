@@ -49,6 +49,7 @@ public class OJTlistFragment extends Fragment {
 	private OJTlistAdapter ojtAdapter;
 	public static final String CREATE_TEAM_BROADCAST = "com.example.gzscrumtrack.createTeamBroadcast";
 	public static final String UPDATE_LIST_BROADCAST = "com.example.gzscrumtrack.updateListBroadcast";
+	private static boolean alreadyRetrieved=false;
 	private String email;
 	
 	
@@ -97,9 +98,11 @@ public class OJTlistFragment extends Fragment {
 		ojtListview = (ListView) rootView.findViewById(R.id.ojtlist_listview);
 		email = "dracula@gz.com";
 		
-		if (isConnectingToInternet()) {			
-			new RetrieveAllOJT(getActivity()).execute();
-			
+		if (isConnectingToInternet()) {	
+			if(!alreadyRetrieved){
+				new RetrieveAllOJT(getActivity()).execute();
+				alreadyRetrieved=true;
+			}
 		} else {
 			
 			Toast.makeText(getActivity(),
@@ -233,7 +236,11 @@ public class OJTlistFragment extends Fragment {
 			if (progressD.isShowing()) {
 				progressD.dismiss();
 			}		
-			
+			if(result){
+				Toast.makeText(getActivity(), "Successfully created team!", Toast.LENGTH_SHORT).show();
+			}else{
+				Toast.makeText(getActivity(), "Teamname already exists!", Toast.LENGTH_SHORT).show();
+			}
 			Intent i = new Intent();			
 			i.setAction(TeamListFragment.TEAM_ADDED_BROADCAST);
 			context.sendBroadcast(i);			
@@ -257,11 +264,17 @@ public class OJTlistFragment extends Fragment {
 				    nameValuePairs.add(new BasicNameValuePair("team",teamName));
 				    request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 				    				    
-				String httpResponseTopTracks = client.execute(request, handler);
-				Log.d("RESULT", httpResponseTopTracks);
+				String httpResponseTopTracks = client.execute(request, handler);				
 				StringTokenizer token = new StringTokenizer(
 						httpResponseTopTracks, "<");
 				String retrieveResult = token.nextToken();
+				Log.d("RESULT OF ADDING TEAM", httpResponseTopTracks);
+				JSONObject result = new JSONObject(retrieveResult);
+				if(result.getString("result").compareToIgnoreCase("Registration Successful")==0){
+					flag = true;
+				}else{
+					flag=false;
+				}
 	
 			} catch (Exception e) {
 				flag = false;

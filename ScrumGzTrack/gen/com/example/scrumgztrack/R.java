@@ -35,12 +35,14 @@ public final class R {
         public static final int action_settings=0x7f09000b;
         public static final int btnCreateTeam=0x7f090001;
         public static final int dialog_teamlist_listview=0x7f090003;
+        public static final int go_to_team=0x7f09000d;
         public static final int iv_rowSelected=0x7f090008;
         public static final int menu_add_to_team=0x7f09000a;
         public static final int menu_create_team=0x7f090009;
-        public static final int menu_remove_from_team=0x7f09000c;
+        public static final int menu_remove_from_team=0x7f09000e;
         public static final int ojtlist_listview=0x7f090005;
         public static final int pager=0x7f090002;
+        public static final int remove_team=0x7f09000c;
         public static final int teamlist_listview=0x7f090006;
         public static final int tv_ojtName=0x7f090007;
         public static final int txtAddTeam=0x7f090000;
@@ -61,18 +63,21 @@ public final class R {
         public static final int add_to_team=0x7f080000;
         public static final int create_team_dialog=0x7f080001;
         public static final int main=0x7f080002;
-        public static final int ojtoption_dialog=0x7f080003;
-        public static final int remove_from_team=0x7f080004;
-        public static final int team_list_add_dialog=0x7f080005;
-        public static final int team_list_dialog=0x7f080006;
+        public static final int manage_team=0x7f080003;
+        public static final int ojtoption_dialog=0x7f080004;
+        public static final int remove_from_team=0x7f080005;
+        public static final int team_list_add_dialog=0x7f080006;
+        public static final int team_list_dialog=0x7f080007;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int create_team=0x7f050007;
+        public static final int go_to_team=0x7f05000b;
         public static final int hello_world=0x7f050002;
         public static final int menu_add_to_team=0x7f050005;
         public static final int menu_remove_from_team=0x7f050006;
+        public static final int remove_team=0x7f05000a;
         public static final int title_activity_create_team_dialog=0x7f050008;
         public static final int title_activity_ojtoption_dialog=0x7f050003;
         public static final int title_activity_team_list_add_dialog=0x7f050009;

@@ -13,7 +13,7 @@
         <ListView
             android:id="@+id/standupslist"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="318dp"
             android:background="@drawable/standups_listview_shape"
             android:padding="4dp" >
 

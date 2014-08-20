@@ -37,6 +37,7 @@
                     android:id="@+id/historytimeoutitem"
                     android:layout_width="60dp"
                     android:layout_weight=".25"
+                    android:layout_height="23dp"
                     android:background="@drawable/table_border_header"
                     android:gravity="center"
                     android:padding="9dip"
