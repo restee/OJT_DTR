@@ -1,0 +1,895 @@
+[33mcommit 014139099414be5699a9bbc84132d429cded82c8[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Wed Aug 20 09:50:22 2014 +0800
+
+    Added manage team popup dialog
+
+[33mcommit 6a581e61286ec2b21148c76f569f90c28132b4bf[m
+Merge: 3eb86f9 8bbb10b
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Mon Aug 11 22:58:55 2014 -0700
+
+    Merge pull request #45 from janinegallaron/master
+    
+    Polished UI
+
+[33mcommit 8bbb10bba00496037fd090185842454278449936[m
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Tue Aug 12 14:06:16 2014 +0800
+
+    Polished UI
+
+[33mcommit 3eb86f9f1c7269cc6a66d70a6756c628e21d5104[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Aug 11 22:43:06 2014 -0700
+
+    Added verification functions
+
+[33mcommit c2864289dfbec60d1d20b9e04929836b540ac042[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Aug 11 22:22:19 2014 -0700
+
+    Fixed Ui bugs on gztrackz
+
+[33mcommit 3b15b6ee9ae4b710942730b4d956628a3a094f76[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Aug 10 21:30:58 2014 -0700
+
+    Updated local team list when creating a new list
+
+[33mcommit ae3a931af20d6623786dc3a673ebb9d2dc532c76[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Aug 10 21:25:50 2014 -0700
+
+    Added pop-up update
+
+[33mcommit aca6df44550f679bce98fcd0b6a7e4651ce9b2ed[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Aug 10 19:34:52 2014 -0700
+
+    Added view all teams functionality
+
+[33mcommit ab0036cb3ed90cf3ff98cc5e56620e28bafcbf53[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Thu Aug 7 21:09:00 2014 -0700
+
+    Added create team functionality
+
+[33mcommit de42b309e2cedce7979e4310ad915ad7288de12c[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Thu Aug 7 19:27:43 2014 -0700
+
+    Applied hoverView
+
+[33mcommit e4bb5765a98e1dbb9102b44eca548206e6ec8beb[m
+Merge: 81e3c69 9c49ab4
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Aug 7 19:01:24 2014 -0700
+
+    Merge pull request #41 from jvbata/master
+    
+    trial 3
+
+[33mcommit 9c49ab4a1c8f5fd49777ba04b9d6db41eb10dd4f[m
+Author: jvbata <villacortajv@bscs.usjr.edu.ph>
+Date:   Fri Aug 8 09:56:03 2014 +0800
+
+    trial 3
+
+[33mcommit 918c71f570b47e9a0a4165f07f6f5ceea037b06c[m
+Author: jvbata <villacortajv@bscs.usjr.edu.ph>
+Date:   Fri Aug 8 09:52:25 2014 +0800
+
+    trial 2
+
+[33mcommit 81e3c69f9fbb6bc7762309ce986be10a60c73ff9[m
+Merge: c9f1cbe 918c71f
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Aug 7 18:43:33 2014 -0700
+
+    Merge pull request #40 from jvbata/master
+    
+    trial 2
+
+[33mcommit c9f1cbe55b3e493f4f931d2058f2668915d0bb30[m
+Merge: 2cd2d1c 6527679
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Aug 7 18:36:02 2014 -0700
+
+    Merge pull request #39 from jvbata/master
+    
+    add remove to from team
+
+[33mcommit 6527679cfeff2b39daf7d6da0e92897b3a52b4f0[m
+Merge: c19a73d 2cd2d1c
+Author: jvbata <villacortajv@bscs.usjr.edu.ph>
+Date:   Fri Aug 8 09:09:50 2014 +0800
+
+    Merge branch 'master' of https://github.com/RestyArtiaga/OJT_DTR
+
+[33mcommit 2cd2d1c2221d5c052381442bae4e3011f4728306[m
+Merge: e7bccd8 8a25027
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Aug 7 17:47:51 2014 -0700
+
+    Merge pull request #38 from janinegallaron/master
+    
+    Editted UI
+
+[33mcommit 8a25027a689c1b3e6376cc857ab55205e3d0031b[m
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Fri Aug 8 08:54:10 2014 +0800
+
+    Editted UI
+
+[33mcommit c19a73d758e62f0bc7f136f51bece8f14c3bd33a[m
+Author: jvbata <villacortajv@bscs.usjr.edu.ph>
+Date:   Sun Aug 3 20:49:23 2014 -0700
+
+    wa ko kabaw basta ako lng ge add :D
+
+[33mcommit e7bccd8e3e1ba9069b09028735dfaa1005623511[m
+Merge: 8cf13be 14579e9
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Aug 3 20:29:06 2014 -0700
+
+    Merge pull request #37 from warjohn123/master
+    
+    Some UI Modification
+
+[33mcommit 14579e9ffa3a7348e465efca38e4a426f01713fe[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Mon Aug 4 11:27:33 2014 +0800
+
+    Some UI Modification
+
+[33mcommit 8cf13bee8c796ef92692c8306da9e069743c0591[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Aug 3 20:10:04 2014 -0700
+
+    Added OJT option box
+
+[33mcommit 9424e1a7ebbeea244a7e4c7ac1381c96c4b0c64f[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Aug 3 19:22:02 2014 -0700
+
+    Added something to string.xml
+
+[33mcommit 88853374bd815dcbc1fecb29f9acc009826619c6[m
+Merge: 29e6f0d a7379d0
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Aug 3 18:06:50 2014 -0700
+
+    Merge pull request #36 from warjohn123/master
+    
+    First Modification for UI Responsiveness
+
+[33mcommit a7379d007d0e0dc915376b703d939f1d18bebafd[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Mon Aug 4 09:14:17 2014 +0800
+
+    First Modification for UI Responsiveness
+
+[33mcommit 29e6f0d7e8f20bf1ddc9894689e79f7bc543fb24[m
+Merge: 2b74f39 9eb8d25
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 31 21:16:39 2014 -0700
+
+    Merge pull request #34 from jvbata/temp
+    
+    Temp
+
+[33mcommit 9eb8d25bce1783753badf2a45dcac9a377b9c56f[m
+Author: jvbata <villacortajv@bscs.usjr.edu.ph>
+Date:   Thu Jul 31 21:17:09 2014 -0700
+
+    Login Activity revise according to coding style.
+
+[33mcommit 2b74f39cab3cf66c87f6b9295cf6805b0022c047[m
+Merge: 1a276bc ea67288
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 31 20:01:13 2014 -0700
+
+    Merge pull request #33 from janinegallaron/master
+    
+    Added new app
+
+[33mcommit ea67288e3a8827858ac5d5c8b93c546341f7a8bf[m
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Fri Aug 1 11:04:40 2014 +0800
+
+    Added new app
+
+[33mcommit 7baf0a8e2425a449f59d96aee8910802c017b0ee[m
+Author: jvbata <villacortajv@bscs.usjr.edu.ph>
+Date:   Thu Jul 31 19:36:16 2014 -0700
+
+    task_login
+
+[33mcommit 9ee091e98bfcf4f663037e435c2ee275c530aef9[m
+Author: jvbata <villacortajv@bscs.usjr.edu.ph>
+Date:   Thu Jul 31 19:30:34 2014 -0700
+
+    asdf
+
+[33mcommit 1a276bc9db4bad4399afb755381455053eb20915[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Wed Jul 30 22:39:55 2014 -0700
+
+    Organized files
+
+[33mcommit a6c661f8fda1844ae7bdb9f82a65e4b839710091[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Wed Jul 30 18:59:30 2014 -0700
+
+    Fixed geo locator bug
+
+[33mcommit b0d6d55d6a36140f4989183a56576cf66744922b[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Wed Jul 30 18:34:06 2014 -0700
+
+    Fixed registration bug
+
+[33mcommit 792a48cd577bc83bb3a7c61e4c933ba387bfe616[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 29 20:57:18 2014 -0700
+
+    Organized classes
+
+[33mcommit 7974c183b03cf1a875b53ece18d3fbd68c253977[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 29 18:20:26 2014 -0700
+
+    Fixed not clearing history bug
+
+[33mcommit 67589e6420863152f17c6b380082fda2be801a73[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 27 23:59:53 2014 -0700
+
+    Modified standup bug
+
+[33mcommit 016232f143921cb46fbc27ea8da6d32f74653691[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 27 21:39:08 2014 -0700
+
+    Added auto add to database when timing in and out
+
+[33mcommit 9a9fe5752454ea008f622b869654a06cebc2db4f[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 27 20:55:31 2014 -0700
+
+    Added gps functions and classes
+
+[33mcommit 4ac4e17bee895219ba47e0a5d623f661fb523423[m
+Merge: 6a0a506 37e0331
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 27 18:21:49 2014 -0700
+
+    Merge pull request #32 from warjohn123/master
+    
+    Modified some UI
+
+[33mcommit 37e033194d0998bf314bda7360528acd463e3a33[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Mon Jul 28 09:27:49 2014 +0800
+
+    Modified some UI
+
+[33mcommit 6a0a5064e5cbf6134a62af222c36fd27cfff1df3[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 27 18:24:48 2014 -0700
+
+    Modified standup page
+
+[33mcommit 2a876b7725f1c4c7a4449ba5ea9738f3c1ec0ff4[m
+Merge: eaae52a 0c6855d
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 27 17:40:56 2014 -0700
+
+    Merge pull request #31 from warjohn123/master
+    
+    Modified Fragment Stand Ups UI
+
+[33mcommit 0c6855d95992f94e2798687afbfa4b1c1b309c1e[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Mon Jul 28 08:48:11 2014 +0800
+
+    Modified Fragment Stand Ups UI
+
+[33mcommit eaae52ab5a7715700aa1899be11c93731c9a3c8b[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 24 21:53:38 2014 -0700
+
+    finished standup history display to UI
+
+[33mcommit 70e04f60b6f60abcd6e18edfe6202c2039826d2c[m
+Merge: f443721 a875d6d
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 24 21:21:15 2014 -0700
+
+    Merge pull request #30 from warjohn123/master
+    
+    Modified Layout for History UI
+
+[33mcommit a875d6d951da72bd02052dad4e830709caf38263[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Fri Jul 25 12:30:11 2014 +0800
+
+    Modified Layout for History UI
+
+[33mcommit f443721b9229d6e7232b6fc5e91f3448098a79db[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 24 20:36:30 2014 -0700
+
+    Standup retrieve added
+
+[33mcommit 3999fae42f3a5db7f6137f9ed438dc2957e836be[m
+Merge: 511e834 3d1f5a9
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 24 19:12:21 2014 -0700
+
+    Merge pull request #29 from warjohn123/master
+    
+    Added Files for Stand Ups View
+
+[33mcommit 3d1f5a927b2c72ce04352df44f446d5974d6c97a[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Fri Jul 25 10:17:06 2014 +0800
+
+    Added Files for Stand Ups View
+
+[33mcommit 511e8341283e995b015a72b6a0fc2dfd7f98e8ff[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 24 18:47:29 2014 -0700
+
+    Created function retrieving standupHistory from Web Server
+
+[33mcommit f3090aa3e392b6b52ca499626c29c5519ec47421[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 24 18:02:24 2014 -0700
+
+    Added ResultListAdapter
+
+[33mcommit 5e8c5b4175399a6aada304752d6ed1b24f953898[m
+Merge: 492cf20 aa7d5bd
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 20:58:22 2014 -0700
+
+    Merge pull request #27 from warjohn123/master
+    
+    Added NO RECORDS FOUND TextView
+
+[33mcommit aa7d5bd979ff72512dd1566a3a14792daf62d87b[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Wed Jul 23 12:06:30 2014 +0800
+
+    Added NO RECORDS FOUND TextView
+
+[33mcommit e03ae904d14a42ba5f07be45cff6ad38eaf6282f[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Wed Jul 23 11:29:29 2014 +0800
+
+    Edited Time in, Time out UI and StandUps History UI
+
+[33mcommit ab57680fc2e267167619da23a89e250a8debf1a0[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Wed Jul 23 11:25:19 2014 +0800
+
+    Added files in res folder
+
+[33mcommit 492cf20f60525daca772c51886a59b37a667d156[m
+Merge: f8a827a e03ae90
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 20:20:39 2014 -0700
+
+    Merge pull request #26 from warjohn123/master
+    
+    Edited Time in, Time out UI and StandUps History UI
+
+[33mcommit f8a827a20f8327f3f754cc1587ff49eaf17a01d3[m
+Merge: f57f378 ab57680
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 20:17:07 2014 -0700
+
+    Merge pull request #25 from warjohn123/master
+    
+    Added files in res folder
+
+[33mcommit f57f3789675fd53d16acd8fe3a9f9d70139af938[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 20:15:33 2014 -0700
+
+    Rename DB_USER_TIME_LOG.java to DB_User_Time_Log.java
+
+[33mcommit 0da28ba855aa555cc9b6d0ba008ae57a744d0b3a[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 20:09:12 2014 -0700
+
+    Modified date functionality
+
+[33mcommit 779c951c797ffe11e05dc96be6917988f977447a[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 20:01:59 2014 -0700
+
+    Added date functionality
+
+[33mcommit a1898ff5617adbd3147f56aa72dd9fceafeb7b64[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 19:36:30 2014 -0700
+
+    Added spinner functionalities
+
+[33mcommit b322b1f9f7ec11b66f1ca1975a565410e386564d[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 18:08:30 2014 -0700
+
+    Added dialog activity
+
+[33mcommit eac1422e9b9f550143adeed4ab01b24e32f62e0e[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 22 17:59:24 2014 -0700
+
+    Fixed layout errors
+
+[33mcommit 16ed34bc614d2107624af07e94dcb67c8be685d1[m
+Merge: 9ea19b5 32f992c
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 20 21:33:52 2014 -0700
+
+    Merge pull request #23 from warjohn123/master
+    
+    Added new files for Time in and Time Out History UI
+
+[33mcommit 32f992cc59585306ed8cb8f62279f470f6c9104b[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Mon Jul 21 12:28:57 2014 +0800
+
+    Added new files for Time in and Time Out History UI
+
+[33mcommit 9ea19b54f702a4396ca67d04ae2674ca5d7883ac[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 20 20:45:58 2014 -0700
+
+    Integrated web server timelog database to the local database
+
+[33mcommit 7a1a6c11e68324b572baff06cbecc25d58c388c1[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 20 18:31:10 2014 -0700
+
+    Modified DB_User_Time_Log table
+
+[33mcommit 49b3997d79613bda1683c9282827ee3bdc8d5da8[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 20 18:15:07 2014 -0700
+
+    Fixed onResume bugs
+
+[33mcommit 9a68236f047bba990c8d5453dda5ab9d3aba09fd[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 20 18:04:24 2014 -0700
+
+    Modified time-in and time-out server requst order
+
+[33mcommit af7ab66c8b6abe74fc9cfe4fc26a44e2b443225f[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Fri Jul 18 09:27:53 2014 -0700
+
+    Fixed minor bugs
+
+[33mcommit 95ce2dc7e44c9e888081583950027e42bb5fffea[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 15 19:14:47 2014 -0700
+
+    Modified some files
+
+[33mcommit 95c5299153357bdb3de8ade6d5a1cda71cc5763d[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 15 00:17:12 2014 -0700
+
+    Modified some UI attributes
+
+[33mcommit 75b8aaea7f4ed83de9dfe43f0c3fd031607d2a30[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 14 23:20:08 2014 -0700
+
+    Yes or no set to uncancelable
+
+[33mcommit 9bce64eb9edd98526908c790c7ff4a5ba2788363[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 14 23:08:08 2014 -0700
+
+    Modified some bugs
+
+[33mcommit d7d702c026a655aad1500dd4bddcb11cb734fb54[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 14 01:41:33 2014 -0700
+
+    Modified some things
+
+[33mcommit 09a6b0587c11eb12f21422567f7e4fc09aa91f21[m
+Merge: b5959bc 2e9e308
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 14 01:16:54 2014 -0700
+
+    Merge pull request #19 from warjohn123/master
+    
+    Fixed UI errors
+
+[33mcommit 2e9e30831b03c3ab8e9df47d91d321092b17598e[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Mon Jul 14 16:25:54 2014 +0800
+
+    Fixed UI errors
+
+[33mcommit b5959bcd7c566e520d521c5f8fd97ccaa7c99ea9[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 14 01:13:29 2014 -0700
+
+    Refined timeView
+
+[33mcommit 40d5822a562db262ab682e42901945114400b707[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 14 00:34:28 2014 -0700
+
+    Added time update
+
+[33mcommit cc4f02a047e17568a417d52338c7cbc90a67f0fd[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 13 21:57:01 2014 -0700
+
+    Revised standup textSize
+
+[33mcommit 6316524aaa3553555cffe99cd944fe249ad49cb4[m
+Merge: 1cef546 4d0fb7f
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 13 21:30:37 2014 -0700
+
+    Modified something
+
+[33mcommit 1cef546c45621613dafe61099ee326f2f1e81e4d[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 13 21:25:08 2014 -0700
+
+    modified some files
+
+[33mcommit 4d0fb7f3c91e06e36eb7b84614ac982e2b2f821d[m
+Merge: cf1a5b7 190a02e
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 13 21:06:14 2014 -0700
+
+    Merge pull request #18 from janinegallaron/master
+    
+    Added AMPM & NAME in Home UI
+
+[33mcommit 190a02e883677b03ef4ca012b7149a4b4530c2d4[m
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Mon Jul 14 12:04:12 2014 +0800
+
+    Added AMPM & Name
+
+[33mcommit 5383d99ebcf9dc82d9cef04cec6788efe3127e50[m
+Merge: 183f8d2 cf1a5b7
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Mon Jul 14 10:50:41 2014 +0800
+
+    Merge branch 'master' of https://github.com/RestyArtiaga/OJT_DTR
+
+[33mcommit cf1a5b7b4d951edf34ca9eb5d9ccf57a3666dd1c[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 13 19:41:07 2014 -0700
+
+    Implemented logout
+
+[33mcommit bb0abca3b6f77fbd5ea65f185c80d19a52720fb4[m
+Merge: a6e7cf3 e64d542
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 13 19:22:55 2014 -0700
+
+    Merge pull request #17 from warjohn123/master
+    
+    Polishing UI
+
+[33mcommit e64d5423723c51c60eb0b1dcc9b50ee19760d929[m
+Author: warjohn123 <warrencaruana1@gmail.com>
+Date:   Mon Jul 14 10:30:14 2014 +0800
+
+    Polishing UI
+
+[33mcommit a6e7cf387d247bf92880f64d40906e4c3728cbd7[m
+Author: unknown <gza07@brd219.brd.local>
+Date:   Sun Jul 13 18:25:35 2014 -0700
+
+    Revised parts because of Pabl
+    o
+
+[33mcommit 183f8d288f339bba5febb865587bf78ea08d5ed7[m
+Merge: 998f391 f89aa67
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Fri Jul 11 13:56:11 2014 +0800
+
+    Merge branch 'master' of https://github.com/RestyArtiaga/OJT_DTR
+
+[33mcommit bb145e363a1d9be8bd6da5437bb40e5c8d986b1b[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 10 22:55:07 2014 -0700
+
+    Some new things
+
+[33mcommit f89aa67464c43bac18053fd6d70519c12a75f3bb[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 10 22:42:04 2014 -0700
+
+    Modified crazy things
+
+[33mcommit 228b0be12fd08fa6ee77e71337f5f5eb690d94f5[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 10 22:10:15 2014 -0700
+
+    Modified stuff
+
+[33mcommit 998f391c16adea92ec8d473df8df807fb75ff4bd[m
+Merge: 9955912 a2219a2
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Fri Jul 11 13:01:09 2014 +0800
+
+    Merge branch 'master' of https://github.com/RestyArtiaga/GZ_OJT-Tracker
+
+[33mcommit f2705e159fa173529bf6d65f6092f05a581e48b4[m
+Merge: 78a5369 a0302f1
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 10 21:52:07 2014 -0700
+
+    Added many things
+
+[33mcommit 9955912905d8e33f693bf3b389bdf44b1a587cd9[m
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Fri Jul 11 12:28:34 2014 +0800
+
+    Changed timestamp UI
+
+[33mcommit a0302f124a88afc1b1910946fc658cdf12962d07[m
+Merge: 484d8ee 9955912
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 10 21:25:00 2014 -0700
+
+    Merge pull request #16 from janinegallaron/master
+    
+    Changed timestamp UI
+
+[33mcommit 78a5369b5e74f0a134aa5cc3b84d08fb1a2e5d40[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Thu Jul 10 20:11:53 2014 -0700
+
+    Added versions
+
+[33mcommit 484d8eec7cb0d7460b9d5c1a1efeadf0ec81c7ef[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Fri Jul 11 10:55:56 2014 +0800
+
+    Added all
+
+[33mcommit bf7467b3e46dddb3510fb36963f86b3f3ebd658e[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Fri Jul 11 10:42:29 2014 +0800
+
+    Modified R.java file
+
+[33mcommit d03d04d819293a95ad207c94fe1f45e66232b4f2[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Fri Jul 11 10:26:28 2014 +0800
+
+    Modified Android Manifest File
+
+[33mcommit d2d2645079446d5825bcb49dd7505b52427edb38[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Fri Jul 11 09:39:34 2014 +0800
+
+    Added Stand Ups Dialog layout and java file in project
+
+[33mcommit c4e1f68b0ed32c8c1682c6791fe483703e7704f4[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Fri Jul 11 08:50:17 2014 +0800
+
+    Modified some UI in Log In Activity
+
+[33mcommit f80f898c18f23c126ebe696e26f5c27bd2f8d3c7[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Wed Jul 9 13:01:08 2014 +0800
+
+    Modified Color for state_pressed of Register? TextView in Log In UI
+
+[33mcommit 443afa38bff38dc16cdba11e4c40f030b2bf99b5[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 8 21:44:20 2014 -0700
+
+    modified one line
+
+[33mcommit 832d3c729deddcf13631e326b8fe7ae5ba04f6ff[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 8 21:16:45 2014 -0700
+
+    Deleted useless files
+
+[33mcommit c61629e728eff89a0d1f7aa8e085e01c64a5add1[m
+Merge: 9642eda 29b5cbc
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 8 20:49:36 2014 -0700
+
+    Merge pull request #9 from janinegallaron/master
+    
+    Tabs Added
+
+[33mcommit 29b5cbc6e15d033c233e983924f79ac235fdd0a9[m
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Wed Jul 9 11:55:05 2014 +0800
+
+    Modified manifest
+
+[33mcommit 57da41f867f7e29d7b6fcc0344e789063375a787[m
+Author: Janine Alexis <JanineGallaron@gmail.com>
+Date:   Wed Jul 9 11:50:42 2014 +0800
+
+    Tabs Manager Added
+
+[33mcommit 9642edadd5ae77070fa9ffd81dddf76fbe77a7a7[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 8 20:19:58 2014 -0700
+
+    Added
+
+[33mcommit 8cc3a1a8667dd2466893f73b0e6895e99bf7e88f[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 8 19:14:16 2014 -0700
+
+    Revised register.java
+
+[33mcommit e29ba9f256f42ef5750bd564ad5b416caad2682a[m
+Merge: 15dbee1 97678b9
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 8 18:37:01 2014 -0700
+
+    Merge pull request #6 from warjohn123/master
+    
+    mehehe
+
+[33mcommit 97678b9f7bfa5f1d00959fead65eb0727afa83f8[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Wed Jul 9 09:45:31 2014 +0800
+
+    Revision of UI
+
+[33mcommit 6d760ca5762a1856dee85ff73dd20a56d19aa161[m
+Author: Warren <warrencaruana1@gmail.com>
+Date:   Wed Jul 9 09:43:39 2014 +0800
+
+    Revised register UI
+
+[33mcommit 15dbee1c2a71bd7613694e84c70969b8d78a5f16[m
+Merge: 06443a6 a56ec48
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Tue Jul 8 17:31:39 2014 -0700
+
+    Merge pull request #5 from warjohn123/master
+    
+    Updated login UI
+
+[33mcommit a56ec484856d2d96789cfaeb4742e4251ee80925[m
+Author: unknown <gza05@brd224.brd.local>
+Date:   Wed Jul 9 08:39:19 2014 +0800
+
+    Updated login UI
+
+[33mcommit 06443a68418615dd79d620eb329624d4130d4c0e[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 7 22:10:00 2014 -0700
+
+    Finalized login
+
+[33mcommit fe00163bbfad40f1570982fe64946842a2cc2a55[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Mon Jul 7 20:53:40 2014 -0700
+
+    Refined Login
+
+[33mcommit 8b963899bd7f1fcac7d1b8945403012870a6c2e1[m
+Merge: 99f75e0 9f41c64
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 20:43:49 2014 -0700
+
+    Merge pull request #4 from jvbata/master
+    
+    Added 3 classes
+
+[33mcommit 99f75e0a96e9a3d9181c5aaed6a8f31f1b699ecd[m
+Merge: 7f46f60 979d5b0
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 20:51:15 2014 -0700
+
+    Updated login
+
+[33mcommit 7f46f60c1e5f9cf2d1987be82dbb2b4860d549d8[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 20:44:16 2014 -0700
+
+    Integrated login
+
+[33mcommit 9f41c648482549af10ea0de1d37ebaaa1bc3c272[m
+Author: unknown <gza08@brd223.brd.local>
+Date:   Sun Jul 6 20:32:26 2014 -0700
+
+    Added 3 classes
+
+[33mcommit 979d5b06d72d951ec20edfb9f812e7994c846dad[m
+Merge: 80dafd1 a3597d6
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 20:24:32 2014 -0700
+
+    Merge pull request #3 from warjohn123/master
+    
+    Changed App Icon
+
+[33mcommit a3597d67bf55bc4ec8181097fe1d114818297485[m
+Author: unknown <gza05@brd224.brd.local>
+Date:   Mon Jul 7 11:22:10 2014 +0800
+
+    Changed App Icon
+
+[33mcommit b39fe82fcb58bef68a6963929f14a0360a161b5d[m
+Author: unknown <gza05@brd224.brd.local>
+Date:   Mon Jul 7 11:10:11 2014 +0800
+
+    Added project
+
+[33mcommit 80dafd1b6ef263465132fe74f19187f115c3d9e1[m
+Merge: 1d552cc b39fe82
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 20:02:15 2014 -0700
+
+    Merge pull request #2 from warjohn123/master
+    
+    Project Added
+
+[33mcommit 5a3001964d4f476d9d43d48aa8048c27193a7eb7[m
+Author: unknown <gza05@brd224.brd.local>
+Date:   Mon Jul 7 11:01:20 2014 +0800
+
+    Deleted files
+
+[33mcommit 1d552cc71325911934be01ad7f75cedbfde855c2[m
+Author: RestyArtiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 19:48:33 2014 -0700
+
+    Deleted Files
+
+[33mcommit 0869a14362921ecb0db1982345ec8b030eef1260[m
+Author: unknown <gza05@brd224.brd.local>
+Date:   Mon Jul 7 10:27:22 2014 +0800
+
+    Added files
+
+[33mcommit 952df34e0eb8503a8d2ecf41cfbb222227ecef78[m
+Merge: 437fe99 0869a14
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 19:19:37 2014 -0700
+
+    Merge pull request #1 from warjohn123/master
+    
+    Added files
+
+[33mcommit 437fe993428be590d02dcd598a4fbc8580170ee6[m
+Author: unknown <gza07@brd219.brd.local>
+Date:   Sun Jul 6 18:35:49 2014 -0700
+
+    Added everything
+
+[33mcommit a5bc004aa0815b2a2270f0f3d90c2118f036357b[m
+Author: Resty Artiaga <resty.artiaga@gmail.com>
+Date:   Sun Jul 6 18:17:14 2014 -0700
+
+    Initial commit
+
+[33mcommit a2219a2aa78a2d68f54b593401dfa903ffff620b[m
+Author: unknown <brd@brd219.brd.local>
+Date:   Thu Jul 3 19:26:16 2014 -0700
+
+    Added tempFile.txt

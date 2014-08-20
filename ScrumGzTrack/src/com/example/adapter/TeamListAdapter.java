@@ -9,6 +9,7 @@ import com.example.tabs.TeamListFragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -69,7 +70,8 @@ public class TeamListAdapter extends BaseAdapter{
 		}
 
 		holder.tv_nameTxt.setText(teamList.get(position));
-
+		Typeface tf = Typeface.createFromAsset(context.getAssets(), "Nexa Light.otf");
+		holder.tv_nameTxt.setTypeface(tf);
 		holder.iv_rowSelected.setOnClickListener(new rowClickListener(position));
 
 		
