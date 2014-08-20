@@ -3,6 +3,7 @@ package com.example.adapter;
 import com.example.scrumgztrack.R;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,8 @@ public class TeamListDialogAdapter extends BaseAdapter {
 		}
 		TextView teamTXT = (TextView) convertView.findViewById(R.id.txtTeamName); 
 		teamTXT.setText(teamList[position]);
+		Typeface tf = Typeface.createFromAsset(context.getAssets(), "Nexa Light.otf");
+		teamTXT.setTypeface(tf);
 		
 		return convertView;
 

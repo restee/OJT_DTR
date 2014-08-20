@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.scrumgztrack.R;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,10 +49,14 @@ public class TeamMemberAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = ((LayoutInflater) context.getSystemService(
 					Context.LAYOUT_INFLATER_SERVICE)).inflate(
-					R.layout.dialog_teamlist_item, parent, false);			
+					R.layout.team_members_item, parent, false);			
 		}
-		TextView teamTXT = (TextView) convertView.findViewById(R.id.txtTeamName); 
+		TextView teamTXT = (TextView) convertView.findViewById(R.id.txtTeamMember); 
 		teamTXT.setText(teamMembers.get(position));
+		
+		
+		Typeface tf = Typeface.createFromAsset(context.getAssets(), "Nexa Bold.otf");
+		teamTXT.setTypeface(tf);
 		
 		return convertView;
 
