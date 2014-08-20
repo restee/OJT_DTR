@@ -44,6 +44,10 @@
             android:label="@string/title_activity_team_list_add_dialog"
             android:theme="@style/myDialog" >
         </activity>
+        <activity
+            android:name="com.example.scrumgztrack.ManageTeam"
+            android:label="@string/title_activity_manage_team" >
+        </activity>
     </application>
 
 </manifest>

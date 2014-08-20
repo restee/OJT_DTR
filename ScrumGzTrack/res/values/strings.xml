@@ -13,5 +13,6 @@
     <string name="title_activity_team_list_add_dialog">TeamListAddDialog</string>
     <string name="remove_team">Remove Team</string>
     <string name="go_to_team">Go to Team</string>
+    <string name="title_activity_manage_team">ManageTeam</string>
 
 </resources>
