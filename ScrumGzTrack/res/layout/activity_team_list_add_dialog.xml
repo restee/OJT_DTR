@@ -10,10 +10,9 @@
         android:id="@+id/dialog_teamlist_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:divider="#50FFFFFF" 
-        android:dividerHeight="1px">
+        android:divider="#50000000" 
+        android:dividerHeight="1px"
+        android:background="@drawable/listviewborder">
     </ListView>
     
 </LinearLayout>
